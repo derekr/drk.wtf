@@ -1,9 +1,10 @@
-#!/usr/bin/env bash
-GIT_DEPLOY_REPO=${GIT_DEPLOY_REPO:-$(node -e 'process.stdout.write(require("./package.json").repository)')}
-
-cd dist && \
-$(npm bin)/rimraf .git
-git init && \
-git add . && \
-git commit -m "Deploy to GitHub Pages" && \
-git push --force "${GIT_DEPLOY_REPO}" gh-pages
+#!/bin/bash
+( cd build
+git init
+git config user.name "Derek Reynolds"
+git config user.email "derekr@me.com"
+cp ../CNAME ./CNAME
+git add .
+git commit -m "Deployed to Github Pages"
+git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
+)
