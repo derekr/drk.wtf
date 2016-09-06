@@ -82,6 +82,15 @@ export const makeConfig = (config = {}) => {
             [ "css-loader", "postcss-loader" ].join("!"),
           ),
         },
+        // *.css => global vendor css
+        {
+          test: /\.css$/,
+          include: path.resolve(__dirname, "node_modules"),
+          loader: ExtractTextPlugin.extract(
+            "style-loader",
+            [ "css-loader" ].join("!"),
+          ),
+        },
         // ! \\
         // If you want global CSS only, just remove the 2 sections above
         // and use the following one
