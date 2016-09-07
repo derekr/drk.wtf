@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from "react"
 import Helmet from "react-helmet"
 
 // Import global CSS before other components and their styles
+import "tachyons/css/tachyons.min.css"
 import "./index.global.css"
 import styles from "./index.css"
 
-import Header from "../Header"
 import Footer from "../Footer"
 
 export default class Layout extends Component {
@@ -34,6 +34,16 @@ export default class Layout extends Component {
             { property: "og:site_name", content: pkg.name },
             { name: "twitter:site", content: `@${ pkg.twitter }` },
           ] }
+          link={ [
+            {
+              rel: "stylesheet",
+              href: "//brick.a.ssl.fastly.net/Playfair Display:400,700",
+            },
+            {
+              rel: "stylesheet",
+              href: "//brick.a.ssl.fastly.net/PT Serif:400,400i,700,700i:f",
+            },
+          ] }
           script={ [
             { src: "https://cdn.polyfill.io/v2/polyfill.min.js" },
           ] }
@@ -47,7 +57,6 @@ export default class Layout extends Component {
         />
         <style>{ "@-ms-viewport { width: device-width; }" }</style>
 
-        <Header />
         <div className={ styles.content }>
           { this.props.children }
         </div>
