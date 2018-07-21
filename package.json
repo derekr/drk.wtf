@@ -1,0 +1,29 @@
+{
+  "name": "drk.wtf",
+  "version": "2.0.0",
+  "description": "Personal website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derekr/drk.wtf.git"
+  },
+  "author": "Derek Reynolds",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/derekr/drk.wtf/issues"
+  },
+  "homepage": "https://github.com/derekr/drk.wtf#readme",
+  "dependencies": {
+    "next": "^6.1.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "prettier": "1.13.7"
+  }
+}
