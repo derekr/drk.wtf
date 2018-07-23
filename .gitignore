@@ -2,5 +2,6 @@
 node_modules
 *.log
 
-# phenomic build
-dist
+# next
+.next
+out
