@@ -109,6 +109,10 @@ export default () => (
         max-width: 60vw;
       }
 
+      h2 {
+        color: #aaa;
+      }
+
       .experience-grid {
         padding: 1rem;
         display: grid;
