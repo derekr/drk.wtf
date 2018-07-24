@@ -95,6 +95,9 @@ export default () => (
           Software Engineer
         </ExperienceItem>
         <ExperienceItem title="Optimal Outsource" startYear="2006" endYear="2011" />
+        <a href="https://www.linkedin.com/in/derek-reynolds-11a806132/" target="_blank">
+          Linkedin >>
+        </a>
       </div>
     </div>
     <footer>© Derek Reynolds {new Date().getFullYear()}</footer>
