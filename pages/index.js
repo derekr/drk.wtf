@@ -85,7 +85,7 @@ export default () => (
           role for the last couple of years.
         </ExperienceItem>
         <h2>Previously</h2>
-        <ExperienceItem title="NeardWallet" href="https://nerdwallet.com" endYear="2015">
+        <ExperienceItem title="NerdWallet" href="https://nerdwallet.com" endYear="2015">
           Senior Frontend Engineer.
         </ExperienceItem>
         <ExperienceItem title="DIY" href="https://diy.org" startYear="2013" endYear="2015">
