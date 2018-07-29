@@ -109,7 +109,7 @@ export default () => (
       .mast-grid p {
         font-size: 1.2em;
         line-height: 1.5;
-        max-width: 60vw;
+        max-width: 800px;
       }
 
       h2 {
@@ -119,12 +119,12 @@ export default () => (
       .experience-grid {
         padding: 1rem;
         display: grid;
-        grid-template-columns: 1fr 50px 1fr 1fr;
+        grid-template-columns: 300px 1fr;
       }
 
       .experience {
-        grid-column-start: 3;
-        grid-column-end: 5;
+        grid-column-start: 2;
+        grid-column-end: 3;
       }
 
       footer {
