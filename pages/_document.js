@@ -2,7 +2,7 @@ import Document, { Head, Main, NextScript } from 'next/document'
 
 const globalStyles = `
     html {
-        font-family: Rubik, sans-serif;
+        font-family: Aleo, serif;
     }
     body {
         margin: 0;
@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700" rel="stylesheet" />
+          <link rel="stylesheet" href="/_next/static/style.css" />
           <style>{globalStyles}</style>
         </Head>
         <body>

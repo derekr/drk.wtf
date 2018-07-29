@@ -1,3 +1,7 @@
+const withPlugins = require('next-compose-plugins')
+
+const withCSS = require('@zeit/next-css')
+const withFonts = require('./lib/next-fonts')
 const withMDX = require('@zeit/next-mdx')({
   options: {
     mdPlugins: [],
@@ -5,11 +9,18 @@ const withMDX = require('@zeit/next-mdx')({
   },
 })
 
-module.exports = withMDX({
-  pageExtensions: ['js', 'jsx', 'mdx'],
-  exportPathMap(defaultExportMap) {
-    return {
-      ...defaultExportMap,
-    }
-  },
-})
+module.exports = withPlugins([
+  [withFonts],
+  [withCSS],
+  [
+    withMDX,
+    {
+      pageExtensions: ['js', 'jsx', 'mdx'],
+      exportPathMap(defaultExportMap) {
+        return {
+          ...defaultExportMap,
+        }
+      },
+    },
+  ],
+])
