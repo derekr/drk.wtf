@@ -1,4 +1,6 @@
 {
+  "version": 2,
   "alias": "drk.wtf",
-  "type": "static"
+  "name": "drk-wtf",
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }]
 }
