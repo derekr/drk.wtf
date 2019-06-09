@@ -9,18 +9,23 @@ const withMDX = require('@zeit/next-mdx')({
   },
 })
 
-module.exports = withPlugins([
-  [withFonts],
-  [withCSS],
+module.exports = withPlugins(
   [
-    withMDX,
-    {
-      pageExtensions: ['js', 'jsx', 'mdx'],
-      exportPathMap(defaultExportMap) {
-        return {
-          ...defaultExportMap,
-        }
+    [withFonts],
+    [withCSS],
+    [
+      withMDX,
+      {
+        pageExtensions: ['js', 'jsx', 'mdx'],
+        exportPathMap(defaultExportMap) {
+          return {
+            ...defaultExportMap,
+          }
+        },
       },
-    },
+    ],
   ],
-])
+  {
+    target: 'serverless',
+  }
+)
