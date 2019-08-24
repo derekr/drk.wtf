@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 
 export const meta = {
-  title: 'Derek Reynolds – Bay Area Software Developer.',
+  title: 'Derek Reynolds – Software Developer and Manager.',
 }
 
 const ExperienceItem = ({ title, href, startYear, endYear, children }) => (
@@ -57,8 +57,8 @@ export default () => (
         <a href="/">drk.wtf</a>
       </h1>
       <p>
-        Hey, I'm Derek! Currently living in the Bay Area working as an Engineering Manager for{' '}
-        <a href="https://patreon.com">Patreon</a>.
+        Hey, I'm Derek! Currently living in the Bay Area working as a Lead Engineer for{' '}
+        <a href="https://hipcamp.com">Hipcamp</a> on our native mobile team.
       </p>
       <p>
         I enjoy building and creating for the web. Some of my software work can be found on{' '}
@@ -80,11 +80,14 @@ export default () => (
     <div className="experience-grid">
       <div className="experience">
         <h2>Currently</h2>
-        <ExperienceItem title="Patreon" href="https://patreon.com" startYear="2015" endYear="2018">
-          Began as a Frontend Engineer and moved to management which has been my primary focus and
-          role for the last couple of years.
+        <ExperienceItem title="Hipcamp" href="https://hipcamp.com" startYear="2018" endYear="2019">
+          Started a greenfield mobile app initiative and helped ship Apple and Android apps using React Native.
         </ExperienceItem>
         <h2>Previously</h2>
+        <ExperienceItem title="Patreon" href="https://patreon.com" startYear="2015" endYear="2018">
+          Began as a Frontend Engineer and moved to management which has been my primary focus and
+          role for over 2 years.
+        </ExperienceItem>
         <ExperienceItem title="NerdWallet" href="https://nerdwallet.com" endYear="2015">
           Senior Frontend Engineer.
         </ExperienceItem>
