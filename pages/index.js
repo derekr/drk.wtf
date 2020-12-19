@@ -58,7 +58,7 @@ export default () => (
       </h1>
       <p>
         Hey, I'm Derek! Currently living in Sacramento working as a Lead Engineer for{' '}
-        <a href="https://babylist.com">Babylist</a> on our native mobile team.
+        <a href="https://babylist.com">Babylist</a>.
       </p>
       <p>
         I enjoy building and creating for the web. Some of my software work can be found on{' '}
