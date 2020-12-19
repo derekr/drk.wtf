@@ -1,5 +1,3 @@
-require('typeface-aleo')
-
 import App, {Container} from 'next/app'
 import React from 'react'
 

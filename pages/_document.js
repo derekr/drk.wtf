@@ -1,9 +1,6 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 
 const globalStyles = `
-    html {
-        font-family: Aleo, serif;
-    }
     body {
         margin: 0;
         color: #333;
