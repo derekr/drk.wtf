@@ -57,8 +57,8 @@ export default () => (
         <a href="/">drk.wtf</a>
       </h1>
       <p>
-        Hey, I'm Derek! Currently living in the Bay Area working as a Lead Engineer for{' '}
-        <a href="https://hipcamp.com">Hipcamp</a> on our native mobile team.
+        Hey, I'm Derek! Currently living in Sacramento working as a Lead Engineer for{' '}
+        <a href="https://babylist.com">Babylist</a> on our native mobile team.
       </p>
       <p>
         I enjoy building and creating for the web. Some of my software work can be found on{' '}
@@ -80,8 +80,13 @@ export default () => (
     <div className="experience-grid">
       <div className="experience">
         <h2>Currently</h2>
+        <ExperienceItem title="Babylist" href="https://babylist.com" startYear="2019" endYear="2020">
+          Helping this small and mighty engineering team grow. Shipping projects in between shepparding 
+          tooling and processes that will help us scale to be the most helpful product for all expecting families.
+        </ExperienceItem>
         <ExperienceItem title="Hipcamp" href="https://hipcamp.com" startYear="2018" endYear="2019">
-          Started a greenfield mobile app initiative and helped ship Apple and Android apps using React Native.
+          Started a greenfield mobile app initiative and helped ship Apple and Android apps using React Native. 
+          We were a featured <a href="https://apps.apple.com/us/story/id1463651760">App of the Day</a>!
         </ExperienceItem>
         <h2>Previously</h2>
         <ExperienceItem title="Patreon" href="https://patreon.com" startYear="2015" endYear="2018">
