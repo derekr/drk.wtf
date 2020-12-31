@@ -6,21 +6,23 @@ export const meta = {
 
 const ExperienceItem = ({ title, href, startYear, endYear, children }) => (
   <article>
-    <h3>
-      {title}
-      {href && (
-        <span className="href">
-          {' '}
-          <a href={href} target="_blank">
-            {href}
-          </a>
-        </span>
-      )}
-    </h3>
-    <p className="time">
-      {startYear && `${startYear}–`}
-      {endYear}
-    </p>
+    <div className="mb-2">
+      <h3>
+        <strong>{title}</strong>
+        {href && (
+          <span className="href">
+            {' '}
+            <a href={href} target="_blank">
+              {href}
+            </a>
+          </span>
+        )}
+      </h3>
+      <p className="time text-sm text-gray-400">
+        {startYear && `${startYear}–`}
+        {endYear}
+      </p>
+    </div>
     <p className="description">{children}</p>
   </article>
 )
@@ -28,7 +30,7 @@ const ExperienceItem = ({ title, href, startYear, endYear, children }) => (
 const Index = () => (
   <Fragment>
     <div className="mast-grid mb-8 max-w-2xl">
-      <h1>
+      <h1 className="text-lg">
         <a href="/">drk.wtf</a>
       </h1>
       <p>
@@ -55,9 +57,9 @@ const Index = () => (
         .
       </p>
     </div>
-    <div className="experience-grid grid md:grid-cols-3">
+    <div className="experience-grid grid md:grid-cols-3 mb-5">
       <div className="experience md:col-start-2 space-y-4">
-        <h2>Currently</h2>
+        <h2 className="text-md text-gray-600">Currently</h2>
         <ExperienceItem
           title="Babylist"
           href="https://babylist.com"
@@ -68,7 +70,11 @@ const Index = () => (
           shepparding tooling and processes that will help us scale to be the most helpful product
           for all expecting families.
         </ExperienceItem>
-        <h2>Previously</h2>
+
+        <br />
+
+        <h2 className="text-md text-gray-600">Previously</h2>
+
         <ExperienceItem title="Hipcamp" href="https://hipcamp.com" startYear="2018" endYear="2019">
           Started a greenfield mobile app initiative and helped ship Apple and Android apps using
           React Native. We were a featured{' '}
