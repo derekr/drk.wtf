@@ -64,29 +64,39 @@ export default () => (
         I enjoy building and creating for the web. Some of my software work can be found on{' '}
         <a href="https://github.com/derekr" target="_blank">
           github
-        </a>. I lightly post thoughts on{' '}
+        </a>
+        . I lightly post thoughts on{' '}
         <a href="https://twitter.com/drk" target="_blank">
           twitter
-        </a>, gifs of interactions I make on{' '}
+        </a>
+        , gifs of interactions I make on{' '}
         <a href="https://dribbble.com/derek" target="_blank">
           dribbble
         </a>{' '}
         and photography on{' '}
         <a href="https://ddrrkk.exposure.co/" target="_blank">
           exposure
-        </a>.
+        </a>
+        .
       </p>
     </div>
     <div className="experience-grid">
       <div className="experience">
         <h2>Currently</h2>
-        <ExperienceItem title="Babylist" href="https://babylist.com" startYear="2019" endYear="2020">
-          Helping this small and mighty engineering team grow. Shipping projects in between shepparding 
-          tooling and processes that will help us scale to be the most helpful product for all expecting families.
+        <ExperienceItem
+          title="Babylist"
+          href="https://babylist.com"
+          startYear="2019"
+          endYear="2020"
+        >
+          Helping this small and mighty engineering team grow. Shipping projects in between
+          shepparding tooling and processes that will help us scale to be the most helpful product
+          for all expecting families.
         </ExperienceItem>
         <ExperienceItem title="Hipcamp" href="https://hipcamp.com" startYear="2018" endYear="2019">
-          Started a greenfield mobile app initiative and helped ship Apple and Android apps using React Native. 
-          We were a featured <a href="https://apps.apple.com/us/story/id1463651760">App of the Day</a>!
+          Started a greenfield mobile app initiative and helped ship Apple and Android apps using
+          React Native. We were a featured{' '}
+          <a href="https://apps.apple.com/us/story/id1463651760">App of the Day</a>!
         </ExperienceItem>
         <h2>Previously</h2>
         <ExperienceItem title="Patreon" href="https://patreon.com" startYear="2015" endYear="2018">
@@ -104,7 +114,7 @@ export default () => (
         </ExperienceItem>
         <ExperienceItem title="Optimal Outsource" startYear="2006" endYear="2011" />
         <a href="https://www.linkedin.com/in/derek-reynolds-11a806132/" target="_blank">
-          Linkedin >>
+          Linkedin {'>>'}
         </a>
       </div>
     </div>
