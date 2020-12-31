@@ -17,7 +17,6 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>Derek Reynolds Personal Website</title>
           <link rel="stylesheet" href="/_next/static/style.css" />
           <style>{globalStyles}</style>
         </Head>
