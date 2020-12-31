@@ -12,7 +12,11 @@ const ExperienceItem = ({ title, href, startYear, endYear, children }) => (
         {href && (
           <span className="href">
             {' '}
-            <a href={href} target="_blank">
+            <a
+              href={href}
+              target="_blank"
+              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+            >
               {href}
             </a>
           </span>
@@ -35,23 +39,46 @@ const Index = () => (
       </h1>
       <p>
         Hey, I'm Derek! Currently living in Sacramento working as a Lead Engineer for{' '}
-        <a href="https://babylist.com">Babylist</a>.
+        <a
+          href="https://babylist.com"
+          target="_blank"
+          className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+        >
+          Babylist
+        </a>
+        .
       </p>
       <p>
         I enjoy building and creating for the web. Some of my software work can be found on{' '}
-        <a href="https://github.com/derekr" target="_blank">
+        <a
+          href="https://github.com/derekr"
+          target="_blank"
+          className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+        >
           github
         </a>
         . I lightly post thoughts on{' '}
-        <a href="https://twitter.com/drk" target="_blank">
+        <a
+          href="https://twitter.com/drk"
+          target="_blank"
+          className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+        >
           twitter
         </a>
         , gifs of interactions I make on{' '}
-        <a href="https://dribbble.com/derek" target="_blank">
+        <a
+          href="https://dribbble.com/derek"
+          target="_blank"
+          className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+        >
           dribbble
         </a>{' '}
         and photography on{' '}
-        <a href="https://ddrrkk.exposure.co/" target="_blank">
+        <a
+          href="https://ddrrkk.exposure.co/"
+          target="_blank"
+          className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+        >
           exposure
         </a>
         .
@@ -78,7 +105,13 @@ const Index = () => (
         <ExperienceItem title="Hipcamp" href="https://hipcamp.com" startYear="2018" endYear="2019">
           Started a greenfield mobile app initiative and helped ship Apple and Android apps using
           React Native. We were a featured{' '}
-          <a href="https://apps.apple.com/us/story/id1463651760">App of the Day</a>!
+          <a
+            href="https://apps.apple.com/us/story/id1463651760"
+            className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+          >
+            App of the Day
+          </a>
+          !
         </ExperienceItem>
         <ExperienceItem title="Patreon" href="https://patreon.com" startYear="2015" endYear="2018">
           Began as a Frontend Engineer and moved to management which has been my primary focus and
@@ -94,7 +127,11 @@ const Index = () => (
           Software Engineer
         </ExperienceItem>
         <ExperienceItem title="Optimal Outsource" startYear="2006" endYear="2011" />
-        <a href="https://www.linkedin.com/in/derek-reynolds-11a806132/" target="_blank">
+        <a
+          href="https://www.linkedin.com/in/derek-reynolds-11a806132/"
+          target="_blank"
+          className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+        >
           Linkedin {'>>'}
         </a>
       </div>
