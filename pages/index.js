@@ -22,37 +22,12 @@ const ExperienceItem = ({ title, href, startYear, endYear, children }) => (
       {endYear}
     </p>
     <p className="description">{children}</p>
-
-    <style jsx>{`
-      article {
-        margin-bottom: 2em;
-        max-width: 500px;
-      }
-
-      h3 {
-        margin-bottom: 0.2em;
-      }
-
-      .href {
-        font-size: 0.7em;
-      }
-
-      .time {
-        margin-top: 0;
-        font-size: 0.7em;
-        color: #666;
-      }
-
-      .description {
-        margin-top: 0;
-      }
-    `}</style>
   </article>
 )
 
-export default () => (
+const Index = () => (
   <Fragment>
-    <div className="mast-grid">
+    <div className="mast-grid mb-8 max-w-2xl">
       <h1>
         <a href="/">drk.wtf</a>
       </h1>
@@ -80,8 +55,8 @@ export default () => (
         .
       </p>
     </div>
-    <div className="experience-grid">
-      <div className="experience">
+    <div className="experience-grid grid md:grid-cols-3">
+      <div className="experience md:col-start-2 space-y-4">
         <h2>Currently</h2>
         <ExperienceItem
           title="Babylist"
@@ -93,12 +68,12 @@ export default () => (
           shepparding tooling and processes that will help us scale to be the most helpful product
           for all expecting families.
         </ExperienceItem>
+        <h2>Previously</h2>
         <ExperienceItem title="Hipcamp" href="https://hipcamp.com" startYear="2018" endYear="2019">
           Started a greenfield mobile app initiative and helped ship Apple and Android apps using
           React Native. We were a featured{' '}
           <a href="https://apps.apple.com/us/story/id1463651760">App of the Day</a>!
         </ExperienceItem>
-        <h2>Previously</h2>
         <ExperienceItem title="Patreon" href="https://patreon.com" startYear="2015" endYear="2018">
           Began as a Frontend Engineer and moved to management which has been my primary focus and
           role for over 2 years.
@@ -119,36 +94,6 @@ export default () => (
       </div>
     </div>
     <footer>© Derek Reynolds {new Date().getFullYear()}</footer>
-    <style jsx>{`
-      .mast-grid {
-        padding: 2rem;
-      }
-
-      .mast-grid p {
-        font-size: 1.2em;
-        line-height: 1.5;
-        max-width: 800px;
-      }
-
-      h2 {
-        color: #aaa;
-      }
-
-      .experience-grid {
-        padding: 1rem;
-        display: grid;
-        grid-template-columns: 300px 1fr;
-      }
-
-      .experience {
-        grid-column-start: 2;
-        grid-column-end: 3;
-      }
-
-      footer {
-        padding: 1em;
-      }
-    `}</style>
   </Fragment>
 )
 
@@ -164,3 +109,5 @@ export default () => (
 // DIY 2013-2015
 // Trulia 2011-2013
 // Optimal Outsource 2006-2001
+
+export default Index

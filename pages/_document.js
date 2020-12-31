@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="/_next/static/style.css" />
           <style>{globalStyles}</style>
         </Head>
-        <body>
+        <body className="p-3">
           <Main />
           <NextScript />
         </body>
