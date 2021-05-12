@@ -25,7 +25,7 @@
     "gray-matter": "^4.0.2",
     "next": "^10.0.3",
     "next-mdx-remote": "^1.0.1",
-    "postcss": "^8.2.2",
+    "postcss": "^8.2.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "tailwindcss": "^2.0.2",
