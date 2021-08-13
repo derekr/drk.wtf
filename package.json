@@ -23,7 +23,7 @@
     "@babel/core": "^7.12.10",
     "autoprefixer": "^10.1.0",
     "gray-matter": "^4.0.2",
-    "next": "^10.0.3",
+    "next": "^11.1.0",
     "next-mdx-remote": "^1.0.1",
     "postcss": "^8.2.2",
     "react": "^17.0.1",
