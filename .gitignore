@@ -9,3 +9,5 @@ api/_build
 
 .DS_Store
 .obsidian
+
+/app/tailwind.css
