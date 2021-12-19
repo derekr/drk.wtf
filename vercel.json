@@ -3,5 +3,12 @@
     "env": {
       "ENABLE_FILE_SYSTEM_API": "1"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/blog/work-at-diy",
+      "destination": "/g/projects/work-at-diy",
+      "permanent": true
+    }
+  ]
 }

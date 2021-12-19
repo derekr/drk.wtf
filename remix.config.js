@@ -1,3 +1,5 @@
+const React = require("react");
+
 /**
  * @type {import('@remix-run/dev/config').AppConfig}
  */
@@ -8,8 +10,10 @@ module.exports = {
   serverBuildDirectory: "api/_build",
   ignoredRouteFiles: [".*"],
   mdx: async (filename) => {
-    const [rehypeRewrite] = await Promise.all([
-      import("rehype-rewrite").then((mod) => console.log(mod) || mod.default),
+    const [rehypeRewrite, rehypeReact, rehypeSanitize] = await Promise.all([
+      import("rehype-rewrite").then((mod) => mod.default),
+      import("rehype-react").then((mod) => mod.default),
+      import("rehype-sanitize").then((mod) => mod.default),
     ]);
 
     return {
@@ -24,6 +28,8 @@ module.exports = {
             },
           },
         ],
+        [rehypeReact, { createElement: React.createElement }],
+        rehypeSanitize,
       ],
     };
   },
