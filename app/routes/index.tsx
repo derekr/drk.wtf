@@ -34,14 +34,14 @@ export default function Index() {
             <a href="/">drk.wtf</a>
           </h1>
           <p>
-            Hey, I'm Derek! Currently living in Sacramento working as a Lead
-            Engineer for{" "}
+            Hey, I'm Derek! Currently living in Sacramento working as an
+            Software Developer for{" "}
             <a
-              href="https://babylist.com"
+              href="https://gowalla.com"
               target="_blank"
               className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
             >
-              Babylist
+              Gowalla
             </a>
             .
           </p>
@@ -86,20 +86,30 @@ export default function Index() {
           <div className="experience md:col-start-2 space-y-4">
             <h2 className="text-md text-gray-600">Currently</h2>
             <ExperienceItem
-              title="Babylist"
-              href="https://babylist.com"
-              startYear="2019"
-              endYear="2020"
+              title="Gowalla"
+              href="https://gowalla.com"
+              startYear="2021"
+              endYear="Present"
             >
-              Helping this small and mighty engineering team grow. Shipping
-              projects in between shepparding tooling and processes that will
-              help us scale to be the most helpful product for all expecting
-              families.
+              Doing what I can where I can helping build a fun game that gets
+              you outside and exploring your world.
             </ExperienceItem>
 
             <br />
 
             <h2 className="text-md text-gray-600">Previously</h2>
+
+            <ExperienceItem
+              title="Babylist"
+              href="https://babylist.com"
+              startYear="2019"
+              endYear="2021"
+            >
+              Helped this small and mighty engineering team grow as a lead and
+              manger. Shipped projects in between shepparding tooling and
+              processes that will help us scale to be the most helpful product
+              for all expecting families.
+            </ExperienceItem>
 
             <ExperienceItem
               title="Hipcamp"
