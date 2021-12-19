@@ -116,20 +116,20 @@ accounts were using mobile devices.
 - Managed services in AWS and web deployments.
 - Worked on extra [documentation and walkthroughs][diy-client-example] to help kids work with the [DIY API][diy-api].
 
-[coppa]: http://www.coppa.org (Children's Online Privacy Protection Act)
-[diy]: https://diy.org (DIY)
-[skills]: https://diy.org/skills (DIY – Skills)
-[playground]: https://github.com/diy/web-playground (DIY – Playground)
-[ryan]: https://twitter.com/brocklesocks (Ryan's Twitter)
-[portfolio]: https://diy.org/drk (drk on DIY)
-[hexgrid]: https://github.com/substack/hex-grid (skill-grid on Github)
-[hartley]: https://twitter.com/hrtlym (Hartley's Twitter)
-[ri]: https://twitter.com/riblah (Ri's Twitter)
-[jack]: https://twitter.com/mousecastle (Jack's Twitter)
-[ea]: https://diy.org/membership (DIY Membership)
-[join]: https://diy.org/join (DIY Join)
-[diy-api]: http://docs.diy.org (DIY API Docs)
-[diy-client-example]: https://github.com/derekr/diy-client-example (Getting started w/ diy-client)
-[skill-hexgrid]: https://github.com/diy/skill-hex-grid (diy/skill-hex-grid on Github)
-[donutchart]: https://github.com/diy/donutchart (diy/donutchart)
-[radarchart]: https://github.com/diy/radarchart (diy/radarchart)
+[coppa]: http://www.coppa.org "Children's Online Privacy Protection Act"
+[diy]: https://diy.org 'DIY'
+[skills]: https://diy.org/skills 'DIY – Skills'
+[playground]: https://github.com/diy/web-playground 'DIY – Playground'
+[ryan]: https://twitter.com/brocklesocks "Ryan's Twitter"
+[portfolio]: https://diy.org/drk 'drk on DIY'
+[hexgrid]: https://github.com/substack/hex-grid 'skill-grid on Github'
+[hartley]: https://twitter.com/hrtlym "Hartley's Twitter"
+[ri]: https://twitter.com/riblah "Ri's Twitter"
+[jack]: https://twitter.com/mousecastle "Jack's Twitter"
+[ea]: https://diy.org/membership 'DIY Membership'
+[join]: https://diy.org/join 'DIY Join'
+[diy-api]: http://docs.diy.org 'DIY API Docs'
+[diy-client-example]: https://github.com/derekr/diy-client-example 'Getting started w/ diy-client'
+[skill-hexgrid]: https://github.com/diy/skill-hex-grid 'diy/skill-hex-grid on Github'
+[donutchart]: https://github.com/diy/donutchart 'diy/donutchart'
+[radarchart]: https://github.com/diy/radarchart 'diy/radarchart'
