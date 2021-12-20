@@ -2,7 +2,7 @@
 title: test
 ---
 
-- RSS Feed on specific posts so you can subscribe to updates?
+* RSS Feed on specific posts so you can subscribe to updates?
 
 [other-note](other-note.md)
 
