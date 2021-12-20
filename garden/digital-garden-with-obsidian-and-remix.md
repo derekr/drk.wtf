@@ -120,3 +120,7 @@ obsidian-export garden/ app/routes/g
 ```
 
 The exporitng should cause remix to live reload or you can manually refresh as needed.
+
+## Long-term
+
+Unsure if this is the setup I'll stick with, but works great for now. I'm hoping Obsidian's first class exporting will negate the need for a 3rd party tool (even if it is great!). I left out creating an index page for the garden or a way to find them, but the cool thing about this approach is once exported in to a Remix project you can leverage their recommended approach which is documented here https://remix.run/docs/en/v1.0.6/guides/mdx#example-blog-usage.
