@@ -5,7 +5,7 @@ import tailwindStyles from './tailwind.css'
 import globalStyles from '~/styles/global.css'
 
 export const meta: MetaFunction = () => {
-  return { title: 'New Remix App' }
+  return { title: 'Welcome to the drkweb | drk.wtf' }
 }
 
 export function links() {
