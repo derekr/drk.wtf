@@ -1,12 +1,3 @@
-import { Outlet } from 'remix'
-
-export default function Garden() {
-  return (
-    <div className="container pt-10 pb-10 mx-auto prose">
-      <Outlet />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
 // Page load (you could wrap this in a DOM ready if the script is loaded early).
 hashchange()
 
@@ -14,7 +5,7 @@ hashchange()
 window.addEventListener('hashchange', hashchange)
 
 // When on the URL already, perhaps after scrolling, and clicking again, which
-// doesn’t emit \`hashchange\`.
+// doesn’t emit `hashchange`.
 document.addEventListener(
   'click',
   (event) => {
@@ -52,10 +43,4 @@ function hashchange() {
       target.scrollIntoView()
     }, 0)
   }
-}
-`,
-        }}
-      />
-    </div>
-  )
 }

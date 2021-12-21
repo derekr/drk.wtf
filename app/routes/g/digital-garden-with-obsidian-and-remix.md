@@ -12,12 +12,12 @@ OK… Enough context setting. My main goal for this note is capturing the setup
 
 Going to setup Remix first because I'm keeping my Obsidian vault (more on that later) in the site repo.
 
-````sh
+```sh
 npx create-remix@latest
 # choose Remix App Server
 cd [whatever you named the project]
 npm run dev
-````
+```
 
 https://remix.run/docs/en/v1/tutorials/blog
 
@@ -27,9 +27,9 @@ We should be able to run the dev command and access our site at localhost:3000.
 
 I also set this up as a git repo by running:
 
-````sh
+```sh
 git init
-````
+```
 
 ## Setting up Obsidian
 
@@ -41,16 +41,16 @@ Now that I have some markdown I need to by able to serve it from my Remix site. 
 
 For installation I already had rust installed and opted to use the crates package manger, but you could download a pre-built binary as well. Check thir repo for more info https://github.com/zoni/obsidian-export.
 
-````sh
+```sh
 brew install rust
 cargo install obsidian-export
-````
+```
 
 Once installed you can runt he command to export from `garden` in to your `app/routes` directory.
 
-````sh
+```sh
 obsidian-export garden/ app/routes/g
-````
+```
 
 Now you can navigate to any of your markdown compiled pages via http://localhost:3000/g/some-page. However! You may notice that your links to other markdown pages (typically backlinks) are broken. By default the compiled links contain the `.md` extension. We'll need to strip those. Otherwise things should be working fairly well. The only other snag I hit was markdown files containing html using `class` instead of `className` because you know… MDX. There's a fix for that too!
 
@@ -58,17 +58,17 @@ Now you can navigate to any of your markdown compiled pages via http://localhost
 
 Remix allows customizing the MDX pipeline via [rehype and remark plugins](https://remix.run/docs/en/v1/guides/mdx#advanced-configuration). I've opted to use a [few plugins](https://github.com/rehypejs/rehype/blob/main/doc/plugins.md):
 
-* **rehypeReact** – For addressing the class vs className warning.
-* **rehypeSanitize** – I plan on using other plugins in Obsidian and possible rehype/remark and think it's helpful to sanitize any generated html.
-* **rehypeRewrite** – For striping the `.md` extension.
+- **rehypeReact** – For addressing the class vs className warning.
+- **rehypeSanitize** – I plan on using other plugins in Obsidian and possible rehype/remark and think it's helpful to sanitize any generated html.
+- **rehypeRewrite** – For striping the `.md` extension.
 
-````sh
+```sh
 npm add rehype-rewrite rehype-react rehype-sanitize
-````
+```
 
 And my `remix.config.js` file looks like this:
 
-````js
+```js
 const React = require('react')
 
 /**
@@ -105,19 +105,19 @@ module.exports = {
     }
   },
 }
-````
+```
 
 ## Workflow
 
 Right now I'm opting for a more manual workflow instead of incorporating watching and exporting on change. Doesn't seem necessary at this point and Obsidian is constantly saving which may make live reload problematic. Anyway as I'm authoring or whenever I feel the need I'll run the export command while remix dev is running in a separate process.
 
-````sh
+```sh
 npm run dev
-````
+```
 
-````sh
+```sh
 obsidian-export garden/ app/routes/g
-````
+```
 
 The exporitng should cause remix to live reload or you can manually refresh as needed.
 

@@ -6,14 +6,13 @@ Bonus points if it can be driven by [AVO 🥑 — A BEM Dialect Using Data Attr
 
 ```css
 [data-avatar] {
-	color: 'red'
+  color: 'red';
 }
 ```
 
 ```jsx
-const Avatar = ({ as: Element, children, ...props}) => {
-	return children ? <Element {...props}>{children}</Element> : <Element {...props} />
-	
+const Avatar = ({ as: Element, children, ...props }) => {
+  return children ? <Element {...props}>{children}</Element> : <Element {...props} />
 }
 ```
 

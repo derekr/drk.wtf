@@ -4,10 +4,14 @@
   "description": "",
   "license": "",
   "scripts": {
-    "build": "npm run build:css && remix build",
+    "build": "npm run build:css && remix build &&",
     "build:css": "tailwindcss -o ./app/tailwind.css",
+    "build:g": "obsidian-export garden/ app/routes/g && npm run build:manifest && npm run fmt",
+    "build:manifest": "node scripts/garden-manifest.js",
+    "fmt": "prettier -w .",
     "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
     "dev:css": "tailwindcss -o ./app/tailwind.css --watch",
+    "postbuild": "npm run fmt",
     "postinstall": "remix setup node"
   },
   "dependencies": {
@@ -17,9 +21,11 @@
     "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "rehype-autolink-headings": "^6.1.0",
     "rehype-react": "^7.0.3",
     "rehype-rewrite": "^3.0.4",
     "rehype-sanitize": "^5.0.1",
+    "rehype-slug": "^5.0.0",
     "remix": "^1.1.1"
   },
   "devDependencies": {
@@ -28,6 +34,7 @@
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
     "concurrently": "^6.5.1",
+    "prettier": "^2.5.1",
     "tailwindcss": "^3.0.7",
     "tiny-glob": "^0.2.9",
     "typescript": "^4.1.2"

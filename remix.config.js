@@ -10,11 +10,14 @@ module.exports = {
   serverBuildDirectory: 'api/_build',
   ignoredRouteFiles: ['.*'],
   mdx: async (filename) => {
-    const [rehypeRewrite, rehypeReact, rehypeSanitize] = await Promise.all([
-      import('rehype-rewrite').then((mod) => mod.default),
-      import('rehype-react').then((mod) => mod.default),
-      import('rehype-sanitize').then((mod) => mod.default),
-    ])
+    const [rehypeRewrite, rehypeReact, rehypeSanitize, rehypeAutoLinkHeadings, rehypeSlug] =
+      await Promise.all([
+        import('rehype-rewrite').then((mod) => mod.default),
+        import('rehype-react').then((mod) => mod.default),
+        import('rehype-sanitize').then((mod) => mod.default),
+        import('rehype-autolink-headings').then((mod) => mod.default),
+        import('rehype-slug').then((mod) => mod.default),
+      ])
 
     return {
       rehypePlugins: [
@@ -28,6 +31,8 @@ module.exports = {
             },
           },
         ],
+        rehypeSlug,
+        [rehypeAutoLinkHeadings, { behavior: 'wrap' }],
         [rehypeReact, { createElement: React.createElement }],
         rehypeSanitize,
       ],

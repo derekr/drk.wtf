@@ -4,18 +4,17 @@ tl;dr given CSS as an input, output components – initially React.
 
 Bonus points if it can be driven by [AVO 🥑 — A BEM Dialect Using Data Attributes (chan.dev)](https://chan.dev/posts/avo-a-bem-dialect-using-data-attributes/).
 
-````css
+```css
 [data-avatar] {
-	color: 'red'
+  color: 'red';
 }
-````
+```
 
-````jsx
-const Avatar = ({ as: Element, children, ...props}) => {
-	return children ? <Element {...props}>{children}</Element> : <Element {...props} />
-	
+```jsx
+const Avatar = ({ as: Element, children, ...props }) => {
+  return children ? <Element {...props}>{children}</Element> : <Element {...props} />
 }
-````
+```
 
 Potential parsers:
 [fb55/css-what: a CSS selector parser (github.com)](https://github.com/fb55/css-what#readme)
