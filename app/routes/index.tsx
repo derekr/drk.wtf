@@ -1,3 +1,4 @@
+import { Link } from 'remix'
 const ExperienceItem = ({ title, href, startYear, endYear, children }) => (
   <article>
     <div className="mb-2">
@@ -9,14 +10,14 @@ const ExperienceItem = ({ title, href, startYear, endYear, children }) => (
             <a
               href={href}
               target="_blank"
-              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
             >
               {href}
             </a>
           </span>
         )}
       </h3>
-      <p className="time text-sm text-gray-400">
+      <p className="text-sm text-gray-400 time">
         {startYear && `${startYear}–`}
         {endYear}
       </p>
@@ -29,7 +30,7 @@ export default function Index() {
   return (
     <>
       <>
-        <div className="mast-grid mb-8 max-w-2xl">
+        <div className="max-w-2xl mb-8 mast-grid">
           <h1 className="text-lg">
             <a href="/">drk.wtf</a>
           </h1>
@@ -38,18 +39,18 @@ export default function Index() {
             <a
               href="https://gowalla.com"
               target="_blank"
-              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
             >
               Gowalla
             </a>
             .
           </p>
-          <p>
+          <p className="pb-3">
             I enjoy building and creating for the web. Some of my software work can be found on{' '}
             <a
               href="https://github.com/derekr"
               target="_blank"
-              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
             >
               github
             </a>
@@ -57,7 +58,7 @@ export default function Index() {
             <a
               href="https://twitter.com/drk"
               target="_blank"
-              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
             >
               twitter
             </a>
@@ -65,7 +66,7 @@ export default function Index() {
             <a
               href="https://dribbble.com/derek"
               target="_blank"
-              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
             >
               dribbble
             </a>{' '}
@@ -73,16 +74,25 @@ export default function Index() {
             <a
               href="https://ddrrkk.exposure.co/"
               target="_blank"
-              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
             >
               exposure
             </a>
             .
           </p>
+          <p>
+            Check out the{' '}
+            <Link to="/g">
+              <span role="img" aria-label="seedling emoji">
+                🌱
+              </span>{' '}
+              Garden
+            </Link>
+          </p>
         </div>
-        <div className="experience-grid grid md:grid-cols-3 mb-5">
-          <div className="experience md:col-start-2 space-y-4">
-            <h2 className="text-md text-gray-600">Currently</h2>
+        <div className="grid mb-5 experience-grid md:grid-cols-3">
+          <div className="space-y-4 experience md:col-start-2">
+            <h2 className="text-gray-600 text-md">Currently</h2>
             <ExperienceItem
               title="Gowalla"
               href="https://gowalla.com"
@@ -95,7 +105,7 @@ export default function Index() {
 
             <br />
 
-            <h2 className="text-md text-gray-600">Previously</h2>
+            <h2 className="text-gray-600 text-md">Previously</h2>
 
             <ExperienceItem
               title="Babylist"
@@ -118,7 +128,7 @@ export default function Index() {
               using React Native. We were a featured{' '}
               <a
                 href="https://apps.apple.com/us/story/id1463651760"
-                className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+                className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
               >
                 App of the Day
               </a>
@@ -151,7 +161,7 @@ export default function Index() {
             <a
               href="https://www.linkedin.com/in/derek-reynolds-11a806132/"
               target="_blank"
-              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
             >
               Linkedin {'>>'}
             </a>
