@@ -16,3 +16,8 @@ const Avatar = ({ as: Element, children, ...props}) => {
 	
 }
 ```
+
+Potential parsers:
+[fb55/css-what: a CSS selector parser (github.com)](https://github.com/fb55/css-what#readme)
+For testing? [fb55/css-select: a CSS selector compiler & engine (github.com)](https://github.com/fb55/css-select)
+[servo/rust-cssparser: Rust implementation of CSS Syntax Level 3 (github.com)](https://github.com/servo/rust-cssparser)
