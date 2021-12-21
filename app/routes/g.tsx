@@ -1,4 +1,9 @@
 import { Outlet } from 'remix'
+import codeSyntaxStyles from 'highlight.js/styles/github.css'
+
+export function links() {
+  return [{ rel: 'stylesheet', href: codeSyntaxStyles }]
+}
 
 export default function Garden() {
   return (
