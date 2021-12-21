@@ -1,5 +1,10 @@
 [
   {
+    "slug": "css-to-component",
+    "path": "/g/css-to-component",
+    "file": "app/routes/g/css-to-component.md"
+  },
+  {
     "slug": "digital-garden-notes",
     "path": "/g/digital-garden-notes",
     "file": "app/routes/g/digital-garden-notes.md"

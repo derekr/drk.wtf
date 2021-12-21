@@ -33,7 +33,7 @@ git init
 
 ## Setting up Obsidian
 
-Download the latest version of Obsidian at their website https://obsidian.md. It will ask to open and existing vault or create a new one. I created a new vault in the root of my my repo (next to remix's `app` directory) named `garden`. Created a few sample notes to test out some of Obsidian's key features like backlinks and reference embeds. Not necessary, but I also installed the Minimal Theme https://github.com/kepano/obsidian-minimal.
+Download the latest version of Obsidian at their website https://obsidian.md. It will ask to open and existing vault or create a new one. I created a new vault in the root of my my repo (next to remix's `app` directory) named `garden`. You can put it inside the routes directory, but may hit issues with remix trying to parse the `.obsidian` directory as a route. This may no longer be an issue with https://github.com/remix-run/remix/pull/988. Created a few sample notes to test out some of Obsidian's key features like backlinks and reference embeds. Not necessary, but I also installed the Minimal Theme https://github.com/kepano/obsidian-minimal.
 
 ## Exporting Obsidian to Remix
 

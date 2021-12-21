@@ -17,7 +17,7 @@ export default function Index() {
     <ul>
       {manifest.map((note) => (
         <li key={note.slug}>
-          <Link to={note.slug}>{note.slug}</Link>
+          <Link to={note.path}>{note.slug}</Link>
           {note.description ? <p>{note.description}</p> : null}
         </li>
       ))}
