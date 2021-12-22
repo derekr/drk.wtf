@@ -1,5 +1,5 @@
 import { Outlet } from 'remix'
-import codeSyntaxStyles from 'highlight.js/styles/github.css'
+import codeSyntaxStyles from 'highlight.js/styles/night-owl.css'
 
 export function links() {
   return [{ rel: 'stylesheet', href: codeSyntaxStyles }]
