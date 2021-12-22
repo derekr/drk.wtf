@@ -1,3 +1,3 @@
-https://obsidian.md
+[https://obsidian.md]()
 
-https://github.com/kepano/obsidian-minimal
+[https://github.com/kepano/obsidian-minimal]()

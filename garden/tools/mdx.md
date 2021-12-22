@@ -1,1 +1,1 @@
-https://mdxjs.com
+[https://mdxjs.com]()
