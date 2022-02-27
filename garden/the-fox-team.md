@@ -2,7 +2,7 @@
 
 Earlier on at Patreon we didn't have a lot of structure like most early stage startups. No real division in teams, folks kinda floated from one project to the next. As we grew and started ramping up hiring we were just establishing an engineering management team. Much of it was folks with no previous management experience (cue "this is fine" gif). The biggest pain point was we all were still expected (possibly a self-imposed expectation to a certain extent) to still contribute a lot of code. This left little time for planning and being more strategic. To be fair though it's a shared responsibility and our product planning wasn't very mature either.
 
-As more people ramped up we needed teams and projects to place them, but since we were hiring a bunch and didn't have enough resources to plan work we needed a way to buffer new hires before long-term assignment. We repurposed a team that [[wwwjim]] had started – The Fox Team, a reference to Metal Gear Solid/Kojima – to be a place where new engineers could learn the codebase, get warmed up while product and eng sorted out what work should be prioritized.
+As more people ramped up we needed teams and projects to place them, but since we were hiring a bunch and didn't have enough resources to plan work we needed a way to buffer new hires before long-term assignment. We repurposed a team that [[@wwwjim]] had started – The Fox Team, a reference to Metal Gear Solid/Kojima – to be a place where new engineers could learn the codebase, get warmed up while product and eng sorted out what work should be prioritized.
 
 ## What should they do?
 

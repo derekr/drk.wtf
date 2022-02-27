@@ -1,4 +1,4 @@
-import { Outlet } from 'remix'
+import { Outlet, Link, useLocation } from 'remix'
 import codeSyntaxStyles from 'highlight.js/styles/night-owl.css'
 
 export function links() {
@@ -6,8 +6,11 @@ export function links() {
 }
 
 export default function Garden() {
+  const location = useLocation()
+
   return (
     <div className="container pt-10 pb-10 mx-auto prose">
+      {location.pathname !== '/g' ? <Link to="/g">← 🌱 garden</Link> : null}
       <Outlet />
       <script
         dangerouslySetInnerHTML={{
