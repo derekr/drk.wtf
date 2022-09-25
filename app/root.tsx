@@ -1,5 +1,9 @@
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from 'remix'
-import type { MetaFunction } from 'remix'
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import { json } from '@remix-run/server-runtime'
+import type { MetaFunction } from '@remix-run/server-runtime'
+import { useLoaderData, useLocation } from '@remix-run/react'
+
+import { projectDetails } from '~/sanity/config'
 
 import tailwindStyles from './tailwind.css'
 import globalStyles from '~/styles/global.css'
@@ -15,7 +19,14 @@ export function links() {
   ]
 }
 
+export async function loader() {
+  return json({ ENV: projectDetails() })
+}
+
 export default function App() {
+  const data = useLoaderData()
+  const { pathname } = useLocation()
+  const isStudioRoute = pathname.startsWith('/studio')
   return (
     <html lang="en">
       <head>
@@ -23,10 +34,16 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
+        {isStudioRoute && typeof document === 'undefined' ? '__STYLES__' : null}
       </head>
       <body className="p-3">
         <Outlet />
         <ScrollRestoration />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
+          }}
+        />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>

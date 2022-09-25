@@ -11,3 +11,4 @@ api/_build
 .obsidian
 
 /app/tailwind.css
+.env
