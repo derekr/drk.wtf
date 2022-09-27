@@ -13,7 +13,7 @@ specifiers:
   '@sanity/code-input': 3.0.0-v3-studio.9
   '@sanity/image-url': ^1.0.1
   '@sanity/vision': 3.0.0-dev-preview.20
-  '@tailwindcss/typography': ^0.5.0
+  '@tailwindcss/typography': ^0.5.7
   '@types/react': ^18.0.21
   '@types/react-dom': ^18.0.6
   '@vercel/node': ^2.5.18
@@ -36,6 +36,7 @@ specifiers:
   remix: ^1.7.2
   remix-utils: ^3.3.0
   sanity: dev-preview
+  shiki: ^0.11.1
   styled-components: ^5.3.5
   tailwindcss: ^3.1.8
   tiny-glob: ^0.2.9
@@ -70,6 +71,7 @@ dependencies:
   remix: 1.7.2
   remix-utils: 3.3.0_4ys4ldfuyiqtpp7u6iy62jf6q4
   sanity: 3.0.0-dev-preview.20_n7a2islwgceadumpr2wos4eh4y
+  shiki: 0.11.1
   styled-components: 5.3.5_7i5myeigehqah43i5u7wbekgba
 
 devDependencies:
@@ -6214,6 +6216,10 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
+  /jsonc-parser/3.2.0:
+    resolution: {integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==}
+    dev: false
+
   /jsonfile/6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
     dependencies:
@@ -8689,6 +8695,14 @@ packages:
     resolution: {integrity: sha512-Vpfqwm4EnqGdlsBFNmHhxhElJYrdfcxPThu+ryKS5J8L/fhAwLazFZtq+S+TWZ9ANj2piSQLGj6NQg+lKPmxrw==}
     dev: true
 
+  /shiki/0.11.1:
+    resolution: {integrity: sha512-EugY9VASFuDqOexOgXR18ZV+TbFrQHeCpEYaXamO+SZlsnT/2LxuLBX25GGtIrwaEVFXUAbUQ601SWE2rMwWHA==}
+    dependencies:
+      jsonc-parser: 3.2.0
+      vscode-oniguruma: 1.6.2
+      vscode-textmate: 6.0.0
+    dev: false
+
   /side-channel/1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
     dependencies:
@@ -9700,6 +9714,14 @@ packages:
       rollup: 2.78.1
     optionalDependencies:
       fsevents: 2.3.2
+    dev: false
+
+  /vscode-oniguruma/1.6.2:
+    resolution: {integrity: sha512-KH8+KKov5eS/9WhofZR8M8dMHWN2gTxjMsG4jd04YhpbPR91fUj7rYQ2/XjeHCJWbg7X++ApRIU9NUwM2vTvLA==}
+    dev: false
+
+  /vscode-textmate/6.0.0:
+    resolution: {integrity: sha512-gu73tuZfJgu+mvCSy4UZwd2JXykjK9zAZsfmDeut5dx/1a7FeTk0XwJsSuqQn+cuMCGVbIBfl+s53X4T19DnzQ==}
     dev: false
 
   /w3c-hr-time/1.0.2:
