@@ -1,7 +1,7 @@
-import type { LinksFunction, LoaderFunction } from '@remix-run/node'
-import { Link, useLoaderData } from '@remix-run/react'
+import type { LoaderFunction } from '@remix-run/node'
+import { useLoaderData } from '@remix-run/react'
 import groq from 'groq'
-
+import * as shiki from 'shiki'
 import { SanityContent } from '~/components/sanity-content'
 import { client } from '~/sanity/client'
 
@@ -15,6 +15,20 @@ export const loader: LoaderFunction = async ({ params }) => {
   if (!post) {
     return new Response('Not found', { status: 404 })
   }
+
+  post.body = await Promise.all(
+    post.body.map(async (block: any) => {
+      if (block._type !== 'codeBlock') return block
+      const highlighter = await shiki.getHighlighter({
+        theme: 'nord',
+      })
+
+      return {
+        ...block,
+        code: highlighter.codeToHtml(block.code, { lang: block.language }),
+      }
+    })
+  )
 
   return { post }
 }

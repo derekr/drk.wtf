@@ -8,7 +8,7 @@ type ContentProps = {
 const components = {
   types: {
     image: SanityImage,
-    codeBlock: (props) => <pre>{props.value.code}</pre>,
+    codeBlock: (props) => <span dangerouslySetInnerHTML={{ __html: props.value.code }} />,
   },
 }
 
