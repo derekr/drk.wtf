@@ -4,5 +4,14 @@ import post from './post'
 import author from './author'
 import link from './link'
 import globalSettings from './global-settings'
+import workExperience from './work-experience'
 
-export const schemaTypes = [post, author, category, blockContent, globalSettings, link]
+export const schemaTypes = [
+  post,
+  author,
+  category,
+  blockContent,
+  globalSettings,
+  link,
+  workExperience,
+]
