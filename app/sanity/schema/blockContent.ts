@@ -54,6 +54,18 @@ export default defineType({
               },
             ],
           },
+          {
+            title: 'Shared Link',
+            name: 'sharedLinkReference',
+            type: 'object',
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                to: [{ type: 'sharedLink' }],
+              },
+            ],
+          },
         ],
       },
     }),

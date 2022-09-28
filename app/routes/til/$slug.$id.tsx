@@ -39,7 +39,11 @@ export default function TiLIndexRoute() {
   return (
     <>
       {post?.title ? <h1>{post.title}</h1> : null}
-      {post?.body && post.body?.length > 0 ? <SanityContent value={post.body} /> : null}
+      {post?.body && post.body?.length > 0 ? (
+        <div className="prose">
+          <SanityContent value={post.body} />
+        </div>
+      ) : null}
     </>
   )
 }

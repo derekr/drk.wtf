@@ -1,4 +1,12 @@
-import { Link } from 'remix'
+import { Link, useLoaderData } from 'remix'
+import groq from 'groq'
+import { client } from '~/sanity/client'
+import { SanityContent } from '~/components/sanity-content'
+
+export const loader = async () => {
+  return { globalSettings: await client.fetch(groq`*[_type == "globalSettings"]{ aboutMe }`) }
+}
+
 const ExperienceItem = ({ title, href, startYear, endYear, children }) => (
   <article>
     <div className="mb-2">
@@ -27,68 +35,16 @@ const ExperienceItem = ({ title, href, startYear, endYear, children }) => (
 )
 
 export default function Index() {
+  const { globalSettings } = useLoaderData<typeof loader>()
+
   return (
     <>
       <>
-        <div className="max-w-2xl mb-8 mast-grid">
+        <div className="max-w-2xl mb-8 mast-grid [&>p:first-of-type]:mb-3">
           <h1 className="text-lg">
             <a href="/">drk.wtf</a>
           </h1>
-          <p>
-            Hey, I'm Derek! Currently living in Sacramento working as an Software Developer for{' '}
-            <a
-              href="https://gowalla.com"
-              target="_blank"
-              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
-            >
-              Gowalla
-            </a>
-            .
-          </p>
-          <p className="pb-3">
-            I enjoy building and creating for the web. Some of my software work can be found on{' '}
-            <a
-              href="https://github.com/derekr"
-              target="_blank"
-              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
-            >
-              github
-            </a>
-            . I lightly post thoughts on{' '}
-            <a
-              href="https://twitter.com/drk"
-              target="_blank"
-              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
-            >
-              twitter
-            </a>
-            , gifs of interactions I make on{' '}
-            <a
-              href="https://dribbble.com/derek"
-              target="_blank"
-              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
-            >
-              dribbble
-            </a>{' '}
-            and photography on{' '}
-            <a
-              href="https://ddrrkk.exposure.co/"
-              target="_blank"
-              className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
-            >
-              exposure
-            </a>
-            .
-          </p>
-          <p>
-            Check out the{' '}
-            <Link to="/g">
-              <span role="img" aria-label="seedling emoji">
-                🌱
-              </span>{' '}
-              Garden
-            </Link>
-          </p>
+          <SanityContent value={globalSettings[0]?.aboutMe} />
         </div>
         <div className="grid mb-5 experience-grid md:grid-cols-3">
           <div className="space-y-4 experience md:col-start-2">
