@@ -1,7 +1,7 @@
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'global-settings',
+  name: 'globalSettings',
   title: 'Global Settings',
   type: 'document',
   fields: [
@@ -13,7 +13,7 @@ export default defineType({
     defineField({
       name: 'aboutMe',
       title: 'About Me',
-      type: 'block-content',
+      type: 'blockContent',
     }),
   ],
 })

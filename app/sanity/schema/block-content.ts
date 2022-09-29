@@ -13,7 +13,7 @@ import { defineType, defineArrayMember } from 'sanity'
  */
 export default defineType({
   title: 'Block Content',
-  name: 'block-content',
+  name: 'blockContent',
   type: 'array',
   of: [
     defineArrayMember({
@@ -51,6 +51,11 @@ export default defineType({
                 title: 'URL',
                 name: 'href',
                 type: 'url',
+              },
+              {
+                title: 'REL',
+                name: 'rel',
+                type: 'string',
               },
             ],
           },

@@ -16,13 +16,18 @@ const components = {
       const href = value?.href ? value.href.replace('https://drk.wtf', '') : ''
       const target = href.startsWith('http') ? '_blank' : undefined
       if (!target) {
-        return <Link to={href}>{children}</Link>
+        return (
+          <Link to={href} rel={value?.rel}>
+            {children}
+          </Link>
+        )
       }
+
       return (
         <a
           href={value?.href}
           target={target}
-          rel={target === '_blank' && 'noindex nofollow'}
+          rel={value?.rel ? value.rel : target === '_blank' && 'noindex nofollow'}
           className="text-blue-600 underline hover:text-blue-800 visited:text-purple-600"
         >
           {children}
