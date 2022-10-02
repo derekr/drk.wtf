@@ -41,7 +41,7 @@ export default function Index() {
   const [currentExperience, previousExperience] = fork(workExperience, (e: any) => e.isCurrent)
   return (
     <>
-      <a className="sr-only h-card" href="https://drk.wtf">
+      <a className="sr-only h-card" href="https://drk.wtf" rel="me">
         <img src={author.imageUrl} alt="" />
         Derek Reynolds
       </a>
