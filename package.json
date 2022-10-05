@@ -27,7 +27,7 @@
     "@sanity/image-url": "^1.0.1",
     "@sanity/vision": "3.0.0-dev-preview.20",
     "@vercel/node": "^2.5.18",
-    "esbuild": "^0.15.9",
+    "esbuild": "^0.15.10",
     "groq": "^2.33.2",
     "highlight.js": "^11.3.1",
     "nodemon": "^2.0.15",
