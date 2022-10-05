@@ -4,6 +4,7 @@ import groq from 'groq'
 import * as shiki from 'shiki'
 import { SanityContent } from '~/components/sanity-content'
 import { client } from '~/sanity/client'
+import nordTheme from '~/shiki/nord.json'
 
 export const loader: LoaderFunction = async ({ params }) => {
   const { slug, id } = params
@@ -20,7 +21,7 @@ export const loader: LoaderFunction = async ({ params }) => {
     post.body.map(async (block: any) => {
       if (block._type !== 'codeBlock') return block
       const highlighter = await shiki.getHighlighter({
-        theme: 'nord',
+        theme: nordTheme as any,
       })
 
       return {
