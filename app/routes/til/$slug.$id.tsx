@@ -51,7 +51,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   post.body = await Promise.all(
     post.body.map(async (block: any) => {
       if (block._type !== 'codeBlock') return block
-      const highlighter = await getHighlighter()
+      const highlighter = await shiki.getHighlighter({ theme: 'nord' })
 
       return {
         ...block,
