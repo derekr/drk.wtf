@@ -12,7 +12,7 @@
     "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
     "dev:css": "tailwindcss -o ./app/tailwind.css --watch",
     "postbuild": "npm run fmt",
-    "cpshiki": "mkdir build/shiki && cp -r node_modules/shiki/themes node_modules/shiki/languages build/shiki/",
+    "cpshiki": "mkdir -p build/shiki && cp -r node_modules/shiki/themes node_modules/shiki/languages build/shiki/",
     "postinstall": "remix setup node"
   },
   "dependencies": {
