@@ -4,7 +4,38 @@ import groq from 'groq'
 import * as shiki from 'shiki'
 import { SanityContent } from '~/components/sanity-content'
 import { client } from '~/sanity/client'
-import nordTheme from '~/shiki/themes/nord.json'
+import * as fs from "fs/promises";
+import { join as pathJoin } from "path";
+
+const getShikiPath = (): string => {
+  return pathJoin(process.cwd(), "app", "shiki");
+};
+
+const touched = { current: false };
+
+const touchShikiPath = (): void => {
+  if (touched.current) return; // only need to do once
+  fs.readdir(getShikiPath()); // fire and forget
+  touched.current = true;
+};
+
+const getHighlighter: RehypeCodeOptions["getHighlighter"] = async (options) => {
+  touchShikiPath();
+
+  const highlighter = await shiki.getHighlighter({
+    // This is technically not compatible with shiki's interface but
+    // necessary for rehype-pretty-code to work
+    // - https://rehype-pretty-code.netlify.app/ (see Custom Highlighter)
+    ...(options as any),
+    paths: {
+      languages: `${getShikiPath()}/languages/`,
+      themes: `${getShikiPath()}/themes/`,
+    },
+    theme: 'nord'
+  });
+
+  return highlighter;
+};
 
 export const loader: LoaderFunction = async ({ params }) => {
   const { slug, id } = params
@@ -20,9 +51,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   post.body = await Promise.all(
     post.body.map(async (block: any) => {
       if (block._type !== 'codeBlock') return block
-      const highlighter = await shiki.getHighlighter({
-        theme: nordTheme as any,
-      })
+      const highlighter = await getHighlighter()
 
       return {
         ...block,
