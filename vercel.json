@@ -12,7 +12,7 @@
     }
   ],
   "functions": {
-    "api/render": {
+    "app/routes/*": {
       "includeFiles": "node_modules/shiki/(themes|languages)/*"
     }
   }
