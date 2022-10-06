@@ -12,3 +12,6 @@ api/_build
 
 /app/tailwind.css
 .env
+
+app/shiki/languages
+app/shiki/themes

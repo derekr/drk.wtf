@@ -4,7 +4,7 @@ import groq from 'groq'
 import * as shiki from 'shiki'
 import { SanityContent } from '~/components/sanity-content'
 import { client } from '~/sanity/client'
-import nordTheme from '~/shiki/nord.json'
+import nordTheme from '~/shiki/themes/nord.json'
 
 export const loader: LoaderFunction = async ({ params }) => {
   const { slug, id } = params

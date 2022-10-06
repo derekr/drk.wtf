@@ -12,7 +12,8 @@
     "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
     "dev:css": "tailwindcss -o ./app/tailwind.css --watch",
     "postbuild": "npm run fmt",
-    "postinstall": "remix setup node"
+    "cpshiki": "cp -r node_modules/shiki/themes node_modules/shiki/languages app/shiki/",
+    "postinstall": "remix setup node && npm run cpshiki"
   },
   "dependencies": {
     "@portabletext/react": "^1.0.6",
@@ -30,7 +31,6 @@
     "esbuild": "^0.15.10",
     "groq": "^2.33.2",
     "highlight.js": "^11.3.1",
-    "nodemon": "^2.0.15",
     "radash": "^7.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
