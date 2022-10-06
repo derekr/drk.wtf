@@ -8,7 +8,6 @@ module.exports = {
   assetsBuildDirectory: 'public/build',
   publicPath: '/build/',
   serverBuildDirectory: 'api/_build',
-  serverDependenciesToBundle: ['shiki'],
   ignoredRouteFiles: ['.*'],
   mdx: async (filename) => {
     const [

@@ -8,7 +8,7 @@ import * as fs from "fs/promises";
 import { join as pathJoin } from "path";
 
 const getShikiPath = (): string => {
-  return pathJoin(process.cwd(), "app", "shiki");
+  return pathJoin(process.cwd(), "build", "shiki");
 };
 
 const touched = { current: false };
@@ -19,7 +19,7 @@ const touchShikiPath = (): void => {
   touched.current = true;
 };
 
-const getHighlighter: RehypeCodeOptions["getHighlighter"] = async (options) => {
+const getHighlighter: any = async (options: any) => {
   touchShikiPath();
 
   const highlighter = await shiki.getHighlighter({
