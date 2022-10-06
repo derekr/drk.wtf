@@ -12,7 +12,7 @@
     }
   ],
   "functions": {
-    "api/_build/**/*": {
+    "*": {
       "includeFiles": "node_modules/shiki/(themes|languages)/*"
     }
   }
