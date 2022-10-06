@@ -4,7 +4,7 @@
   "description": "",
   "license": "",
   "scripts": {
-    "build": "npm run build:css && remix build && npm run cpshiki",
+    "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -o ./app/tailwind.css",
     "build:g": "obsidian-export garden/ app/routes/g && npm run build:manifest && npm run fmt",
     "build:manifest": "node scripts/garden-manifest.js",

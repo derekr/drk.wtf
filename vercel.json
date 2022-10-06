@@ -10,5 +10,10 @@
       "destination": "/g/projects/work-at-diy",
       "permanent": true
     }
-  ]
+  ],
+  "functions": {
+    "api/render": {
+      "includeFiles": "node_modules/shiki/(themes|languages)/*"
+    }
+  }
 }
