@@ -1,9 +1,4 @@
 {
-  "build": {
-    "env": {
-      "ENABLE_FILE_SYSTEM_API": "1"
-    }
-  },
   "redirects": [
     {
       "source": "/blog/work-at-diy",
@@ -12,7 +7,7 @@
     }
   ],
   "functions": {
-    "*": {
+    "api/index.js": {
       "includeFiles": "node_modules/shiki/(themes|languages)/*"
     }
   }
