@@ -1140,8 +1140,16 @@ __export(slug_id_exports, {
   loader: () => loader4
 });
 var import_react5 = require("@remix-run/react"), import_groq3 = __toESM(require("groq")), shiki = __toESM(require("shiki"));
-var fs = __toESM(require("fs/promises")), import_path = require("path"), import_jsx_runtime = require("react/jsx-runtime");
-var loader4 = async ({ params }) => {
+var fs = __toESM(require("fs/promises")), import_path = require("path"), import_jsx_runtime = require("react/jsx-runtime"), getShikiPath = () => (0, import_path.join)(__dirname, "build", "shiki"), touched = { current: !1 }, touchShikiPath = () => {
+  touched.current || (fs.readdir(getShikiPath()), touched.current = !0);
+}, getHighlighter2 = async (options) => (touchShikiPath(), await shiki.getHighlighter({
+  ...options,
+  paths: {
+    languages: `${getShikiPath()}/languages/`,
+    themes: `${getShikiPath()}/themes/`
+  },
+  theme: "nord"
+})), loader4 = async ({ params }) => {
   let { slug, id } = params, post = await client.fetch(
     import_groq3.default`*[_type == "post" && slug.current == $slug && _id == $id][0]{ title, body }`,
     { slug, id }
@@ -1150,7 +1158,7 @@ var loader4 = async ({ params }) => {
     post.body.map(async (block) => {
       if (block._type !== "codeBlock")
         return block;
-      let highlighter = await shiki.getHighlighter({ theme: "nord" });
+      let highlighter = await getHighlighter2({ theme: "nord" });
       return {
         ...block,
         code: highlighter.codeToHtml(block.code, { lang: block.language })
