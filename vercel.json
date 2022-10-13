@@ -7,7 +7,7 @@
     }
   ],
   "functions": {
-    "api/*": {
+    "api/index.js": {
       "includeFiles": "node_modules/.pnpm/**/shiki/**/*.json"
     }
   }

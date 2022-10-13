@@ -6,6 +6,7 @@ node_modules
 
 public/build
 api/_build
+api/_assets
 
 .DS_Store
 .obsidian
