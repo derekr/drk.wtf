@@ -45,7 +45,7 @@
     "remix-utils": "^3.3.0",
     "sanity": "dev-preview",
     "shiki": "^0.11.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.7.2",
