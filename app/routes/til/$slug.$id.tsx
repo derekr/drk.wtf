@@ -9,7 +9,7 @@ import { join as pathJoin } from "path";
 
 `${__dirname}/../public/shiki`
 const getShikiPath = (): string => {
-  return pathJoin(__dirname, "shiki");
+  return pathJoin(process.cwd(), "shiki");
 };
 
 const touched = { current: false };
