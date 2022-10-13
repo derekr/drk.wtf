@@ -8,7 +8,7 @@ import * as fs from "fs/promises";
 import { join as pathJoin } from "path";
 
 const getShikiPath = (): string => {
-  return pathJoin(process.cwd(), "build", "shiki");
+  return pathJoin(process.cwd(), "shiki");
 };
 
 const touched = { current: false };
@@ -31,7 +31,8 @@ const getHighlighter: any = async (options: any) => {
       languages: `${getShikiPath()}/languages/`,
       themes: `${getShikiPath()}/themes/`,
     },
-    theme: 'nord'
+    theme: 'nord',
+
   });
 
   return highlighter;
