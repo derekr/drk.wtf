@@ -8,7 +8,7 @@ import * as fs from "fs/promises";
 import { join as pathJoin } from "path";
 
 const getShikiPath = (): string => {
-  return pathJoin(__dirname, "shiki");
+  return pathJoin(__dirname, "build", "shiki");
 };
 
 const touched = { current: false };
