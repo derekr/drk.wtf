@@ -7,9 +7,9 @@ import { client } from '~/sanity/client'
 import * as fs from "fs/promises";
 import { join as pathJoin } from "path";
 
+`${__dirname}/../public/shiki`
 const getShikiPath = (): string => {
-  `${__dirname}/../node_modules/shiki`;
-  return pathJoin(__dirname, "_build", "shiki");
+  return pathJoin(__dirname, "shiki");
 };
 
 const touched = { current: false };
