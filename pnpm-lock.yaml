@@ -16,7 +16,7 @@ specifiers:
   '@tailwindcss/typography': ^0.5.7
   '@types/react': ^18.0.21
   '@types/react-dom': ^18.0.6
-  '@vercel/node': ^2.5.21
+  '@vercel/node': ^2.5.24
   concurrently: ^7.4.0
   esbuild: ^0.15.10
   groq: ^2.33.2
@@ -48,13 +48,13 @@ dependencies:
   '@remix-run/react': 1.7.2_biqbaboplfbrettd7655fr4n2y
   '@remix-run/serve': 1.7.2_biqbaboplfbrettd7655fr4n2y
   '@remix-run/server-runtime': 1.7.2_biqbaboplfbrettd7655fr4n2y
-  '@remix-run/vercel': 1.7.2_vdcavuuprsfwosnu3x64sz2mz4
+  '@remix-run/vercel': 1.7.2_d5jbhxqfp3zldl6stjj44oiyfi
   '@sanity/asset-utils': 1.3.0
   '@sanity/client': 3.4.1
   '@sanity/code-input': 3.0.0-v3-studio.9_z4in7qdytahvmeuyk2dwqr6rda
   '@sanity/image-url': 1.0.1
   '@sanity/vision': 3.0.0-dev-preview.20_2qpntmkb2tecmgal3aq2m37jiu
-  '@vercel/node': 2.5.21
+  '@vercel/node': 2.5.24
   esbuild: 0.15.10
   groq: 2.33.2
   highlight.js: 11.6.0
@@ -1449,14 +1449,14 @@ packages:
     resolution: {integrity: sha512-t34oTdZOqYSiguCGnt9GYzh9mrnhCHNRPGDvxt5PB5T3LZpSVk+vfSXRqpvTxy51sxQpxvTZry8QLC+E+Fm67w==}
     dev: false
 
-  /@edge-runtime/primitives/1.1.0-beta.34:
-    resolution: {integrity: sha512-gFubu4qIqg1k6sOM2Ho/txFUE/vZCn057wGiY0NIQ8h6tySiUO5FULCaebPrp+Yfxb3ZCWqDLeWanQGFB3TYQQ==}
+  /@edge-runtime/primitives/1.1.0-beta.36:
+    resolution: {integrity: sha512-Tji7SGWmn1+JGSnzFtWUoS7+kODIFprTyIAw0EBOVWEQKWfs7r0aTEm1XkJR0+d1jP9f0GB5LBKG/Z7KFyhx7g==}
     dev: false
 
-  /@edge-runtime/vm/1.1.0-beta.32:
-    resolution: {integrity: sha512-G0SH80am2XjlK6oFI3RoKlg1SBS5ZAeqakYasfNhJEXqM7g7tsoh5jURMQcNxpLvo48XBTgHgAVEMzhAGgDPZg==}
+  /@edge-runtime/vm/1.1.0-beta.36:
+    resolution: {integrity: sha512-uPZmL7X+lKBFJsTg8nC0qPDBx4JGgpRqlgJi2s77g2NOtqitQOI90BfIKHZSSoMQEwTqfvAkpu2ui8nazOwHxA==}
     dependencies:
-      '@edge-runtime/primitives': 1.1.0-beta.34
+      '@edge-runtime/primitives': 1.1.0-beta.36
     dev: false
 
   /@emotion/is-prop-valid/0.8.8:
@@ -1881,14 +1881,14 @@ packages:
       set-cookie-parser: 2.5.1
       source-map: 0.7.4
 
-  /@remix-run/vercel/1.7.2_vdcavuuprsfwosnu3x64sz2mz4:
+  /@remix-run/vercel/1.7.2_d5jbhxqfp3zldl6stjj44oiyfi:
     resolution: {integrity: sha512-WoV15ig8QvWLksRO+i8Gpq3Og5PyJ7n/54Xg1MYrwfEIo7xRpmW6BzrYmu/HVN8HocQEs68ol4u2MVbOe/y4uA==}
     engines: {node: '>=14'}
     peerDependencies:
       '@vercel/node': ^1.8.3 || ^2.4.0
     dependencies:
       '@remix-run/node': 1.7.2_biqbaboplfbrettd7655fr4n2y
-      '@vercel/node': 2.5.21
+      '@vercel/node': 2.5.24
     transitivePeerDependencies:
       - react
       - react-dom
@@ -2549,23 +2549,23 @@ packages:
       - '@codemirror/search'
     dev: false
 
-  /@vercel/build-utils/5.5.3:
-    resolution: {integrity: sha512-T4MYD87rwocybIQzv4giRFYiisQqFLZOsPXn5tglQfnsB0DJM47l8VW9oFgGX2cJyp/px7C/ovdLrhwY/XWhYQ==}
+  /@vercel/build-utils/5.5.4:
+    resolution: {integrity: sha512-urAVFyrH6NTznN8bG1S4KHMpMwEaRXMRMeUXuMZXdGiznB83pACZ/5xpSzaLTIKrOrdYWVUrGcFjhLDMVRqCWQ==}
     dev: false
 
   /@vercel/node-bridge/3.0.0:
     resolution: {integrity: sha512-TNQK6cufwrhd8ASDk5YHHenH8Xhp9sY8xUjOTKnQQI37KLk+Sw2HlHhT5rzUFN23ahosUlkY8InwtYUmSNb9kw==}
     dev: false
 
-  /@vercel/node/2.5.21:
-    resolution: {integrity: sha512-sJajTZYCDl4euWHuOgL5xzR7eLyi5Xv58j/QgI0tkOhMrREpqW9Jv2K2eSRDDuPDMbUgqqK14LodHApLlenizA==}
+  /@vercel/node/2.5.24:
+    resolution: {integrity: sha512-DrvAQMyngMjnyHr3uhvShXi1f3iBTrURa/6vLQkWPJv1lfcVP/tcz7uwVX4tAb0a0i+reNhMMdUxH75m/Q6OdA==}
     dependencies:
-      '@edge-runtime/vm': 1.1.0-beta.32
+      '@edge-runtime/vm': 1.1.0-beta.36
       '@types/node': 18.7.19
-      '@vercel/build-utils': 5.5.3
+      '@vercel/build-utils': 5.5.4
       '@vercel/node-bridge': 3.0.0
       '@vercel/static-config': 2.0.3
-      edge-runtime: 1.1.0-beta.32
+      edge-runtime: 1.1.0-beta.38
       esbuild: 0.14.47
       exit-hook: 2.2.1
       node-fetch: 2.6.7
@@ -3870,14 +3870,14 @@ packages:
       stream-shift: 1.0.1
     dev: false
 
-  /edge-runtime/1.1.0-beta.32:
-    resolution: {integrity: sha512-fbqqUF3OKynqtWgExhjyxXX2SwbkWuwmjUYhml3Sv8Y/vkrTxyTKrxS0MoxUy5sGPB3BBEtpopn36cQgwlOpAg==}
+  /edge-runtime/1.1.0-beta.38:
+    resolution: {integrity: sha512-MY6/XcnGGuvLmwAR6PQizjhW/ABjVnmpJQmhJRacmo7K7LhuevszrPFVf0GmwVrr9PUahrvgmZYydQLSTpS5AA==}
     hasBin: true
     dependencies:
       '@edge-runtime/format': 1.1.0-beta.33
-      '@edge-runtime/vm': 1.1.0-beta.32
+      '@edge-runtime/vm': 1.1.0-beta.36
       exit-hook: 2.2.1
-      http-status: 1.5.2
+      http-status: 1.5.3
       mri: 1.2.0
       picocolors: 1.0.0
       pretty-bytes: 5.6.0
@@ -5551,8 +5551,8 @@ packages:
       - supports-color
     dev: false
 
-  /http-status/1.5.2:
-    resolution: {integrity: sha512-HzxX+/hV/8US1Gq4V6R6PgUmJ5Pt/DGATs4QhdEOpG8LrdS9/3UG2nnOvkqUpRks04yjVtV5p/NODjO+wvf6vg==}
+  /http-status/1.5.3:
+    resolution: {integrity: sha512-jCClqdnnwigYslmtfb28vPplOgoiZ0siP2Z8C5Ua+3UKbx410v+c+jT+jh1bbI4TvcEySuX0vd/CfFZFbDkJeQ==}
     engines: {node: '>= 0.4.0'}
     dev: false
 

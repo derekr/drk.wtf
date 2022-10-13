@@ -8,7 +8,7 @@
   ],
   "functions": {
     "api/index.js": {
-      "includeFiles": "node_modules/shiki/(themes|languages)/*"
+      "includeFiles": "node_modules/.pnpm/**/shiki/**/*.json"
     }
   }
 }
