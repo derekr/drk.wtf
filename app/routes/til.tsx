@@ -5,7 +5,7 @@ export function links() {
   return [{ rel: 'stylesheet', href: codeSyntaxStyles }]
 }
 
-export default function Garden() {
+export default function Til() {
   const location = useLocation()
 
   return (

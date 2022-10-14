@@ -2,6 +2,23 @@ import type { LoaderFunction } from "@remix-run/node";
 import allTilPostsQuery from "~/sanity/queries/all-til-posts";
 import { client } from "~/sanity/client";
 
+function toPlainText(blocks = []) {
+  return blocks
+    // loop through each block
+    .map(block => {
+      // if it's not a text block with children, 
+      // return nothing
+      if (block._type !== 'block' || !block.children) {
+        return ''
+      }
+      // loop through the children spans, and join the
+      // text strings
+      return block.children.map(child => child.text).join('')
+    })
+    // join the paragraphs leaving split by two linebreaks
+    .join('\n\n')
+}
+
 function escapeCdata(s: string) {
   return s.replace(/\]\]>/g, "]]]]><![CDATA[>");
 }
@@ -37,9 +54,9 @@ export const loader: LoaderFunction = async ({
       <channel>
         <title>TIL | drk.wtf</title>
         <link>${tilUrl}</link>
-        <description>Some funny jokes</description>
+        <description>Today I Learned; a collection of handy things I've learned on any given day.</description>
         <language>en-us</language>
-        <generator>Kody the Koala</generator>
+        <generator>drk</generator>
         <ttl>40</ttl>
         ${tilPosts
       .map((tilPost: any) =>
@@ -48,8 +65,8 @@ export const loader: LoaderFunction = async ({
               <title><![CDATA[${escapeCdata(
           tilPost.title
         )}]]></title>
-              <description><![CDATA[A funny joke called ${escapeHtml(
-          tilPost.title
+              <description><![CDATA[${escapeHtml(
+          toPlainText(tilPost.body)
         )}]]></description>
               <author><![CDATA[${escapeCdata(
           tilPost.author.slug.current

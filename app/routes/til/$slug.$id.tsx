@@ -7,7 +7,10 @@ import { client } from '~/sanity/client'
 import * as fs from "fs/promises";
 import { join as pathJoin } from "path";
 
-`${__dirname}/../public/shiki`
+import theme from 'shiki/themes/nord.json'
+import yamlGrammer from 'shiki/languages/yaml.tmLanguage.json'
+import jsGrammer from 'shiki/languages/javascript.tmLanguage.json'
+
 const getShikiPath = (): string => {
   return pathJoin(process.cwd(), "shiki");
 };
@@ -53,11 +56,13 @@ export const loader: LoaderFunction = async ({ params }) => {
   post.body = await Promise.all(
     post.body.map(async (block: any) => {
       if (block._type !== 'codeBlock') return block
-      const highlighter = await getHighlighter({ theme: 'nord' })
+      // const highlighter = await getHighlighter({ theme: 'nord' })
+      const highlighter = await shiki.getHighlighter({})
+      highlighter.loadTheme(theme)
 
       return {
         ...block,
-        code: highlighter.codeToHtml(block.code, { lang: block.language }),
+        code,
       }
     })
   )

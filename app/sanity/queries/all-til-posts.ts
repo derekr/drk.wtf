@@ -5,7 +5,8 @@ export default groq`
   _type == "post" && "til" in categories[]->title
 ]{
   _id, 
-  title, 
+  title,
+  body, 
   slug, 
   piblishedAt,
   author->
