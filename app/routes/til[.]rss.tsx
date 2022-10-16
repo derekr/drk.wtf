@@ -3,6 +3,10 @@ import allTilPostsQuery from "~/sanity/queries/all-til-posts";
 import { client } from "~/sanity/client";
 import { Feed } from "feed";
 import { toHTML } from '@portabletext/to-html'
+import htm from 'htm'
+import vhtml from 'vhtml'
+
+const html = htm.bind(vhtml)
 
 function toPlainText(blocks = []) {
   return blocks
@@ -32,6 +36,15 @@ function escapeHtml(s: string) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+const components = {
+  types: {
+    codeBlock: ({ value }) => {
+      const { language, code } = value
+      return html`<pre><code class="language-${language}">${code}</code></pre>`
+    }
+  }
 }
 
 export const loader: LoaderFunction = async ({
@@ -76,7 +89,7 @@ export const loader: LoaderFunction = async ({
       id: `${tilUrl}/${post.slug.current}`,
       link: `${tilUrl}/${post.slug.current}`,
       description: 'TIL post',
-      content: toHTML(post.body),
+      content: toHTML(post.body, { components }),
       date: new Date(post.publishedAt),
       author: [{
         name: post.author.name,

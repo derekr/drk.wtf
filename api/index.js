@@ -830,8 +830,15 @@ var client = new import_client.default({
 });
 
 // app/routes/til[.]rss.tsx
-var import_feed = require("feed"), import_to_html = require("@portabletext/to-html");
-var loader2 = async ({
+var import_feed = require("feed"), import_to_html = require("@portabletext/to-html"), import_htm = __toESM(require("htm")), import_vhtml = __toESM(require("vhtml")), html = import_htm.default.bind(import_vhtml.default);
+var components = {
+  types: {
+    codeBlock: ({ value }) => {
+      let { language, code: code2 } = value;
+      return html`<pre><code class="language-${language}">${code2}</code></pre>`;
+    }
+  }
+}, loader2 = async ({
   request
 }) => {
   let tilPosts = await client.fetch(all_til_posts_default), host = request.headers.get("X-Forwarded-Host") ?? request.headers.get("host");
@@ -861,7 +868,7 @@ var loader2 = async ({
       id: `${tilUrl}/${post.slug.current}`,
       link: `${tilUrl}/${post.slug.current}`,
       description: "TIL post",
-      content: (0, import_to_html.toHTML)(post.body),
+      content: (0, import_to_html.toHTML)(post.body, { components }),
       date: new Date(post.publishedAt),
       author: [{
         name: post.author.name,
@@ -943,7 +950,7 @@ var import_jsx_dev_runtime = require("react/jsx-dev-runtime"), SanityImage = fun
 };
 
 // app/components/sanity-content.tsx
-var import_jsx_dev_runtime = require("react/jsx-dev-runtime"), components = {
+var import_jsx_dev_runtime = require("react/jsx-dev-runtime"), components2 = {
   types: {
     image: SanityImage,
     codeBlock: (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", {
@@ -982,7 +989,7 @@ var import_jsx_dev_runtime = require("react/jsx-dev-runtime"), components = {
   let { value } = props;
   return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_react3.PortableText, {
     value,
-    components
+    components: components2
   }, void 0, !1, {
     fileName: "app/components/sanity-content.tsx",
     lineNumber: 43,
