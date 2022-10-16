@@ -845,7 +845,7 @@ var components = {
   if (!host)
     throw new Error("Could not determine domain URL.");
   let domain = `${host.includes("localhost") ? "http" : "https"}://${host}`, tilUrl = `${domain}/til`, feed = new import_feed.Feed({
-    title: "TIL",
+    title: "drk.wtf | TIL",
     description: "Today I Learned",
     id: tilUrl,
     link: tilUrl,

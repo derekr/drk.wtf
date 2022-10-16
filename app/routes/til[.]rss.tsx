@@ -65,7 +65,7 @@ export const loader: LoaderFunction = async ({
   const tilUrl = `${domain}/til`;
 
   const feed = new Feed({
-    title: "TIL",
+    title: "drk.wtf | TIL",
     description: "Today I Learned",
     id: tilUrl,
     link: tilUrl,
