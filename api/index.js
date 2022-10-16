@@ -830,54 +830,47 @@ var client = new import_client.default({
 });
 
 // app/routes/til[.]rss.tsx
-function toPlainText(blocks = []) {
-  return blocks.map((block) => block._type !== "block" || !block.children ? "" : block.children.map((child) => child.text).join("")).join(`
-
-`);
-}
-function escapeCdata(s) {
-  return s.replace(/\]\]>/g, "]]]]><![CDATA[>");
-}
-function escapeHtml(s) {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-}
+var import_feed = require("feed"), import_to_html = require("@portabletext/to-html");
 var loader2 = async ({
   request
 }) => {
   let tilPosts = await client.fetch(all_til_posts_default), host = request.headers.get("X-Forwarded-Host") ?? request.headers.get("host");
   if (!host)
     throw new Error("Could not determine domain URL.");
-  let tilUrl = `${`${host.includes("localhost") ? "http" : "https"}://${host}`}/til`, rssString = `
-    <rss xmlns:blogChannel="${tilUrl}" version="2.0">
-      <channel>
-        <title>TIL | drk.wtf</title>
-        <link>${tilUrl}</link>
-        <description>Today I Learned; a collection of handy things I've learned on any given day.</description>
-        <language>en-us</language>
-        <generator>drk</generator>
-        <ttl>40</ttl>
-        ${tilPosts.map(
-    (tilPost) => `
-            <item>
-              <title><![CDATA[${escapeCdata(
-      tilPost.title
-    )}]]></title>
-              <description><![CDATA[${escapeHtml(
-      toPlainText(tilPost.body)
-    )}]]></description>
-              <author><![CDATA[${escapeCdata(
-      tilPost.author.slug.current
-    )}]]></author>
-              <pubDate>${new Date(tilPost.publishedAt).toUTCString()}</pubDate>
-              <link>${tilUrl}/${tilPost.slug.current}/${tilPost._id}</link>
-              <guid>${tilUrl}/${tilPost._id}</guid>
-            </item>
-          `.trim()
-  ).join(`
-`)}
-      </channel>
-    </rss>
-  `.trim();
+  let domain = `${host.includes("localhost") ? "http" : "https"}://${host}`, tilUrl = `${domain}/til`, feed = new import_feed.Feed({
+    title: "TIL",
+    description: "Today I Learned",
+    id: tilUrl,
+    link: tilUrl,
+    language: "en",
+    copyright: `\xA9 ${new Date().getFullYear()} Derek Reynolds`,
+    feedLinks: [{
+      type: "application/rss+xml",
+      rel: "self",
+      href: tilUrl
+    }],
+    author: {
+      name: "Derek Reynolds",
+      email: "derekr@me.com",
+      link: domain
+    }
+  });
+  tilPosts.forEach((post) => {
+    feed.addItem({
+      title: post.title,
+      id: `${tilUrl}/${post.slug.current}`,
+      link: `${tilUrl}/${post.slug.current}`,
+      description: "TIL post",
+      content: (0, import_to_html.toHTML)(post.body),
+      date: new Date(post.publishedAt),
+      author: [{
+        name: post.author.name,
+        email: post.author.email,
+        link: post.author.url
+      }]
+    });
+  });
+  let rssString = feed.rss2();
   return new Response(rssString, {
     headers: {
       "Cache-Control": `public, max-age=${60 * 10}, s-maxage=${60 * 60 * 24}`,
@@ -1335,21 +1328,17 @@ __export(slug_id_exports, {
   loader: () => loader4
 });
 var import_react5 = require("@remix-run/react"), import_groq3 = __toESM(require("groq")), shiki = __toESM(require("shiki"));
-var fs = __toESM(require("fs/promises")), import_path = require("path"), import_nord = __toESM(require("shiki/themes/nord.json")), import_yaml_tmLanguage = __toESM(require("shiki/languages/yaml.tmLanguage.json")), import_jsx_dev_runtime = require("react/jsx-dev-runtime");
-console.log(import_yaml_tmLanguage.default);
+var fs = __toESM(require("fs/promises")), import_path = require("path"), import_nord = __toESM(require("shiki/themes/nord.json")), import_jsx_dev_runtime = require("react/jsx-dev-runtime");
 var loader4 = async ({ params }) => {
   let { slug, id } = params, post = await client.fetch(
     import_groq3.default`*[_type == "post" && slug.current == $slug && _id == $id][0]{ title, body }`,
     { slug, id }
   );
   return post ? (post.body = await Promise.all(
-    post.body.map(async (block) => block._type !== "codeBlock" ? block : {
+    post.body.map(async (block) => block._type !== "codeBlock" ? block : ((await shiki.getHighlighter({})).loadTheme(import_nord.default), {
       ...block,
-      code: await shiki.getHighlighter({
-        theme: await shiki.loadTheme(import_nord.default),
-        langs: [{ id: "yaml", scopeName: "source.yaml", path: import_yaml_tmLanguage.default }]
-      })
-    })
+      code
+    }))
   ), { post }) : new Response("Not found", { status: 404 });
 };
 function TiLIndexRoute() {
@@ -1361,7 +1350,7 @@ function TiLIndexRoute() {
         children: post.title
       }, void 0, !1, {
         fileName: "app/routes/til/$slug.$id.tsx",
-        lineNumber: 81,
+        lineNumber: 78,
         columnNumber: 22
       }, this) : null,
       (post == null ? void 0 : post.body) && ((_a2 = post.body) == null ? void 0 : _a2.length) > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {
@@ -1370,18 +1359,18 @@ function TiLIndexRoute() {
           value: post.body
         }, void 0, !1, {
           fileName: "app/routes/til/$slug.$id.tsx",
-          lineNumber: 84,
+          lineNumber: 81,
           columnNumber: 11
         }, this)
       }, void 0, !1, {
         fileName: "app/routes/til/$slug.$id.tsx",
-        lineNumber: 83,
+        lineNumber: 80,
         columnNumber: 9
       }, this) : null
     ]
   }, void 0, !0, {
     fileName: "app/routes/til/$slug.$id.tsx",
-    lineNumber: 80,
+    lineNumber: 77,
     columnNumber: 5
   }, this);
 }
@@ -2558,7 +2547,7 @@ function Index2() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "aa42cd18", entry: { module: "/build/entry.client-MZWXDEV3.js", imports: ["/build/_shared/chunk-NWFLE6AG.js", "/build/_shared/chunk-SYCK5J32.js", "/build/_shared/chunk-EVUINLJZ.js", "/build/_shared/chunk-RFFJ3GMM.js", "/build/_shared/chunk-KCHAACDT.js", "/build/_shared/chunk-O7YBTOWT.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-KP6R75YC.js", imports: ["/build/_shared/chunk-F7BNCRYB.js", "/build/_shared/chunk-LEVKY4Z3.js", "/build/_shared/chunk-72GIW4R5.js", "/build/_shared/chunk-UKIKZ6YM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g": { id: "routes/g", parentId: "root", path: "g", index: void 0, caseSensitive: void 0, module: "/build/routes/g-BFNY3FMT.js", imports: ["/build/_shared/chunk-UHK7CCPZ.js", "/build/_shared/chunk-7CFH7SN6.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/css-to-component": { id: "routes/g/css-to-component", parentId: "routes/g", path: "css-to-component", index: void 0, caseSensitive: void 0, module: "/build/routes/g/css-to-component-EOAPMOFZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-notes": { id: "routes/g/digital-garden-notes", parentId: "routes/g", path: "digital-garden-notes", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-notes-OJ7IZYO7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-with-obsidian-and-remix": { id: "routes/g/digital-garden-with-obsidian-and-remix", parentId: "routes/g", path: "digital-garden-with-obsidian-and-remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-with-obsidian-and-remix-VO7Q5NA4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/drk-wtf-todos": { id: "routes/g/drk-wtf-todos", parentId: "routes/g", path: "drk-wtf-todos", index: void 0, caseSensitive: void 0, module: "/build/routes/g/drk-wtf-todos-UJKCOTMQ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/index": { id: "routes/g/index", parentId: "routes/g", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/g/index-HTJZFX6S.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/josh-comeau": { id: "routes/g/josh-comeau", parentId: "routes/g", path: "josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/josh-comeau-CRKDQ6BI.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/other-note": { id: "routes/g/other-note", parentId: "routes/g", path: "other-note", index: void 0, caseSensitive: void 0, module: "/build/routes/g/other-note-SNUBJ4J2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/bencodezen": { id: "routes/g/people/bencodezen", parentId: "routes/g", path: "people/bencodezen", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/bencodezen-OCTIL55X.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/josh-comeau": { id: "routes/g/people/josh-comeau", parentId: "routes/g", path: "people/josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/josh-comeau-3CDPDAQE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/wwwjim": { id: "routes/g/people/wwwjim", parentId: "routes/g", path: "people/wwwjim", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/wwwjim-KM3VW5JU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/projects/work-at-diy": { id: "routes/g/projects/work-at-diy", parentId: "routes/g", path: "projects/work-at-diy", index: void 0, caseSensitive: void 0, module: "/build/routes/g/projects/work-at-diy-BRHPA2JW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/the-fox-team": { id: "routes/g/the-fox-team", parentId: "routes/g", path: "the-fox-team", index: void 0, caseSensitive: void 0, module: "/build/routes/g/the-fox-team-HXZGWKK5.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/mdx": { id: "routes/g/tools/mdx", parentId: "routes/g", path: "tools/mdx", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/mdx-7763YPSE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian": { id: "routes/g/tools/obsidian", parentId: "routes/g", path: "tools/obsidian", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-BP7DMH55.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian-export": { id: "routes/g/tools/obsidian-export", parentId: "routes/g", path: "tools/obsidian-export", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-export-HXBFSCZE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/remix": { id: "routes/g/tools/remix", parentId: "routes/g", path: "tools/remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/remix-GJYPRK5H.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/vercel": { id: "routes/g/tools/vercel", parentId: "routes/g", path: "tools/vercel", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/vercel-MUUEIUBL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-TMYNPX5R.js", imports: ["/build/_shared/chunk-7CFH7SN6.js", "/build/_shared/chunk-K2GNH3KL.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/studio/*": { id: "routes/studio/*", parentId: "root", path: "studio/*", index: void 0, caseSensitive: void 0, module: "/build/routes/studio/*-HIPSOIUC.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til": { id: "routes/til", parentId: "root", path: "til", index: void 0, caseSensitive: void 0, module: "/build/routes/til-LX3KT4Y4.js", imports: ["/build/_shared/chunk-UHK7CCPZ.js", "/build/_shared/chunk-7CFH7SN6.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/$slug.$id": { id: "routes/til/$slug.$id", parentId: "routes/til", path: ":slug/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/til/$slug.$id-FJRLWDMZ.js", imports: ["/build/_shared/chunk-K2GNH3KL.js", "/build/_shared/chunk-F7BNCRYB.js", "/build/_shared/chunk-LEVKY4Z3.js", "/build/_shared/chunk-72GIW4R5.js", "/build/_shared/chunk-UKIKZ6YM.js", "/build/_shared/chunk-PJXH4CQX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/index": { id: "routes/til/index", parentId: "routes/til", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/til/index-7ZMQDQRG.js", imports: ["/build/_shared/chunk-PJXH4CQX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til[.]rss": { id: "routes/til[.]rss", parentId: "root", path: "til.rss", index: void 0, caseSensitive: void 0, module: "/build/routes/til[.]rss-KXSGUYBV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-AA42CD18.js" };
+var assets_manifest_default = { version: "b27f79e1", entry: { module: "/build/entry.client-MZWXDEV3.js", imports: ["/build/_shared/chunk-NWFLE6AG.js", "/build/_shared/chunk-SYCK5J32.js", "/build/_shared/chunk-EVUINLJZ.js", "/build/_shared/chunk-RFFJ3GMM.js", "/build/_shared/chunk-KCHAACDT.js", "/build/_shared/chunk-O7YBTOWT.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-KP6R75YC.js", imports: ["/build/_shared/chunk-F7BNCRYB.js", "/build/_shared/chunk-LEVKY4Z3.js", "/build/_shared/chunk-72GIW4R5.js", "/build/_shared/chunk-UKIKZ6YM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g": { id: "routes/g", parentId: "root", path: "g", index: void 0, caseSensitive: void 0, module: "/build/routes/g-BFNY3FMT.js", imports: ["/build/_shared/chunk-UHK7CCPZ.js", "/build/_shared/chunk-7CFH7SN6.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/css-to-component": { id: "routes/g/css-to-component", parentId: "routes/g", path: "css-to-component", index: void 0, caseSensitive: void 0, module: "/build/routes/g/css-to-component-EOAPMOFZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-notes": { id: "routes/g/digital-garden-notes", parentId: "routes/g", path: "digital-garden-notes", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-notes-OJ7IZYO7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-with-obsidian-and-remix": { id: "routes/g/digital-garden-with-obsidian-and-remix", parentId: "routes/g", path: "digital-garden-with-obsidian-and-remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-with-obsidian-and-remix-VO7Q5NA4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/drk-wtf-todos": { id: "routes/g/drk-wtf-todos", parentId: "routes/g", path: "drk-wtf-todos", index: void 0, caseSensitive: void 0, module: "/build/routes/g/drk-wtf-todos-UJKCOTMQ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/index": { id: "routes/g/index", parentId: "routes/g", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/g/index-HTJZFX6S.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/josh-comeau": { id: "routes/g/josh-comeau", parentId: "routes/g", path: "josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/josh-comeau-CRKDQ6BI.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/other-note": { id: "routes/g/other-note", parentId: "routes/g", path: "other-note", index: void 0, caseSensitive: void 0, module: "/build/routes/g/other-note-SNUBJ4J2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/bencodezen": { id: "routes/g/people/bencodezen", parentId: "routes/g", path: "people/bencodezen", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/bencodezen-OCTIL55X.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/josh-comeau": { id: "routes/g/people/josh-comeau", parentId: "routes/g", path: "people/josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/josh-comeau-3CDPDAQE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/wwwjim": { id: "routes/g/people/wwwjim", parentId: "routes/g", path: "people/wwwjim", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/wwwjim-KM3VW5JU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/projects/work-at-diy": { id: "routes/g/projects/work-at-diy", parentId: "routes/g", path: "projects/work-at-diy", index: void 0, caseSensitive: void 0, module: "/build/routes/g/projects/work-at-diy-BRHPA2JW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/the-fox-team": { id: "routes/g/the-fox-team", parentId: "routes/g", path: "the-fox-team", index: void 0, caseSensitive: void 0, module: "/build/routes/g/the-fox-team-HXZGWKK5.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/mdx": { id: "routes/g/tools/mdx", parentId: "routes/g", path: "tools/mdx", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/mdx-7763YPSE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian": { id: "routes/g/tools/obsidian", parentId: "routes/g", path: "tools/obsidian", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-BP7DMH55.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian-export": { id: "routes/g/tools/obsidian-export", parentId: "routes/g", path: "tools/obsidian-export", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-export-HXBFSCZE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/remix": { id: "routes/g/tools/remix", parentId: "routes/g", path: "tools/remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/remix-GJYPRK5H.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/vercel": { id: "routes/g/tools/vercel", parentId: "routes/g", path: "tools/vercel", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/vercel-MUUEIUBL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-TMYNPX5R.js", imports: ["/build/_shared/chunk-7CFH7SN6.js", "/build/_shared/chunk-K2GNH3KL.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/studio/*": { id: "routes/studio/*", parentId: "root", path: "studio/*", index: void 0, caseSensitive: void 0, module: "/build/routes/studio/*-HIPSOIUC.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til": { id: "routes/til", parentId: "root", path: "til", index: void 0, caseSensitive: void 0, module: "/build/routes/til-LX3KT4Y4.js", imports: ["/build/_shared/chunk-UHK7CCPZ.js", "/build/_shared/chunk-7CFH7SN6.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/$slug.$id": { id: "routes/til/$slug.$id", parentId: "routes/til", path: ":slug/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/til/$slug.$id-OVC2EMOC.js", imports: ["/build/_shared/chunk-K2GNH3KL.js", "/build/_shared/chunk-F7BNCRYB.js", "/build/_shared/chunk-LEVKY4Z3.js", "/build/_shared/chunk-72GIW4R5.js", "/build/_shared/chunk-UKIKZ6YM.js", "/build/_shared/chunk-PJXH4CQX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/index": { id: "routes/til/index", parentId: "routes/til", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/til/index-7ZMQDQRG.js", imports: ["/build/_shared/chunk-PJXH4CQX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til[.]rss": { id: "routes/til[.]rss", parentId: "root", path: "til.rss", index: void 0, caseSensitive: void 0, module: "/build/routes/til[.]rss-KXSGUYBV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-B27F79E1.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

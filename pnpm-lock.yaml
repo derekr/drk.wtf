@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@portabletext/react': ^1.0.6
+  '@portabletext/to-html': ^1.0.4
   '@remix-run/dev': ^1.7.2
   '@remix-run/node': ^1.7.2
   '@remix-run/react': ^1.7.2
@@ -19,8 +20,9 @@ specifiers:
   '@vercel/node': ^2.5.24
   concurrently: ^7.4.0
   esbuild: ^0.15.10
+  feed: ^4.2.2
   groq: ^2.33.2
-  highlight.js: ^11.3.1
+  highlight.js: ^11.6.0
   prettier: ^2.7.1
   prettier-plugin-groq: ^0.2.5
   radash: ^7.1.0
@@ -44,6 +46,7 @@ specifiers:
 
 dependencies:
   '@portabletext/react': 1.0.6_react@18.2.0
+  '@portabletext/to-html': 1.0.4
   '@remix-run/node': 1.7.2_biqbaboplfbrettd7655fr4n2y
   '@remix-run/react': 1.7.2_biqbaboplfbrettd7655fr4n2y
   '@remix-run/serve': 1.7.2_biqbaboplfbrettd7655fr4n2y
@@ -56,6 +59,7 @@ dependencies:
   '@sanity/vision': 3.0.0-dev-preview.20_2zpt4ilzykmne4yndyzrqd4gdm
   '@vercel/node': 2.5.24
   esbuild: 0.15.10
+  feed: 4.2.2
   groq: 2.33.2
   highlight.js: 11.6.0
   radash: 7.1.0
@@ -1687,6 +1691,13 @@ packages:
       '@portabletext/toolkit': 1.0.5
       '@portabletext/types': 1.0.3
       react: 18.2.0
+    dev: false
+
+  /@portabletext/to-html/1.0.4:
+    resolution: {integrity: sha512-SOb/20OYEI5Tqy0St8mAGPqQuQ8uzJPpG4YQxusrQKby05NdD7vnPqDo6lkniD5kutevVoMbYrix0Kt0s6t6Nw==}
+    dependencies:
+      '@portabletext/toolkit': 1.0.5
+      '@portabletext/types': 1.0.3
     dev: false
 
   /@portabletext/toolkit/1.0.5:
@@ -4839,6 +4850,13 @@ packages:
     resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}
     dependencies:
       format: 0.2.2
+
+  /feed/4.2.2:
+    resolution: {integrity: sha512-u5/sxGfiMfZNtJ3OvQpXcvotFpYkL0n9u9mM2vkui2nGo8b4wvDkJ8gAkYqbA8QpGyFCv3RK0Z+Iv+9veCS9bQ==}
+    engines: {node: '>=0.4.0'}
+    dependencies:
+      xml-js: 1.6.11
+    dev: false
 
   /figures/3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
@@ -8527,6 +8545,10 @@ packages:
       - utf-8-validate
     dev: false
 
+  /sax/1.2.4:
+    resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
+    dev: false
+
   /saxes/6.0.0:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}
     engines: {node: '>=v12.22.7'}
@@ -9659,6 +9681,7 @@ packages:
 
   /w3c-hr-time/1.0.2:
     resolution: {integrity: sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==}
+    deprecated: Use your platform's native performance.now() and performance.timeOrigin.
     dependencies:
       browser-process-hrtime: 1.0.0
     dev: false
@@ -9856,6 +9879,13 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /xml-js/1.6.11:
+    resolution: {integrity: sha512-7rVi2KMfwfWFl+GpPg6m80IVMWXLRjO+PxTq7V2CDhoGak0wzYzFgUY2m4XJ47OGdXd8eLE8EmwfAmdjw7lC1g==}
+    hasBin: true
+    dependencies:
+      sax: 1.2.4
+    dev: false
 
   /xml-name-validator/4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
