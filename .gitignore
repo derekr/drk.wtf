@@ -18,3 +18,4 @@ api/index.js.map
 
 app/shiki/languages
 app/shiki/themes
+api/index.js

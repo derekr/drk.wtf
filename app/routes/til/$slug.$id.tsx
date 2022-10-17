@@ -6,7 +6,7 @@ import { SanityContent } from '~/components/sanity-content'
 import { client } from '~/sanity/client'
 import * as fs from "fs/promises";
 import { join as pathJoin } from "path";
-import hijs from 'highlight.js/lib/core'
+import hijs from 'highlight.js'
 
 const getShikiPath = (): string => {
   return pathJoin(process.cwd(), "shiki");
@@ -59,7 +59,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 
       return {
         ...block,
-        code: hijs.highlight(block.code, { language: block.language.toUpperCase() }).value,
+        code: hijs.highlight(block.code, { language: block.language }).value,
       }
     })
   )
