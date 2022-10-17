@@ -59,7 +59,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 
       return {
         ...block,
-        code: hijs.highlight(block.code, { language: block.language }).value,
+        code: hijs.highlight(block.code, { language: block.language.toUpperCase() }).value,
       }
     })
   )
