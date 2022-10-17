@@ -1345,7 +1345,7 @@ var loader4 = async ({ params }) => {
   return post ? (post.body = await Promise.all(
     post.body.map(async (block) => block._type !== "codeBlock" ? block : {
       ...block,
-      code: import_highlight.default.highlight(block.code, { language: block.language }).value
+      code: `<pre><code class="language-${block.language}">${import_highlight.default.highlight(block.language, block.code).value}</code></pre>`
     })
   ), { post }) : new Response("Not found", { status: 404 });
 };
@@ -1563,24 +1563,28 @@ function MDXContent(props = {}) {
   }, "Setting up Remix")), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.p, null, "Going to setup Remix first because I'm keeping my Obsidian vault (more on that later) in the site repo."), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.pre, null, /* @__PURE__ */ import_react7.default.createElement(_components.code, {
-    className: "hljs language-bash"
-  }, `npx create-remix@latest
-`, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs language-basic"
+  }, "npx create-", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-comment"
-  }, "# choose Remix App Server"), `
-`, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-built_in"
-  }, "cd"), ` [whatever you named the project]
-npm run dev
+  }, "remix@latest"), `
+# choose `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-comment"
+  }, "Remix App Server"), `
+cd [whatever you named the project]
+npm `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-keyword"
+  }, "run"), ` dev
 `)), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.p, null, "https://remix.run/docs/en/v1/tutorials/blog"), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.p, null, "The scaffolding of this initial project willd depend on when/how the setup command is run. I chose Vercel for my deployment paltform."), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.p, null, "We should be able to run the dev command and access our site at localhost:3000."), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.p, null, "I also set this up as a git repo by running:"), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.pre, null, /* @__PURE__ */ import_react7.default.createElement(_components.code, {
-    className: "hljs language-csharp"
-  }, "git ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-keyword"
+    className: "hljs language-properties"
+  }, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "git"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
   }, "init"), `
 `)), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.h2, {
@@ -1601,18 +1605,24 @@ npm run dev
   }, "obsidian-export"), " that we can leverage. It also will handle compiling backlinks and reference embeds automatically for us."), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.p, null, "For installation I already had rust installed and opted to use the crates package manger, but you could download a pre-built binary as well. Check thir repo for more info https://github.com/zoni/obsidian-export."), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.pre, null, /* @__PURE__ */ import_react7.default.createElement(_components.code, {
-    className: "hljs language-arduino"
-  }, `brew install rust
-cargo install obsidian-`, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-keyword"
-  }, "export"), `
+    className: "hljs language-properties"
+  }, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "brew"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "install rust"), `
+`, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "cargo"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "install obsidian-export"), `
 `)), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.p, null, "Once installed you can runt he command to export from ", /* @__PURE__ */ import_react7.default.createElement(_components.code, null, "garden"), " in to your ", /* @__PURE__ */ import_react7.default.createElement(_components.code, null, "app/routes"), " directory."), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.pre, null, /* @__PURE__ */ import_react7.default.createElement(_components.code, {
-    className: "hljs language-arduino"
-  }, "obsidian-", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-keyword"
-  }, "export"), ` garden/ app/routes/g
+    className: "hljs language-awk"
+  }, "obsidian-export garden", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-regexp"
+  }, "/ app/"), `routes/g
 `)), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.p, null, "Now you can navigate to any of your markdown compiled pages via http://localhost:3000/g/some-page. However! You may notice that your links to other markdown pages (typically backlinks) are broken. By default the compiled links contain the ", /* @__PURE__ */ import_react7.default.createElement(_components.code, null, ".md"), " extension. We'll need to strip those. Otherwise things should be working fairly well. The only other snag I hit was markdown files containing html using ", /* @__PURE__ */ import_react7.default.createElement(_components.code, null, "class"), " instead of ", /* @__PURE__ */ import_react7.default.createElement(_components.code, null, "className"), " because you know\u2026\xA0MDX. There's a fix for that too!"), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.h2, {
@@ -1631,172 +1641,158 @@ cargo install obsidian-`, /* @__PURE__ */ import_react7.default.createElement(_c
 `, /* @__PURE__ */ import_react7.default.createElement(_components.li, null, /* @__PURE__ */ import_react7.default.createElement(_components.strong, null, "rehypeRewrite"), " \u2013\xA0For striping the ", /* @__PURE__ */ import_react7.default.createElement(_components.code, null, ".md"), " extension."), `
 `), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.pre, null, /* @__PURE__ */ import_react7.default.createElement(_components.code, {
-    className: "hljs language-csharp"
-  }, "npm ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-keyword"
-  }, "add"), ` rehype-rewrite rehype-react rehype-sanitize
+    className: "hljs language-properties"
+  }, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "npm"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "add rehype-rewrite rehype-react rehype-sanitize"), `
 `)), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.p, null, "And my ", /* @__PURE__ */ import_react7.default.createElement(_components.code, null, "remix.config.js"), " file looks like this:"), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.pre, null, /* @__PURE__ */ import_react7.default.createElement(_components.code, {
-    className: "hljs language-javascript"
+    className: "hljs language-properties"
   }, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-keyword"
+    className: "hljs-attr"
   }, "const"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-title class_"
-  }, "React"), " = ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-built_in"
-  }, "require"), "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-string"
-  }, "'react'"), `)
+  }, "React = require('react')"), `
 
 `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-comment"
-  }, `/**
- * `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-doctag"
-  }, "@type"), " {", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-type"
-  }, "import('@remix-run/dev/config').AppConfig"), `}
- */`), `
+    className: "hljs-attr"
+  }, "/**"), `
+ `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "*"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "@type {import('@remix-run/dev/config').AppConfig}"), `
+ `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "*/"), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-variable language_"
-  }, "module"), ".", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-property"
-  }, "exports"), ` = {
+    className: "hljs-attr"
+  }, "module.exports"), " = ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "{"), `
   `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-attr"
   }, "appDirectory"), ": ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-string"
-  }, "'app'"), `,
+  }, "'app',"), `
   `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-attr"
   }, "assetsBuildDirectory"), ": ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-string"
-  }, "'public/build'"), `,
+  }, "'public/build',"), `
   `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-attr"
   }, "publicPath"), ": ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-string"
-  }, "'/build/'"), `,
+  }, "'/build/',"), `
   `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-attr"
   }, "serverBuildDirectory"), ": ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-string"
-  }, "'api/_build'"), `,
+  }, "'api/_build',"), `
   `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-attr"
-  }, "ignoredRouteFiles"), ": [", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+  }, "ignoredRouteFiles"), ": ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-string"
-  }, "'.*'"), `],
+  }, "['.*'],"), `
   `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-attr"
   }, "mdx"), ": ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-keyword"
-  }, "async"), ` (filename) => {
+    className: "hljs-string"
+  }, "async (filename) => {"), `
     `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-keyword"
-  }, "const"), " [rehypeRewrite, rehypeReact, rehypeSanitize] = ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-keyword"
-  }, "await"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-title class_"
-  }, "Promise"), ".", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-title function_"
-  }, "all"), `([
-      `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-title function_"
-  }, "import"), "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "const"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-string"
-  }, "'rehype-rewrite'"), ").", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-title function_"
-  }, "then"), "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-function"
-  }, "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-params"
-  }, "mod"), ") =>"), " mod.", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-property"
-  }, "default"), `),
-      `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-title function_"
-  }, "import"), "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-string"
-  }, "'rehype-react'"), ").", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-title function_"
-  }, "then"), "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-function"
-  }, "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-params"
-  }, "mod"), ") =>"), " mod.", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-property"
-  }, "default"), `),
-      `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-title function_"
-  }, "import"), "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-string"
-  }, "'rehype-sanitize'"), ").", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-title function_"
-  }, "then"), "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-function"
-  }, "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-params"
-  }, "mod"), ") =>"), " mod.", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-property"
-  }, "default"), `),
-    ])
-
-    `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-keyword"
-  }, "return"), ` {
+  }, "[rehypeRewrite, rehypeReact, rehypeSanitize] = await Promise.all(["), `
       `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-attr"
-  }, "rehypePlugins"), `: [
-        [
-          rehypeRewrite,
-          {
+  }, "import('rehype-rewrite').then((mod)"), " =", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "> mod.default),"), `
+      `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "import('rehype-react').then((mod)"), " =", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "> mod.default),"), `
+      `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "import('rehype-sanitize').then((mod)"), " =", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "> mod.default),"), `
+    `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "])"), `
+
+    `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "return"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "{"), `
+      `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "rehypePlugins"), ": ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "["), `
+        `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "["), `
+          `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "rehypeRewrite,"), `
+          `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "{"), `
             `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-attr"
   }, "rewrite"), ": ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-function"
-  }, "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-params"
-  }, "node"), ") =>"), ` {
+    className: "hljs-string"
+  }, "(node) => {"), `
               `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-keyword"
-  }, "if"), " (node && node.", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-property"
-  }, "tagName"), " === ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-string"
-  }, "'a'"), `) {
-                node.`, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-property"
-  }, "properties"), ".", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-property"
-  }, "href"), " = node.", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-property"
-  }, "properties"), ".", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-property"
-  }, "href"), ".", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-title function_"
-  }, "replace"), "(", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-string"
-  }, "'.md'"), ", ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-string"
-  }, "''"), `)
-              }
-            },
-          },
-        ],
-        [rehypeReact, { `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
     className: "hljs-attr"
-  }, "createElement"), ": ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-title class_"
-  }, "React"), ".", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-property"
-  }, "createElement"), ` }],
-        rehypeSanitize,
-      ],
-    }
-  },
-}
+  }, "if"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "(node && node.tagName === 'a') {"), `
+                `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "node.properties.href"), " = ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "node.properties.href.replace('.md', '')"), `
+              `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "}"), `
+            `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "},"), `
+          `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "},"), `
+        `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "],"), `
+        `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "[rehypeReact,"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "{ createElement: React.createElement }],"), `
+        `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "rehypeSanitize,"), `
+      `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "],"), `
+    `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "}"), `
+  `, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "},"), `
+`, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "}"), `
 `)), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.h2, {
     id: "user-content-workflow"
@@ -1805,14 +1801,18 @@ cargo install obsidian-`, /* @__PURE__ */ import_react7.default.createElement(_c
   }, "Workflow")), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.p, null, "Right now I'm opting for a more manual workflow instead of incorporating watching and exporting on change. Doesn't seem necessary at this point and Obsidian is constantly saving which may make live reload problematic. Anyway as I'm authoring or whenever I feel the need I'll run the export command while remix dev is running in a separate process."), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.pre, null, /* @__PURE__ */ import_react7.default.createElement(_components.code, {
-    className: "hljs language-arduino"
-  }, `npm run dev
+    className: "hljs language-properties"
+  }, /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "npm"), " ", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "run dev"), `
 `)), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.pre, null, /* @__PURE__ */ import_react7.default.createElement(_components.code, {
-    className: "hljs language-arduino"
-  }, "obsidian-", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
-    className: "hljs-keyword"
-  }, "export"), ` garden/ app/routes/g
+    className: "hljs language-awk"
+  }, "obsidian-export garden", /* @__PURE__ */ import_react7.default.createElement(_components.span, {
+    className: "hljs-regexp"
+  }, "/ app/"), `routes/g
 `)), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.p, null, "The exporitng should cause remix to live reload or you can manually refresh as needed."), `
 `, /* @__PURE__ */ import_react7.default.createElement(_components.h2, {
@@ -2184,16 +2184,20 @@ function MDXContent7(props = {}) {
     href: "https://chan.dev/posts/avo-a-bem-dialect-using-data-attributes/"
   }, "AVO \u{1F951} \u2014\xA0A BEM Dialect Using Data Attributes (chan.dev)"), "."), `
 `, /* @__PURE__ */ import_react13.default.createElement(_components.pre, null, /* @__PURE__ */ import_react13.default.createElement(_components.code, {
-    className: "hljs language-css"
+    className: "hljs language-properties"
   }, /* @__PURE__ */ import_react13.default.createElement(_components.span, {
-    className: "hljs-selector-attr"
-  }, "[data-avatar]"), ` {
+    className: "hljs-attr"
+  }, "[data-avatar]"), " ", /* @__PURE__ */ import_react13.default.createElement(_components.span, {
+    className: "hljs-string"
+  }, "{"), `
   `, /* @__PURE__ */ import_react13.default.createElement(_components.span, {
-    className: "hljs-attribute"
+    className: "hljs-attr"
   }, "color"), ": ", /* @__PURE__ */ import_react13.default.createElement(_components.span, {
     className: "hljs-string"
-  }, "'red'"), `;
-}
+  }, "'red';"), `
+`, /* @__PURE__ */ import_react13.default.createElement(_components.span, {
+    className: "hljs-attr"
+  }, "}"), `
 `)), `
 `, /* @__PURE__ */ import_react13.default.createElement(_components.pre, null, /* @__PURE__ */ import_react13.default.createElement(_components.code, {
     className: "hljs language-javascript"
@@ -2555,7 +2559,7 @@ function Index2() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "4b0fe44d", entry: { module: "/build/entry.client-MZWXDEV3.js", imports: ["/build/_shared/chunk-NWFLE6AG.js", "/build/_shared/chunk-SYCK5J32.js", "/build/_shared/chunk-EVUINLJZ.js", "/build/_shared/chunk-RFFJ3GMM.js", "/build/_shared/chunk-KCHAACDT.js", "/build/_shared/chunk-O7YBTOWT.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-4C7KNSAX.js", imports: ["/build/_shared/chunk-BXRSB7WT.js", "/build/_shared/chunk-YUVZY6RR.js", "/build/_shared/chunk-ZVAJTABC.js", "/build/_shared/chunk-UKIKZ6YM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g": { id: "routes/g", parentId: "root", path: "g", index: void 0, caseSensitive: void 0, module: "/build/routes/g-BFNY3FMT.js", imports: ["/build/_shared/chunk-UHK7CCPZ.js", "/build/_shared/chunk-7CFH7SN6.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/css-to-component": { id: "routes/g/css-to-component", parentId: "routes/g", path: "css-to-component", index: void 0, caseSensitive: void 0, module: "/build/routes/g/css-to-component-EOAPMOFZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-notes": { id: "routes/g/digital-garden-notes", parentId: "routes/g", path: "digital-garden-notes", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-notes-OJ7IZYO7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-with-obsidian-and-remix": { id: "routes/g/digital-garden-with-obsidian-and-remix", parentId: "routes/g", path: "digital-garden-with-obsidian-and-remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-with-obsidian-and-remix-VO7Q5NA4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/drk-wtf-todos": { id: "routes/g/drk-wtf-todos", parentId: "routes/g", path: "drk-wtf-todos", index: void 0, caseSensitive: void 0, module: "/build/routes/g/drk-wtf-todos-UJKCOTMQ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/index": { id: "routes/g/index", parentId: "routes/g", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/g/index-HTJZFX6S.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/josh-comeau": { id: "routes/g/josh-comeau", parentId: "routes/g", path: "josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/josh-comeau-CRKDQ6BI.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/other-note": { id: "routes/g/other-note", parentId: "routes/g", path: "other-note", index: void 0, caseSensitive: void 0, module: "/build/routes/g/other-note-SNUBJ4J2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/bencodezen": { id: "routes/g/people/bencodezen", parentId: "routes/g", path: "people/bencodezen", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/bencodezen-OCTIL55X.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/josh-comeau": { id: "routes/g/people/josh-comeau", parentId: "routes/g", path: "people/josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/josh-comeau-3CDPDAQE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/wwwjim": { id: "routes/g/people/wwwjim", parentId: "routes/g", path: "people/wwwjim", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/wwwjim-KM3VW5JU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/projects/work-at-diy": { id: "routes/g/projects/work-at-diy", parentId: "routes/g", path: "projects/work-at-diy", index: void 0, caseSensitive: void 0, module: "/build/routes/g/projects/work-at-diy-BRHPA2JW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/the-fox-team": { id: "routes/g/the-fox-team", parentId: "routes/g", path: "the-fox-team", index: void 0, caseSensitive: void 0, module: "/build/routes/g/the-fox-team-HXZGWKK5.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/mdx": { id: "routes/g/tools/mdx", parentId: "routes/g", path: "tools/mdx", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/mdx-7763YPSE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian": { id: "routes/g/tools/obsidian", parentId: "routes/g", path: "tools/obsidian", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-BP7DMH55.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian-export": { id: "routes/g/tools/obsidian-export", parentId: "routes/g", path: "tools/obsidian-export", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-export-HXBFSCZE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/remix": { id: "routes/g/tools/remix", parentId: "routes/g", path: "tools/remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/remix-GJYPRK5H.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/vercel": { id: "routes/g/tools/vercel", parentId: "routes/g", path: "tools/vercel", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/vercel-MUUEIUBL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-JI3JDWY3.js", imports: ["/build/_shared/chunk-7CFH7SN6.js", "/build/_shared/chunk-VE2P2BW7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/studio/*": { id: "routes/studio/*", parentId: "root", path: "studio/*", index: void 0, caseSensitive: void 0, module: "/build/routes/studio/*-ETFDVXMK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til": { id: "routes/til", parentId: "root", path: "til", index: void 0, caseSensitive: void 0, module: "/build/routes/til-LX3KT4Y4.js", imports: ["/build/_shared/chunk-UHK7CCPZ.js", "/build/_shared/chunk-7CFH7SN6.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/$slug.$id": { id: "routes/til/$slug.$id", parentId: "routes/til", path: ":slug/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/til/$slug.$id-XKN7NX47.js", imports: ["/build/_shared/chunk-VE2P2BW7.js", "/build/_shared/chunk-BXRSB7WT.js", "/build/_shared/chunk-YUVZY6RR.js", "/build/_shared/chunk-ZVAJTABC.js", "/build/_shared/chunk-UKIKZ6YM.js", "/build/_shared/chunk-PJXH4CQX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/index": { id: "routes/til/index", parentId: "routes/til", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/til/index-7ZMQDQRG.js", imports: ["/build/_shared/chunk-PJXH4CQX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til[.]rss": { id: "routes/til[.]rss", parentId: "root", path: "til.rss", index: void 0, caseSensitive: void 0, module: "/build/routes/til[.]rss-KXSGUYBV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-4B0FE44D.js" };
+var assets_manifest_default = { version: "70d44ce9", entry: { module: "/build/entry.client-MZWXDEV3.js", imports: ["/build/_shared/chunk-NWFLE6AG.js", "/build/_shared/chunk-SYCK5J32.js", "/build/_shared/chunk-EVUINLJZ.js", "/build/_shared/chunk-RFFJ3GMM.js", "/build/_shared/chunk-KCHAACDT.js", "/build/_shared/chunk-O7YBTOWT.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-4C7KNSAX.js", imports: ["/build/_shared/chunk-BXRSB7WT.js", "/build/_shared/chunk-YUVZY6RR.js", "/build/_shared/chunk-ZVAJTABC.js", "/build/_shared/chunk-UKIKZ6YM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g": { id: "routes/g", parentId: "root", path: "g", index: void 0, caseSensitive: void 0, module: "/build/routes/g-BFNY3FMT.js", imports: ["/build/_shared/chunk-UHK7CCPZ.js", "/build/_shared/chunk-7CFH7SN6.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/css-to-component": { id: "routes/g/css-to-component", parentId: "routes/g", path: "css-to-component", index: void 0, caseSensitive: void 0, module: "/build/routes/g/css-to-component-J6ZRN4L5.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-notes": { id: "routes/g/digital-garden-notes", parentId: "routes/g", path: "digital-garden-notes", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-notes-OJ7IZYO7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-with-obsidian-and-remix": { id: "routes/g/digital-garden-with-obsidian-and-remix", parentId: "routes/g", path: "digital-garden-with-obsidian-and-remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-with-obsidian-and-remix-JRTVNIBT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/drk-wtf-todos": { id: "routes/g/drk-wtf-todos", parentId: "routes/g", path: "drk-wtf-todos", index: void 0, caseSensitive: void 0, module: "/build/routes/g/drk-wtf-todos-UJKCOTMQ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/index": { id: "routes/g/index", parentId: "routes/g", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/g/index-HTJZFX6S.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/josh-comeau": { id: "routes/g/josh-comeau", parentId: "routes/g", path: "josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/josh-comeau-CRKDQ6BI.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/other-note": { id: "routes/g/other-note", parentId: "routes/g", path: "other-note", index: void 0, caseSensitive: void 0, module: "/build/routes/g/other-note-SNUBJ4J2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/bencodezen": { id: "routes/g/people/bencodezen", parentId: "routes/g", path: "people/bencodezen", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/bencodezen-OCTIL55X.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/josh-comeau": { id: "routes/g/people/josh-comeau", parentId: "routes/g", path: "people/josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/josh-comeau-3CDPDAQE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/wwwjim": { id: "routes/g/people/wwwjim", parentId: "routes/g", path: "people/wwwjim", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/wwwjim-KM3VW5JU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/projects/work-at-diy": { id: "routes/g/projects/work-at-diy", parentId: "routes/g", path: "projects/work-at-diy", index: void 0, caseSensitive: void 0, module: "/build/routes/g/projects/work-at-diy-BRHPA2JW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/the-fox-team": { id: "routes/g/the-fox-team", parentId: "routes/g", path: "the-fox-team", index: void 0, caseSensitive: void 0, module: "/build/routes/g/the-fox-team-HXZGWKK5.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/mdx": { id: "routes/g/tools/mdx", parentId: "routes/g", path: "tools/mdx", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/mdx-7763YPSE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian": { id: "routes/g/tools/obsidian", parentId: "routes/g", path: "tools/obsidian", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-BP7DMH55.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian-export": { id: "routes/g/tools/obsidian-export", parentId: "routes/g", path: "tools/obsidian-export", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-export-HXBFSCZE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/remix": { id: "routes/g/tools/remix", parentId: "routes/g", path: "tools/remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/remix-GJYPRK5H.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/vercel": { id: "routes/g/tools/vercel", parentId: "routes/g", path: "tools/vercel", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/vercel-MUUEIUBL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-JI3JDWY3.js", imports: ["/build/_shared/chunk-7CFH7SN6.js", "/build/_shared/chunk-VE2P2BW7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/studio/*": { id: "routes/studio/*", parentId: "root", path: "studio/*", index: void 0, caseSensitive: void 0, module: "/build/routes/studio/*-ETFDVXMK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til": { id: "routes/til", parentId: "root", path: "til", index: void 0, caseSensitive: void 0, module: "/build/routes/til-LX3KT4Y4.js", imports: ["/build/_shared/chunk-UHK7CCPZ.js", "/build/_shared/chunk-7CFH7SN6.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/$slug.$id": { id: "routes/til/$slug.$id", parentId: "routes/til", path: ":slug/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/til/$slug.$id-EXOP4LZX.js", imports: ["/build/_shared/chunk-VE2P2BW7.js", "/build/_shared/chunk-BXRSB7WT.js", "/build/_shared/chunk-YUVZY6RR.js", "/build/_shared/chunk-ZVAJTABC.js", "/build/_shared/chunk-UKIKZ6YM.js", "/build/_shared/chunk-PJXH4CQX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/index": { id: "routes/til/index", parentId: "routes/til", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/til/index-7ZMQDQRG.js", imports: ["/build/_shared/chunk-PJXH4CQX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til[.]rss": { id: "routes/til[.]rss", parentId: "root", path: "til.rss", index: void 0, caseSensitive: void 0, module: "/build/routes/til[.]rss-KXSGUYBV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-70D44CE9.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
