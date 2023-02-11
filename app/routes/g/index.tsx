@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from 'remix'
+import { Link, useLoaderData } from "@remix-run/react";
 
 import manifest from '../../../garden-manifest.json'
 
