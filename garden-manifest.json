@@ -1,1 +1,46 @@
-[{"slug":"css-to-component","path":"/g/css-to-component","file":"app/routes/g/css-to-component.md"},{"slug":"digital-garden-notes","path":"/g/digital-garden-notes","file":"app/routes/g/digital-garden-notes.md"},{"slug":"digital-garden-with-obsidian-and-remix","path":"/g/digital-garden-with-obsidian-and-remix","file":"app/routes/g/digital-garden-with-obsidian-and-remix.md"},{"slug":"drk-wtf-todos","path":"/g/drk-wtf-todos","file":"app/routes/g/drk-wtf-todos.md"},{"slug":"josh-comeau","path":"/g/josh-comeau","file":"app/routes/g/josh-comeau.md"},{"slug":"other-note","path":"/g/other-note","file":"app/routes/g/other-note.md"},{"slug":"bencodezen","path":"/g/people/bencodezen","file":"app/routes/g/people/bencodezen.md"},{"slug":"josh-comeau","path":"/g/people/josh-comeau","file":"app/routes/g/people/josh-comeau.md"},{"slug":"wwwjim","path":"/g/people/wwwjim","file":"app/routes/g/people/wwwjim.md"},{"slug":"work-at-diy","path":"/g/projects/work-at-diy","file":"app/routes/g/projects/work-at-diy.md"},{"slug":"the-fox-team","path":"/g/the-fox-team","file":"app/routes/g/the-fox-team.md"},{"slug":"mdx","path":"/g/tools/mdx","file":"app/routes/g/tools/mdx.md"},{"slug":"obsidian-export","path":"/g/tools/obsidian-export","file":"app/routes/g/tools/obsidian-export.md"},{"slug":"obsidian","path":"/g/tools/obsidian","file":"app/routes/g/tools/obsidian.md"},{"slug":"remix","path":"/g/tools/remix","file":"app/routes/g/tools/remix.md"},{"slug":"vercel","path":"/g/tools/vercel","file":"app/routes/g/tools/vercel.md"}]
+[
+  {
+    "slug": "css-to-component",
+    "path": "/g/css-to-component",
+    "file": "app/routes/g/css-to-component.md"
+  },
+  {
+    "slug": "digital-garden-notes",
+    "path": "/g/digital-garden-notes",
+    "file": "app/routes/g/digital-garden-notes.md"
+  },
+  {
+    "slug": "digital-garden-with-obsidian-and-remix",
+    "path": "/g/digital-garden-with-obsidian-and-remix",
+    "file": "app/routes/g/digital-garden-with-obsidian-and-remix.md"
+  },
+  { "slug": "drk-wtf-todos", "path": "/g/drk-wtf-todos", "file": "app/routes/g/drk-wtf-todos.md" },
+  { "slug": "josh-comeau", "path": "/g/josh-comeau", "file": "app/routes/g/josh-comeau.md" },
+  { "slug": "other-note", "path": "/g/other-note", "file": "app/routes/g/other-note.md" },
+  {
+    "slug": "bencodezen",
+    "path": "/g/people/bencodezen",
+    "file": "app/routes/g/people/bencodezen.md"
+  },
+  {
+    "slug": "josh-comeau",
+    "path": "/g/people/josh-comeau",
+    "file": "app/routes/g/people/josh-comeau.md"
+  },
+  { "slug": "wwwjim", "path": "/g/people/wwwjim", "file": "app/routes/g/people/wwwjim.md" },
+  {
+    "slug": "work-at-diy",
+    "path": "/g/projects/work-at-diy",
+    "file": "app/routes/g/projects/work-at-diy.md"
+  },
+  { "slug": "the-fox-team", "path": "/g/the-fox-team", "file": "app/routes/g/the-fox-team.md" },
+  { "slug": "mdx", "path": "/g/tools/mdx", "file": "app/routes/g/tools/mdx.md" },
+  {
+    "slug": "obsidian-export",
+    "path": "/g/tools/obsidian-export",
+    "file": "app/routes/g/tools/obsidian-export.md"
+  },
+  { "slug": "obsidian", "path": "/g/tools/obsidian", "file": "app/routes/g/tools/obsidian.md" },
+  { "slug": "remix", "path": "/g/tools/remix", "file": "app/routes/g/tools/remix.md" },
+  { "slug": "vercel", "path": "/g/tools/vercel", "file": "app/routes/g/tools/vercel.md" }
+]

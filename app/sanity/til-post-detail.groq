@@ -1,1 +1,3 @@
-*[_type == "post" && slug.current == $slug && _id == $id][0]{ title, body }
+*[_type == 'post' && slug.current == $slug && _id == $id] [0] {
+  title, body
+}

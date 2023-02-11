@@ -4,24 +4,24 @@ import groq from 'groq'
 import * as shiki from 'shiki'
 import { SanityContent } from '~/components/sanity-content'
 import { client } from '~/sanity/client'
-import * as fs from "fs/promises";
-import { join as pathJoin } from "path";
+import * as fs from 'fs/promises'
+import { join as pathJoin } from 'path'
 import hijs from 'highlight.js'
 
 const getShikiPath = (): string => {
-  return pathJoin(process.cwd(), "shiki");
-};
+  return pathJoin(process.cwd(), 'shiki')
+}
 
-const touched = { current: false };
+const touched = { current: false }
 
 const touchShikiPath = (): void => {
-  if (touched.current) return; // only need to do once
-  fs.readdir(getShikiPath()); // fire and forget
-  touched.current = true;
-};
+  if (touched.current) return // only need to do once
+  fs.readdir(getShikiPath()) // fire and forget
+  touched.current = true
+}
 
 const getHighlighter: any = async (options: any) => {
-  touchShikiPath();
+  touchShikiPath()
 
   const highlighter = await shiki.getHighlighter({
     // This is technically not compatible with shiki's interface but
@@ -33,11 +33,10 @@ const getHighlighter: any = async (options: any) => {
       themes: `${getShikiPath()}/themes/`,
     },
     theme: 'nord',
+  })
 
-  });
-
-  return highlighter;
-};
+  return highlighter
+}
 
 export const loader: LoaderFunction = async ({ params }) => {
   const { slug, id } = params
@@ -50,24 +49,28 @@ export const loader: LoaderFunction = async ({ params }) => {
     return new Response('Not found', { status: 404 })
   }
 
-  post.body = await Promise.all(
-    post.body.map(async (block: any) => {
-      if (block._type !== 'codeBlock') return block
-      // const highlighter = await getHighlighter({ theme: 'nord' })
-      // const highlighter = await shiki.getHighlighter({})
-      // highlighter.loadTheme(theme)
+  // post.body = await Promise.all(
+  //   post.body.map(async (block: any) => {
+  //     if (block._type !== 'codeBlock') return block
+  //     // const highlighter = await getHighlighter({ theme: 'nord' })
+  //     // const highlighter = await shiki.getHighlighter({})
+  //     // highlighter.loadTheme(theme)
 
-      return {
-        ...block,
-        code: `<pre><code class="language-${block.language}">${hijs.highlight(block.language, block.code).value}</code></pre>`,
-      }
-    })
-  )
+  //     return {
+  //       ...block,
+  //       code: `<pre><code class="language-${block.language}">${
+  //         hijs.highlight(block.language, block.code).value
+  //       }</code></pre>`,
+  //     }
+  //   })
+  // )
+
+  console.log(post)
 
   return { post }
 }
 
-export default function TiLIndexRoute() {
+export default function Component() {
   const { post } = useLoaderData<typeof loader>()
 
   return (

@@ -1,7 +1,7 @@
-import type { LoaderFunction } from "@remix-run/node";
-import allTilPostsQuery from "~/sanity/queries/all-til-posts";
-import { client } from "~/sanity/client";
-import { Feed } from "feed";
+import type { LoaderFunction } from '@remix-run/node'
+import allTilPostsQuery from '~/sanity/queries/all-til-posts'
+import { client } from '~/sanity/client'
+import { Feed } from 'feed'
 import { toHTML } from '@portabletext/to-html'
 import htm from 'htm'
 import vhtml from 'vhtml'
@@ -9,33 +9,35 @@ import vhtml from 'vhtml'
 const html = htm.bind(vhtml)
 
 function toPlainText(blocks = []) {
-  return blocks
-    // loop through each block
-    .map(block => {
-      // if it's not a text block with children, 
-      // return nothing
-      if (block._type !== 'block' || !block.children) {
-        return ''
-      }
-      // loop through the children spans, and join the
-      // text strings
-      return block.children.map(child => child.text).join('')
-    })
-    // join the paragraphs leaving split by two linebreaks
-    .join('\n\n')
+  return (
+    blocks
+      // loop through each block
+      .map((block) => {
+        // if it's not a text block with children,
+        // return nothing
+        if (block._type !== 'block' || !block.children) {
+          return ''
+        }
+        // loop through the children spans, and join the
+        // text strings
+        return block.children.map((child) => child.text).join('')
+      })
+      // join the paragraphs leaving split by two linebreaks
+      .join('\n\n')
+  )
 }
 
 function escapeCdata(s: string) {
-  return s.replace(/\]\]>/g, "]]]]><![CDATA[>");
+  return s.replace(/\]\]>/g, ']]]]><![CDATA[>')
 }
 
 function escapeHtml(s: string) {
   return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
 }
 
 const components = {
@@ -43,44 +45,40 @@ const components = {
     codeBlock: ({ value }) => {
       const { language, code } = value
       return html`<pre><code class="language-${language}">${code}</code></pre>`
-    }
-  }
+    },
+  },
 }
 
-export const loader: LoaderFunction = async ({
-  request,
-}) => {
+export const loader: LoaderFunction = async ({ request }) => {
   const tilPosts = await client.fetch(allTilPostsQuery)
 
-  const host =
-    request.headers.get("X-Forwarded-Host") ??
-    request.headers.get("host");
+  const host = request.headers.get('X-Forwarded-Host') ?? request.headers.get('host')
   if (!host) {
-    throw new Error("Could not determine domain URL.");
+    throw new Error('Could not determine domain URL.')
   }
-  const protocol = host.includes("localhost")
-    ? "http"
-    : "https";
-  const domain = `${protocol}://${host}`;
-  const tilUrl = `${domain}/til`;
+  const protocol = host.includes('localhost') ? 'http' : 'https'
+  const domain = `${protocol}://${host}`
+  const tilUrl = `${domain}/til`
 
   const feed = new Feed({
-    title: "drk.wtf | TIL",
-    description: "Today I Learned",
+    title: 'drk.wtf | TIL',
+    description: 'Today I Learned',
     id: tilUrl,
     link: tilUrl,
-    language: "en",
+    language: 'en',
     copyright: `© ${new Date().getFullYear()} Derek Reynolds`,
-    feedLinks: [{
-      type: "application/rss+xml",
-      rel: "self",
-      href: tilUrl,
-    }],
+    feedLinks: [
+      {
+        type: 'application/rss+xml',
+        rel: 'self',
+        href: tilUrl,
+      },
+    ],
     author: {
-      name: "Derek Reynolds",
-      email: "derekr@me.com",
+      name: 'Derek Reynolds',
+      email: 'derekr@me.com',
       link: domain,
-    }
+    },
   })
 
   tilPosts.forEach((post) => {
@@ -91,11 +89,13 @@ export const loader: LoaderFunction = async ({
       description: 'TIL post',
       content: toHTML(post.body, { components }),
       date: new Date(post.publishedAt),
-      author: [{
-        name: post.author.name,
-        email: post.author.email,
-        link: post.author.url,
-      }]
+      author: [
+        {
+          name: post.author.name,
+          email: post.author.email,
+          link: post.author.url,
+        },
+      ],
     })
   })
 
@@ -136,12 +136,9 @@ export const loader: LoaderFunction = async ({
 
   return new Response(rssString, {
     headers: {
-      "Cache-Control": `public, max-age=${60 * 10
-        }, s-maxage=${60 * 60 * 24}`,
-      "Content-Type": "application/xml",
-      "Content-Length": String(
-        Buffer.byteLength(rssString)
-      ),
+      'Cache-Control': `public, max-age=${60 * 10}, s-maxage=${60 * 60 * 24}`,
+      'Content-Type': 'application/xml',
+      'Content-Length': String(Buffer.byteLength(rssString)),
     },
-  });
-};
+  })
+}

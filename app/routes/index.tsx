@@ -1,4 +1,4 @@
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData } from '@remix-run/react'
 import { client } from '~/sanity/client'
 import { SanityContent } from '~/components/sanity-content'
 import homePageQuery from '~/sanity/queries/home-page'
