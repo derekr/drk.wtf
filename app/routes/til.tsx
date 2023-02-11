@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation } from '@remix-run/react'
+import { Link, Outlet, useLocation } from "@remix-run/react";
 import codeSyntaxStyles from 'highlight.js/styles/night-owl.css'
 
 export function links() {
