@@ -8,6 +8,9 @@ module.exports = {
   // assetsBuildDirectory: 'public/build',
   // publicPath: '/build/',
   // serverBuildDirectory: 'api/_build',
+  future: {
+    unstable_tailwind: true,
+  },
   serverBuildTarget: 'vercel',
   server: process.env.NODE_ENV === "development" ? undefined : "./server.js",
   ignoredRouteFiles: ['**/.*'],
