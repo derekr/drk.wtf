@@ -5,7 +5,7 @@ import { useLoaderData, useLocation } from '@remix-run/react'
 
 import { projectDetails } from '~/sanity/config'
 
-import tailwindStyles from './tailwind.css'
+import tailwindStyles from '~/styles/tailwind.css'
 import globalStyles from '~/styles/global.css'
 
 export const meta: MetaFunction = () => {

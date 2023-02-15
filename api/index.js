@@ -1,3 +1,4 @@
+"use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -23,13 +24,20 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 // node_modules/.pnpm/highlight.js@11.7.0/node_modules/highlight.js/styles/night-owl.css
 var require_night_owl = __commonJS({
   "node_modules/.pnpm/highlight.js@11.7.0/node_modules/highlight.js/styles/night-owl.css"(exports, module2) {
-    module2.exports = "/build/_assets/night-owl-BZHFFEZL.css";
+    module2.exports = "/build/_assets/night-owl-APMJRNSJ.css";
   }
 });
 
-// <stdin>
-var stdin_exports = {};
-__export(stdin_exports, {
+// server.js
+var server_exports = {};
+__export(server_exports, {
+  default: () => server_default
+});
+module.exports = __toCommonJS(server_exports);
+
+// server-entry-module:@remix-run/dev/server-build
+var server_build_exports = {};
+__export(server_build_exports, {
   assets: () => assets_manifest_default,
   assetsBuildDirectory: () => assetsBuildDirectory,
   entry: () => entry,
@@ -37,20 +45,15 @@ __export(stdin_exports, {
   publicPath: () => publicPath,
   routes: () => routes
 });
-module.exports = __toCommonJS(stdin_exports);
 
 // app/entry.server.tsx
 var entry_server_exports = {};
 __export(entry_server_exports, {
   default: () => handleRequest
 });
-var import_server = require("react-dom/server"), import_react = require("@remix-run/react"), import_jsx_dev_runtime = require("react/jsx-dev-runtime");
+var import_server = require("react-dom/server"), import_react = require("@remix-run/react"), import_jsx_runtime = require("react/jsx-runtime");
 function handleRequest(request, responseStatusCode, responseHeaders, remixContext) {
-  let markup = (0, import_server.renderToString)(/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_react.RemixServer, { context: remixContext, url: request.url }, void 0, !1, {
-    fileName: "app/entry.server.tsx",
-    lineNumber: 11,
-    columnNumber: 33
-  }, this));
+  let markup = (0, import_server.renderToString)(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.RemixServer, { context: remixContext, url: request.url }));
   return responseHeaders.set("Content-Type", "text/html"), new Response("<!DOCTYPE html>" + markup, {
     status: responseStatusCode,
     headers: responseHeaders
@@ -419,13 +422,13 @@ var projectDetails = () => {
 });
 
 // app/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-QJXNJ6YF.css";
+var tailwind_default = "/build/_assets/tailwind-F6GHPXNN.css";
 
 // app/styles/global.css
-var global_default = "/build/_assets/global-UZ4QWBRH.css";
+var global_default = "/build/_assets/global-JCR65M54.css";
 
 // app/root.tsx
-var import_jsx_dev_runtime2 = require("react/jsx-dev-runtime"), meta = () => ({ title: "Welcome to the drkweb | drk.wtf" });
+var import_jsx_runtime2 = require("react/jsx-runtime"), meta = () => ({ title: "Welcome to the drkweb | drk.wtf" });
 function links() {
   return [
     { rel: "stylesheet", href: tailwind_default },
@@ -437,81 +440,29 @@ async function loader() {
 }
 function App() {
   let data = (0, import_react3.useLoaderData)(), { pathname } = (0, import_react3.useLocation)(), isStudioRoute = pathname.startsWith("/studio");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { charSet: "utf-8" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 33,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { name: "viewport", content: "width=device-width,initial-scale=1" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 34,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Meta, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 35,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 36,
-        columnNumber: 9
-      }, this),
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("meta", { charSet: "utf-8" }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("meta", { name: "viewport", content: "width=device-width,initial-scale=1" }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react2.Meta, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react2.Links, {}),
       isStudioRoute && typeof document > "u" ? "__STYLES__" : null
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 32,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { className: "p-3", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Outlet, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 40,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.ScrollRestoration, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 41,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("body", { className: "p-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react2.Outlet, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react2.ScrollRestoration, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
         "script",
         {
           dangerouslySetInnerHTML: {
             __html: `window.ENV = ${JSON.stringify(data.ENV)}`
           }
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/root.tsx",
-          lineNumber: 42,
-          columnNumber: 9
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Scripts, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 47,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.LiveReload, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 48,
-        columnNumber: 52
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 39,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/root.tsx",
-    lineNumber: 31,
-    columnNumber: 5
-  }, this);
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react2.Scripts, {}),
+      !1
+    ] })
+  ] });
 }
 
 // app/routes/til[.]rss.tsx
@@ -610,20 +561,12 @@ __export(__exports, {
 var import_remix_utils = require("remix-utils"), import_sanity9 = require("sanity");
 
 // app/styles/studio.css
-var studio_default = "/build/_assets/studio-7UYMGTOZ.css";
+var studio_default = "/build/_assets/studio-CZ6JLOEM.css";
 
 // app/routes/studio/*.tsx
-var import_jsx_dev_runtime3 = require("react/jsx-dev-runtime"), links2 = () => [{ rel: "stylesheet", href: studio_default }];
+var import_jsx_runtime3 = require("react/jsx-runtime"), links2 = () => [{ rel: "stylesheet", href: studio_default }];
 function StudioPage() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(import_remix_utils.ClientOnly, { children: () => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(import_sanity9.Studio, { config }, void 0, !1, {
-    fileName: "app/routes/studio/*.tsx",
-    lineNumber: 14,
-    columnNumber: 29
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/studio/*.tsx",
-    lineNumber: 14,
-    columnNumber: 10
-  }, this);
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_remix_utils.ClientOnly, { children: () => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_sanity9.Studio, { config }) });
 }
 
 // app/routes/index.tsx
@@ -639,9 +582,9 @@ var import_react4 = require("@portabletext/react"), import_react5 = require("@re
 
 // app/components/sanity-image.tsx
 var import_image_url = __toESM(require("@sanity/image-url")), import_asset_utils = require("@sanity/asset-utils");
-var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), SanityImage = function(props) {
+var import_jsx_runtime4 = require("react/jsx-runtime"), SanityImage = function(props) {
   let { value, isInline } = props, { width, height } = (0, import_asset_utils.getImageDimensions)(value);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
     "img",
     {
       className: "w-full h-auto not-prose",
@@ -652,32 +595,20 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), SanityImage = fu
         display: isInline ? "inline-block" : "block",
         aspectRatio: width / height
       }
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/sanity-image.tsx",
-      lineNumber: 16,
-      columnNumber: 5
-    },
-    this
+    }
   );
 };
 
 // app/components/sanity-content.tsx
-var import_jsx_dev_runtime5 = require("react/jsx-dev-runtime"), components2 = {
+var import_jsx_runtime5 = require("react/jsx-runtime"), components2 = {
   types: {
     image: SanityImage,
-    codeBlock: (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { dangerouslySetInnerHTML: { __html: props.value.code } }, void 0, !1, {
-      fileName: "app/components/sanity-content.tsx",
-      lineNumber: 12,
-      columnNumber: 27
-    }, this)
+    codeBlock: (props) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { dangerouslySetInnerHTML: { __html: props.value.code } })
   },
   marks: {
     link: ({ value, children }) => {
       let href = value != null && value.href ? value.href.replace("https://drk.wtf", "") : "", target = href.startsWith("http") ? "_blank" : void 0;
-      return target ? /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
+      return target ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
         "a",
         {
           href: value == null ? void 0 : value.href,
@@ -685,29 +616,13 @@ var import_jsx_dev_runtime5 = require("react/jsx-dev-runtime"), components2 = {
           rel: value != null && value.rel ? value.rel : target === "_blank" && "noindex nofollow",
           className: "text-blue-600 underline hover:text-blue-800 visited:text-purple-600",
           children
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/sanity-content.tsx",
-          lineNumber: 28,
-          columnNumber: 9
-        },
-        this
-      ) : /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(import_react5.Link, { to: href, rel: value == null ? void 0 : value.rel, children }, void 0, !1, {
-        fileName: "app/components/sanity-content.tsx",
-        lineNumber: 21,
-        columnNumber: 11
-      }, this);
+        }
+      ) : /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react5.Link, { to: href, rel: value == null ? void 0 : value.rel, children });
     }
   }
 }, SanityContent = function(props) {
   let { value } = props;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(import_react4.PortableText, { value, components: components2 }, void 0, !1, {
-    fileName: "app/components/sanity-content.tsx",
-    lineNumber: 44,
-    columnNumber: 10
-  }, this);
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react4.PortableText, { value, components: components2 });
 };
 
 // app/sanity/queries/home-page.ts
@@ -727,158 +642,68 @@ var import_groq2 = __toESM(require("groq")), home_page_default = import_groq2.de
 `;
 
 // app/routes/index.tsx
-var import_radash = require("radash"), import_jsx_dev_runtime6 = require("react/jsx-dev-runtime"), loader3 = async () => ({
+var import_radash = require("radash"), import_jsx_runtime6 = require("react/jsx-runtime"), loader3 = async () => ({
   ...await client.fetch(home_page_default)
-}), ExperienceItem = ({ title, href, startYear, endYear, children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("article", { children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "mb-2", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h3", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("strong", { children: title }, void 0, !1, {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 17,
-        columnNumber: 9
-      }, this),
-      href && /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("span", { className: "href", children: [
+}), ExperienceItem = ({ title, href, startYear, endYear, children }) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("article", { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "mb-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("h3", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: title }),
+      href && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "href", children: [
         " ",
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
           "a",
           {
             href,
             target: "_blank",
             className: "text-blue-600 underline hover:text-blue-800 visited:text-purple-600",
             children: href
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/index.tsx",
-            lineNumber: 21,
-            columnNumber: 13
-          },
-          this
+          }
         )
-      ] }, void 0, !0, {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 19,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 16,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-sm text-gray-400 time", children: startYear === endYear ? startYear : `${startYear}\u2013${endYear}` }, void 0, !1, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 31,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/index.tsx",
-    lineNumber: 15,
-    columnNumber: 5
-  }, this),
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "text-sm text-gray-400 time", children: startYear === endYear ? startYear : `${startYear}\u2013${endYear}` })
+  ] }),
   children
-] }, void 0, !0, {
-  fileName: "app/routes/index.tsx",
-  lineNumber: 14,
-  columnNumber: 3
-}, this);
+] });
 function Index() {
   var _a;
   let { author, globalSettings, workExperience } = (0, import_react6.useLoaderData)(), [currentExperience, previousExperience] = (0, import_radash.fork)(workExperience, (e) => e.isCurrent);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_jsx_dev_runtime6.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("a", { className: "sr-only h-card", href: "https://drk.wtf", rel: "me", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("img", { src: author.imageUrl, alt: "" }, void 0, !1, {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 45,
-        columnNumber: 9
-      }, this),
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("a", { className: "sr-only h-card", href: "https://drk.wtf", rel: "me", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("img", { src: author.imageUrl, alt: "" }),
       "Derek Reynolds"
-    ] }, void 0, !0, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 44,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "max-w-2xl mb-8 mast-grid [&>p:first-of-type]:mb-3", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h1", { className: "text-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("a", { href: "/", children: "drk.wtf" }, void 0, !1, {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 50,
-        columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 49,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(SanityContent, { value: (_a = globalSettings[0]) == null ? void 0 : _a.aboutMe }, void 0, !1, {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 52,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 48,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "grid mb-5 experience-grid md:grid-cols-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "space-y-4 experience md:col-start-2 [&>article:last-of-type]:mb-3", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h2", { className: "text-gray-600 text-md", children: "Currently" }, void 0, !1, {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 56,
-        columnNumber: 11
-      }, this),
-      currentExperience.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "max-w-2xl mb-8 mast-grid [&>p:first-of-type]:mb-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h1", { className: "text-lg", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("a", { href: "/", children: "drk.wtf" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SanityContent, { value: (_a = globalSettings[0]) == null ? void 0 : _a.aboutMe })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "grid mb-5 experience-grid md:grid-cols-3", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "space-y-4 experience md:col-start-2 [&>article:last-of-type]:mb-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h2", { className: "text-gray-600 text-md", children: "Currently" }),
+      currentExperience.map((item) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
         ExperienceItem,
         {
           title: item.title,
           href: item.url ?? "",
           startYear: new Date(item.startDate).getFullYear(),
           endYear: item.endDate ? new Date(item.endDate).getFullYear() : "Present",
-          children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(SanityContent, { value: item.body }, void 0, !1, {
-            fileName: "app/routes/index.tsx",
-            lineNumber: 66,
-            columnNumber: 17
-          }, this)
+          children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SanityContent, { value: item.body })
         },
-        item.title,
-        !1,
-        {
-          fileName: "app/routes/index.tsx",
-          lineNumber: 59,
-          columnNumber: 15
-        },
-        this
+        item.title
       )),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("br", {}, void 0, !1, {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 70,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h2", { className: "text-gray-600 text-md", children: "Previously" }, void 0, !1, {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 71,
-        columnNumber: 11
-      }, this),
-      previousExperience.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("br", {}),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h2", { className: "text-gray-600 text-md", children: "Previously" }),
+      previousExperience.map((item) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
         ExperienceItem,
         {
           title: item.title,
           href: item.url ?? "",
           startYear: new Date(item.startDate).getFullYear(),
           endYear: item.endDate ? new Date(item.endDate).getFullYear() : "Present",
-          children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(SanityContent, { value: item.body }, void 0, !1, {
-            fileName: "app/routes/index.tsx",
-            lineNumber: 81,
-            columnNumber: 17
-          }, this)
+          children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SanityContent, { value: item.body })
         },
-        item.title,
-        !1,
-        {
-          fileName: "app/routes/index.tsx",
-          lineNumber: 74,
-          columnNumber: 15
-        },
-        this
+        item.title
       )),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
         "a",
         {
           href: "https://www.linkedin.com/in/derek-reynolds-11a806132/",
@@ -888,38 +713,14 @@ function Index() {
             "Linkedin ",
             ">>"
           ]
-        },
-        void 0,
-        !0,
-        {
-          fileName: "app/routes/index.tsx",
-          lineNumber: 85,
-          columnNumber: 11
-        },
-        this
+        }
       )
-    ] }, void 0, !0, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 55,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 54,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("footer", { children: [
+    ] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("footer", { children: [
       "\xA9 Derek Reynolds ",
       new Date().getFullYear()
-    ] }, void 0, !0, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 94,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/index.tsx",
-    lineNumber: 43,
-    columnNumber: 5
-  }, this);
+    ] })
+  ] });
 }
 
 // app/routes/til.tsx
@@ -928,28 +729,16 @@ __export(til_exports, {
   default: () => Til,
   links: () => links3
 });
-var import_react7 = require("@remix-run/react"), import_night_owl = __toESM(require_night_owl()), import_jsx_dev_runtime7 = require("react/jsx-dev-runtime");
+var import_react7 = require("@remix-run/react"), import_night_owl = __toESM(require_night_owl()), import_jsx_runtime7 = require("react/jsx-runtime");
 function links3() {
   return [{ rel: "stylesheet", href: import_night_owl.default }];
 }
 function Til() {
   let location = (0, import_react7.useLocation)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "container pt-10 pb-10 mx-auto prose", children: [
-    location.pathname !== "/til" ? /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react7.Link, { to: "/til", className: "block mb-10", children: "\u2190 \u{1F914} TIL" }, void 0, !1, {
-      fileName: "app/routes/til.tsx",
-      lineNumber: 14,
-      columnNumber: 9
-    }, this) : null,
-    /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(import_react7.Outlet, {}, void 0, !1, {
-      fileName: "app/routes/til.tsx",
-      lineNumber: 18,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/til.tsx",
-    lineNumber: 12,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "container pt-10 pb-10 mx-auto prose", children: [
+    location.pathname !== "/til" ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react7.Link, { to: "/til", className: "block mb-10", children: "\u2190 \u{1F914} TIL" }) : null,
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react7.Outlet, {})
+  ] });
 }
 
 // app/routes/til/$slug.$id.tsx
@@ -959,7 +748,7 @@ __export(slug_id_exports, {
   loader: () => loader4
 });
 var import_react8 = require("@remix-run/react"), import_groq3 = __toESM(require("groq"));
-var import_highlight = __toESM(require("highlight.js")), import_jsx_dev_runtime8 = require("react/jsx-dev-runtime"), loader4 = async ({ params }) => {
+var import_highlight = __toESM(require("highlight.js")), import_jsx_runtime8 = require("react/jsx-runtime"), loader4 = async ({ params }) => {
   let { slug, id } = params, post = await client.fetch(
     import_groq3.default`*[_type == "post" && slug.current == $slug && _id == $id][0]{ title, body }`,
     { slug, id }
@@ -974,26 +763,10 @@ var import_highlight = __toESM(require("highlight.js")), import_jsx_dev_runtime8
 function Component() {
   var _a;
   let { post } = (0, import_react8.useLoaderData)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(import_jsx_dev_runtime8.Fragment, { children: [
-    post != null && post.title ? /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("h1", { children: post.title }, void 0, !1, {
-      fileName: "app/routes/til/$slug.$id.tsx",
-      lineNumber: 39,
-      columnNumber: 22
-    }, this) : null,
-    (post == null ? void 0 : post.body) && ((_a = post.body) == null ? void 0 : _a.length) > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "prose", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(SanityContent, { value: post.body }, void 0, !1, {
-      fileName: "app/routes/til/$slug.$id.tsx",
-      lineNumber: 42,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/til/$slug.$id.tsx",
-      lineNumber: 41,
-      columnNumber: 9
-    }, this) : null
-  ] }, void 0, !0, {
-    fileName: "app/routes/til/$slug.$id.tsx",
-    lineNumber: 38,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_jsx_runtime8.Fragment, { children: [
+    post != null && post.title ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h1", { children: post.title }) : null,
+    (post == null ? void 0 : post.body) && ((_a = post.body) == null ? void 0 : _a.length) > 0 ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "prose", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SanityContent, { value: post.body }) }) : null
+  ] });
 }
 
 // app/routes/til/index.tsx
@@ -1003,31 +776,15 @@ __export(til_exports2, {
   loader: () => loader5
 });
 var import_react9 = require("@remix-run/react"), import_groq4 = __toESM(require("groq"));
-var import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), loader5 = async () => ({ tilPosts: await client.fetch(
+var import_jsx_runtime9 = require("react/jsx-runtime"), loader5 = async () => ({ tilPosts: await client.fetch(
   import_groq4.default`*[_type == "post" && "til" in categories[]->title]{ _id, title, slug }`
 ) });
 function TiLIndexRoute() {
   let { tilPosts } = (0, import_react9.useLoaderData)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("ul", { children: tilPosts.map((note) => /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("li", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(import_react9.Link, { to: `/til/${note.slug.current}/${note._id}`, children: note.title }, void 0, !1, {
-      fileName: "app/routes/til/index.tsx",
-      lineNumber: 22,
-      columnNumber: 11
-    }, this),
-    note.description ? /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { children: note.description }, void 0, !1, {
-      fileName: "app/routes/til/index.tsx",
-      lineNumber: 23,
-      columnNumber: 31
-    }, this) : null
-  ] }, note.slug, !0, {
-    fileName: "app/routes/til/index.tsx",
-    lineNumber: 21,
-    columnNumber: 9
-  }, this)) }, void 0, !1, {
-    fileName: "app/routes/til/index.tsx",
-    lineNumber: 19,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("ul", { children: tilPosts.map((note) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("li", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_react9.Link, { to: `/til/${note.slug.current}/${note._id}`, children: note.title }),
+    note.description ? /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { children: note.description }) : null
+  ] }, note.slug)) });
 }
 
 // app/routes/g.tsx
@@ -1036,24 +793,16 @@ __export(g_exports, {
   default: () => Garden,
   links: () => links4
 });
-var import_react10 = require("@remix-run/react"), import_night_owl2 = __toESM(require_night_owl()), import_jsx_dev_runtime10 = require("react/jsx-dev-runtime");
+var import_react10 = require("@remix-run/react"), import_night_owl2 = __toESM(require_night_owl()), import_jsx_runtime10 = require("react/jsx-runtime");
 function links4() {
   return [{ rel: "stylesheet", href: import_night_owl2.default }];
 }
 function Garden() {
   let location = (0, import_react10.useLocation)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "container pt-10 pb-10 mx-auto prose", children: [
-    location.pathname !== "/g" ? /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_react10.Link, { to: "/g", children: "\u2190 \u{1F331} garden" }, void 0, !1, {
-      fileName: "app/routes/g.tsx",
-      lineNumber: 13,
-      columnNumber: 37
-    }, this) : null,
-    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_react10.Outlet, {}, void 0, !1, {
-      fileName: "app/routes/g.tsx",
-      lineNumber: 14,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "container pt-10 pb-10 mx-auto prose", children: [
+    location.pathname !== "/g" ? /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(import_react10.Link, { to: "/g", children: "\u2190 \u{1F331} garden" }) : null,
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(import_react10.Outlet, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
       "script",
       {
         dangerouslySetInnerHTML: {
@@ -1106,21 +855,9 @@ function hashchange() {
 }
 `
         }
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/g.tsx",
-        lineNumber: 15,
-        columnNumber: 7
-      },
-      this
+      }
     )
-  ] }, void 0, !0, {
-    fileName: "app/routes/g.tsx",
-    lineNumber: 12,
-    columnNumber: 5
-  }, this);
+  ] });
 }
 
 // mdx:routes/g/digital-garden-with-obsidian-and-remix.md
@@ -1742,36 +1479,20 @@ var garden_manifest_default = [
 ];
 
 // app/routes/g/index.tsx
-var import_jsx_dev_runtime11 = require("react/jsx-dev-runtime");
+var import_jsx_runtime11 = require("react/jsx-runtime");
 function loader6() {
   return garden_manifest_default;
 }
 function Index2() {
   let manifest = (0, import_react27.useLoaderData)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("ul", { children: manifest.map((note) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("li", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react27.Link, { to: note.path, children: note.slug }, void 0, !1, {
-      fileName: "app/routes/g/index.tsx",
-      lineNumber: 20,
-      columnNumber: 11
-    }, this),
-    note.description ? /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { children: note.description }, void 0, !1, {
-      fileName: "app/routes/g/index.tsx",
-      lineNumber: 21,
-      columnNumber: 31
-    }, this) : null
-  ] }, note.slug, !0, {
-    fileName: "app/routes/g/index.tsx",
-    lineNumber: 19,
-    columnNumber: 9
-  }, this)) }, void 0, !1, {
-    fileName: "app/routes/g/index.tsx",
-    lineNumber: 17,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("ul", { children: manifest.map((note) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("li", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_react27.Link, { to: note.path, children: note.slug }),
+    note.description ? /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: note.description }) : null
+  ] }, note.slug)) });
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "8b68dea2", entry: { module: "/build/entry.client-NJNBT7YP.js", imports: ["/build/_shared/chunk-SU7KL2ZR.js", "/build/_shared/chunk-TUT2XGCN.js", "/build/_shared/chunk-VAVTCYMY.js", "/build/_shared/chunk-DRUUK3AG.js", "/build/_shared/chunk-LDWVSYYX.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-S2QMS3B4.js", imports: ["/build/_shared/chunk-JME7RMRI.js", "/build/_shared/chunk-RYJZNZZC.js", "/build/_shared/chunk-CXCVOVJ7.js", "/build/_shared/chunk-QU4RUJSN.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g": { id: "routes/g", parentId: "root", path: "g", index: void 0, caseSensitive: void 0, module: "/build/routes/g-DKM4AKNR.js", imports: ["/build/_shared/chunk-2M7FPKZN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/css-to-component": { id: "routes/g/css-to-component", parentId: "routes/g", path: "css-to-component", index: void 0, caseSensitive: void 0, module: "/build/routes/g/css-to-component-RXWABDRL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-notes": { id: "routes/g/digital-garden-notes", parentId: "routes/g", path: "digital-garden-notes", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-notes-CMTJIAN7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-with-obsidian-and-remix": { id: "routes/g/digital-garden-with-obsidian-and-remix", parentId: "routes/g", path: "digital-garden-with-obsidian-and-remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-with-obsidian-and-remix-IRKGISKH.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/drk-wtf-todos": { id: "routes/g/drk-wtf-todos", parentId: "routes/g", path: "drk-wtf-todos", index: void 0, caseSensitive: void 0, module: "/build/routes/g/drk-wtf-todos-4OKD4S27.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/index": { id: "routes/g/index", parentId: "routes/g", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/g/index-2JXLXHFV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/josh-comeau": { id: "routes/g/josh-comeau", parentId: "routes/g", path: "josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/josh-comeau-S4CDAJ3E.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/other-note": { id: "routes/g/other-note", parentId: "routes/g", path: "other-note", index: void 0, caseSensitive: void 0, module: "/build/routes/g/other-note-IQVJEMI6.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/bencodezen": { id: "routes/g/people/bencodezen", parentId: "routes/g", path: "people/bencodezen", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/bencodezen-HW7QODRX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/josh-comeau": { id: "routes/g/people/josh-comeau", parentId: "routes/g", path: "people/josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/josh-comeau-D3SKICNL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/wwwjim": { id: "routes/g/people/wwwjim", parentId: "routes/g", path: "people/wwwjim", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/wwwjim-UEZ3X4MA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/projects/work-at-diy": { id: "routes/g/projects/work-at-diy", parentId: "routes/g", path: "projects/work-at-diy", index: void 0, caseSensitive: void 0, module: "/build/routes/g/projects/work-at-diy-HNNDATBT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/the-fox-team": { id: "routes/g/the-fox-team", parentId: "routes/g", path: "the-fox-team", index: void 0, caseSensitive: void 0, module: "/build/routes/g/the-fox-team-7JXUNEYE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/mdx": { id: "routes/g/tools/mdx", parentId: "routes/g", path: "tools/mdx", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/mdx-MYP6CF7M.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian": { id: "routes/g/tools/obsidian", parentId: "routes/g", path: "tools/obsidian", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-CBZQ7LWA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian-export": { id: "routes/g/tools/obsidian-export", parentId: "routes/g", path: "tools/obsidian-export", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-export-AO47O55E.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/remix": { id: "routes/g/tools/remix", parentId: "routes/g", path: "tools/remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/remix-D7S7AWCF.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/vercel": { id: "routes/g/tools/vercel", parentId: "routes/g", path: "tools/vercel", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/vercel-4OZNHZ7T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-2S2BQS2T.js", imports: ["/build/_shared/chunk-GZAAV3HY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/studio/*": { id: "routes/studio/*", parentId: "root", path: "studio/*", index: void 0, caseSensitive: void 0, module: "/build/routes/studio/*-L3SM4XHD.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til": { id: "routes/til", parentId: "root", path: "til", index: void 0, caseSensitive: void 0, module: "/build/routes/til-GHNZGGJS.js", imports: ["/build/_shared/chunk-2M7FPKZN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/$slug.$id": { id: "routes/til/$slug.$id", parentId: "routes/til", path: ":slug/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/til/$slug.$id-HXAS67D4.js", imports: ["/build/_shared/chunk-GZAAV3HY.js", "/build/_shared/chunk-JME7RMRI.js", "/build/_shared/chunk-RYJZNZZC.js", "/build/_shared/chunk-CXCVOVJ7.js", "/build/_shared/chunk-QU4RUJSN.js", "/build/_shared/chunk-AUYLHJJM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/index": { id: "routes/til/index", parentId: "routes/til", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/til/index-E5Q7SCF6.js", imports: ["/build/_shared/chunk-AUYLHJJM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til[.]rss": { id: "routes/til[.]rss", parentId: "root", path: "til.rss", index: void 0, caseSensitive: void 0, module: "/build/routes/til[.]rss-RNDKDS7J.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-8B68DEA2.js" };
+var assets_manifest_default = { version: "17a6c290", entry: { module: "/build/entry.client-PNLANMNC.js", imports: ["/build/_shared/chunk-643LLCLV.js", "/build/_shared/chunk-L7PYEDWL.js", "/build/_shared/chunk-6UGMMY27.js", "/build/_shared/chunk-XVYNV27Y.js", "/build/_shared/chunk-ADMCF34Z.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-OQLJCST3.js", imports: ["/build/_shared/chunk-N2V66RNF.js", "/build/_shared/chunk-XFTCVZOL.js", "/build/_shared/chunk-R4JO53AE.js", "/build/_shared/chunk-5MBZBJOH.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g": { id: "routes/g", parentId: "root", path: "g", index: void 0, caseSensitive: void 0, module: "/build/routes/g-MW5EBNCJ.js", imports: ["/build/_shared/chunk-P5JH6543.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/css-to-component": { id: "routes/g/css-to-component", parentId: "routes/g", path: "css-to-component", index: void 0, caseSensitive: void 0, module: "/build/routes/g/css-to-component-WAYFBCDC.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-notes": { id: "routes/g/digital-garden-notes", parentId: "routes/g", path: "digital-garden-notes", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-notes-UMHGAWQB.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-with-obsidian-and-remix": { id: "routes/g/digital-garden-with-obsidian-and-remix", parentId: "routes/g", path: "digital-garden-with-obsidian-and-remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-with-obsidian-and-remix-PSAKOZQ3.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/drk-wtf-todos": { id: "routes/g/drk-wtf-todos", parentId: "routes/g", path: "drk-wtf-todos", index: void 0, caseSensitive: void 0, module: "/build/routes/g/drk-wtf-todos-OU2CWPL5.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/index": { id: "routes/g/index", parentId: "routes/g", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/g/index-6WZNQHCG.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/josh-comeau": { id: "routes/g/josh-comeau", parentId: "routes/g", path: "josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/josh-comeau-LATJ2NW4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/other-note": { id: "routes/g/other-note", parentId: "routes/g", path: "other-note", index: void 0, caseSensitive: void 0, module: "/build/routes/g/other-note-F7E6JCVZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/bencodezen": { id: "routes/g/people/bencodezen", parentId: "routes/g", path: "people/bencodezen", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/bencodezen-TM3AD7C7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/josh-comeau": { id: "routes/g/people/josh-comeau", parentId: "routes/g", path: "people/josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/josh-comeau-LV4CRFCL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/wwwjim": { id: "routes/g/people/wwwjim", parentId: "routes/g", path: "people/wwwjim", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/wwwjim-CDZH5RWF.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/projects/work-at-diy": { id: "routes/g/projects/work-at-diy", parentId: "routes/g", path: "projects/work-at-diy", index: void 0, caseSensitive: void 0, module: "/build/routes/g/projects/work-at-diy-HGOG6URF.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/the-fox-team": { id: "routes/g/the-fox-team", parentId: "routes/g", path: "the-fox-team", index: void 0, caseSensitive: void 0, module: "/build/routes/g/the-fox-team-62XCCLOX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/mdx": { id: "routes/g/tools/mdx", parentId: "routes/g", path: "tools/mdx", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/mdx-7EFDSQLP.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian": { id: "routes/g/tools/obsidian", parentId: "routes/g", path: "tools/obsidian", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-OSTT522W.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian-export": { id: "routes/g/tools/obsidian-export", parentId: "routes/g", path: "tools/obsidian-export", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-export-5UNQRQTK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/remix": { id: "routes/g/tools/remix", parentId: "routes/g", path: "tools/remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/remix-2NLQMY4K.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/vercel": { id: "routes/g/tools/vercel", parentId: "routes/g", path: "tools/vercel", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/vercel-K3VOW7KH.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-QHDSJQH6.js", imports: ["/build/_shared/chunk-XMP2MURD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/studio/*": { id: "routes/studio/*", parentId: "root", path: "studio/*", index: void 0, caseSensitive: void 0, module: "/build/routes/studio/*-2BG3K3ID.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til": { id: "routes/til", parentId: "root", path: "til", index: void 0, caseSensitive: void 0, module: "/build/routes/til-BEWTWWUS.js", imports: ["/build/_shared/chunk-P5JH6543.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/$slug.$id": { id: "routes/til/$slug.$id", parentId: "routes/til", path: ":slug/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/til/$slug.$id-CGS6TEGE.js", imports: ["/build/_shared/chunk-XMP2MURD.js", "/build/_shared/chunk-N2V66RNF.js", "/build/_shared/chunk-XFTCVZOL.js", "/build/_shared/chunk-R4JO53AE.js", "/build/_shared/chunk-5MBZBJOH.js", "/build/_shared/chunk-URNZPFSF.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/index": { id: "routes/til/index", parentId: "routes/til", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/til/index-726AUHAQ.js", imports: ["/build/_shared/chunk-URNZPFSF.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til[.]rss": { id: "routes/til[.]rss", parentId: "root", path: "til.rss", index: void 0, caseSensitive: void 0, module: "/build/routes/til[.]rss-3OCMUGVQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-17A6C290.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !0, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -1976,13 +1697,8 @@ var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, u
     module: g_exports2
   }
 };
+
+// server.js
+var import_vercel = require("@remix-run/vercel"), server_default = (0, import_vercel.createRequestHandler)({ build: server_build_exports, mode: "production" });
 // Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  assets,
-  assetsBuildDirectory,
-  entry,
-  future,
-  publicPath,
-  routes
-});
-//# sourceMappingURL=index.js.map
+0 && (module.exports = {});
