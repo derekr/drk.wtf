@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation } from "@remix-run/react";
+import { Link, Outlet, useLocation } from '@remix-run/react'
 import codeSyntaxStyles from 'highlight.js/styles/night-owl.css'
 
 export function links() {
@@ -14,7 +14,11 @@ export default function Til() {
         <Link to="/til" className="block mb-10">
           ← 🤔 TIL
         </Link>
-      ) : null}
+      ) : (
+        <Link to="/" className="block mb-10">
+          ← 🏠 Home
+        </Link>
+      )}
       <Outlet />
     </div>
   )

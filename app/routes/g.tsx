@@ -10,7 +10,13 @@ export default function Garden() {
 
   return (
     <div className="container pt-10 pb-10 mx-auto prose">
-      {location.pathname !== '/g' ? <Link to="/g">← 🌱 garden</Link> : null}
+      {location.pathname !== '/g' ? (
+        <Link to="/g">← 🌱 garden</Link>
+      ) : (
+        <Link to="/" className="block mb-10">
+          ← 🏠 Home
+        </Link>
+      )}
       <Outlet />
       <script
         dangerouslySetInnerHTML={{
