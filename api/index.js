@@ -65,7 +65,157 @@ __export(root_exports, {
   loader: () => loader,
   meta: () => meta
 });
-var import_react2 = require("@remix-run/react"), import_node = require("@remix-run/node"), import_react3 = require("@remix-run/react");
+var import_react2 = require("@remix-run/react"), import_server_runtime = require("@remix-run/server-runtime"), import_react3 = require("@remix-run/react");
+
+// app/sanity/project-details.ts
+var projectDetails = () => {
+  var _a, _b, _c;
+  return {
+    projectId: typeof document > "u" ? process.env.SANITY_PROJECT_ID : (_a = window == null ? void 0 : window.ENV) == null ? void 0 : _a.projectId,
+    dataset: typeof document > "u" ? process.env.SANITY_DATASET : (_b = window == null ? void 0 : window.ENV) == null ? void 0 : _b.dataset,
+    apiVersion: typeof document > "u" ? process.env.SANITY_API_VERSION : (_c = window == null ? void 0 : window.ENV) == null ? void 0 : _c.apiVersion
+  };
+};
+
+// app/styles/tailwind.css
+var tailwind_default = "/build/_assets/tailwind-ZYBGIOS5.css";
+
+// app/styles/global.css
+var global_default = "/build/_assets/global-UZ4QWBRH.css";
+
+// app/root.tsx
+var import_jsx_dev_runtime2 = require("react/jsx-dev-runtime"), meta = () => ({ title: "Welcome to the drkweb | drk.wtf" });
+function links() {
+  return [
+    { rel: "stylesheet", href: tailwind_default },
+    { rel: "stylesheet", href: global_default }
+  ];
+}
+async function loader() {
+  return (0, import_server_runtime.json)({ ENV: projectDetails() });
+}
+function App() {
+  let data = (0, import_react3.useLoaderData)(), { pathname } = (0, import_react3.useLocation)(), isStudioRoute = pathname.startsWith("/studio");
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { charSet: "utf-8" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 33,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { name: "viewport", content: "width=device-width,initial-scale=1" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 34,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Meta, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 35,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Links, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 36,
+        columnNumber: 9
+      }, this),
+      isStudioRoute && typeof document > "u" ? "__STYLES__" : null
+    ] }, void 0, !0, {
+      fileName: "app/root.tsx",
+      lineNumber: 32,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { className: "p-3", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Outlet, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 40,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.ScrollRestoration, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 41,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+        "script",
+        {
+          dangerouslySetInnerHTML: {
+            __html: `window.ENV = ${JSON.stringify(data.ENV)}`
+          }
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/root.tsx",
+          lineNumber: 42,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Scripts, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 47,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.LiveReload, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 48,
+        columnNumber: 52
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/root.tsx",
+      lineNumber: 39,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/root.tsx",
+    lineNumber: 31,
+    columnNumber: 5
+  }, this);
+}
+
+// app/routes/api/raindrop-new.ts
+var raindrop_new_exports = {};
+__export(raindrop_new_exports, {
+  action: () => action,
+  config: () => config
+});
+var config = { runtime: "edge" };
+async function action({ request }) {
+  let headers17 = request.headers, payload = await request.json();
+  if (headers17.get("token") !== process.env.RAINDROP_TEST_TOKEN)
+    throw new Error("Invalid token");
+  return fetch("https://api.raindrop.io/rest/v1/raindrop", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.RAINDROP_TEST_TOKEN}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ pleaseParse: {}, link: payload.link })
+  });
+}
+
+// app/routes/til[.]rss.tsx
+var til_rss_exports = {};
+__export(til_rss_exports, {
+  loader: () => loader2
+});
+
+// app/sanity/queries/all-til-posts.ts
+var import_groq = __toESM(require("groq")), all_til_posts_default = import_groq.default`
+*[
+  _type == "post" && "til" in categories[]->title
+]{
+  _id, 
+  title,
+  body, 
+  slug, 
+  piblishedAt,
+  author->
+}
+`;
+
+// app/sanity/client.ts
+var import_client = __toESM(require("@sanity/client"));
 
 // app/sanity/config.ts
 var import_sanity8 = require("sanity"), import_desk = require("sanity/desk"), import_code_input = require("@sanity/code-input");
@@ -399,14 +549,7 @@ var schemaTypes = [
 ];
 
 // app/sanity/config.ts
-var projectDetails = () => {
-  var _a, _b, _c;
-  return {
-    projectId: typeof document > "u" ? process.env.SANITY_PROJECT_ID : (_a = window == null ? void 0 : window.ENV) == null ? void 0 : _a.projectId,
-    dataset: typeof document > "u" ? process.env.SANITY_DATASET : (_b = window == null ? void 0 : window.ENV) == null ? void 0 : _b.dataset,
-    apiVersion: typeof document > "u" ? process.env.SANITY_API_VERSION : (_c = window == null ? void 0 : window.ENV) == null ? void 0 : _c.apiVersion
-  };
-}, config = (0, import_sanity8.defineConfig)({
+var config2 = (0, import_sanity8.defineConfig)({
   ...projectDetails(),
   plugins: [
     (0, import_desk.deskTool)(),
@@ -418,124 +561,7 @@ var projectDetails = () => {
   }
 });
 
-// app/styles/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-75PFVVRK.css";
-
-// app/styles/global.css
-var global_default = "/build/_assets/global-UZ4QWBRH.css";
-
-// app/root.tsx
-var import_jsx_dev_runtime2 = require("react/jsx-dev-runtime"), meta = () => ({ title: "Welcome to the drkweb | drk.wtf" });
-function links() {
-  return [
-    { rel: "stylesheet", href: tailwind_default },
-    { rel: "stylesheet", href: global_default }
-  ];
-}
-async function loader() {
-  return (0, import_node.json)({ ENV: projectDetails() });
-}
-function App() {
-  let data = (0, import_react3.useLoaderData)(), { pathname } = (0, import_react3.useLocation)(), isStudioRoute = pathname.startsWith("/studio");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { charSet: "utf-8" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 33,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { name: "viewport", content: "width=device-width,initial-scale=1" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 34,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Meta, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 35,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 36,
-        columnNumber: 9
-      }, this),
-      isStudioRoute && typeof document > "u" ? "__STYLES__" : null
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 32,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { className: "p-3", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Outlet, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 40,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.ScrollRestoration, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 41,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-        "script",
-        {
-          dangerouslySetInnerHTML: {
-            __html: `window.ENV = ${JSON.stringify(data.ENV)}`
-          }
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/root.tsx",
-          lineNumber: 42,
-          columnNumber: 9
-        },
-        this
-      ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Scripts, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 47,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.LiveReload, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 48,
-        columnNumber: 52
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 39,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/root.tsx",
-    lineNumber: 31,
-    columnNumber: 5
-  }, this);
-}
-
-// app/routes/til[.]rss.tsx
-var til_rss_exports = {};
-__export(til_rss_exports, {
-  loader: () => loader2
-});
-
-// app/sanity/queries/all-til-posts.ts
-var import_groq = __toESM(require("groq")), all_til_posts_default = import_groq.default`
-*[
-  _type == "post" && "til" in categories[]->title
-]{
-  _id, 
-  title,
-  body, 
-  slug, 
-  piblishedAt,
-  author->
-}
-`;
-
 // app/sanity/client.ts
-var import_client = __toESM(require("@sanity/client"));
 var client = new import_client.default({
   ...projectDetails(),
   useCdn: !0
@@ -615,7 +641,7 @@ var studio_default = "/build/_assets/studio-7UYMGTOZ.css";
 // app/routes/studio/*.tsx
 var import_jsx_dev_runtime3 = require("react/jsx-dev-runtime"), links2 = () => [{ rel: "stylesheet", href: studio_default }];
 function StudioPage() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(import_remix_utils.ClientOnly, { children: () => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(import_sanity9.Studio, { config }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(import_remix_utils.ClientOnly, { children: () => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(import_sanity9.Studio, { config: config2 }, void 0, !1, {
     fileName: "app/routes/studio/*.tsx",
     lineNumber: 14,
     columnNumber: 29
@@ -1149,7 +1175,6 @@ function MDXContent(props = {}) {
     h2: "h2",
     pre: "pre",
     code: "code",
-    span: "span",
     ul: "ul",
     li: "li",
     strong: "strong"
@@ -1160,27 +1185,27 @@ function MDXContent(props = {}) {
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "OK\u2026\xA0Enough context setting. My main goal for this note is capturing the setup in case I want to do this again or keep up with how the setup might change."), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.h2, { id: "user-content-setting-up-remix" }, /* @__PURE__ */ import_react11.default.createElement(_components.a, { href: "#setting-up-remix" }, "Setting up Remix")), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "Going to setup Remix first because I'm keeping my Obsidian vault (more on that later) in the site repo."), `
-`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, { className: "hljs language-bash" }, `npx create-remix@latest
-`, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-comment" }, "# choose Remix App Server"), `
-`, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-built_in" }, "cd"), ` [whatever you named the project]
+`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, null, `npx create-remix@latest
+# choose Remix App Server
+cd [whatever you named the project]
 npm run dev
 `)), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "https://remix.run/docs/en/v1/tutorials/blog"), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "The scaffolding of this initial project willd depend on when/how the setup command is run. I chose Vercel for my deployment paltform."), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "We should be able to run the dev command and access our site at localhost:3000."), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "I also set this up as a git repo by running:"), `
-`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, { className: "hljs language-csharp" }, "git ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-keyword" }, "init"), `
+`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, null, `git init
 `)), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.h2, { id: "user-content-setting-up-obsidian" }, /* @__PURE__ */ import_react11.default.createElement(_components.a, { href: "#setting-up-obsidian" }, "Setting up Obsidian")), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "Download the latest version of Obsidian at their website https://obsidian.md. It will ask to open and existing vault or create a new one. I created a new vault in the root of my my repo (next to remix's ", /* @__PURE__ */ import_react11.default.createElement(_components.code, null, "app"), " directory) named ", /* @__PURE__ */ import_react11.default.createElement(_components.code, null, "garden"), ". You can put it inside the routes directory, but may hit issues with remix trying to parse the ", /* @__PURE__ */ import_react11.default.createElement(_components.code, null, ".obsidian"), " directory as a route. This may no longer be an issue with https://github.com/remix-run/remix/pull/988. Created a few sample notes to test out some of Obsidian's key features like backlinks and reference embeds. Not necessary, but I also installed the Minimal Theme https://github.com/kepano/obsidian-minimal."), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.h2, { id: "user-content-exporting-obsidian-to-remix" }, /* @__PURE__ */ import_react11.default.createElement(_components.a, { href: "#exporting-obsidian-to-remix" }, "Exporting Obsidian to Remix")), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "Now that I have some markdown I need to by able to serve it from my Remix site. Luckily Remix has first class support for ", /* @__PURE__ */ import_react11.default.createElement(_components.a, { href: "tools/mdx" }, "mdx"), " (https://mdxjs.com) so I'm going with an approach of copying the markdown files from Obsidian to my ", /* @__PURE__ */ import_react11.default.createElement(_components.code, null, "app/routes"), " folder. Obsidian doesn't have a bulk export feature as of yet (it's on their roadmap), but luckily someone has authored a great tool ", /* @__PURE__ */ import_react11.default.createElement(_components.a, { href: "tools/obsidian-export" }, "obsidian-export"), " that we can leverage. It also will handle compiling backlinks and reference embeds automatically for us."), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "For installation I already had rust installed and opted to use the crates package manger, but you could download a pre-built binary as well. Check thir repo for more info https://github.com/zoni/obsidian-export."), `
-`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, { className: "hljs language-arduino" }, `brew install rust
-cargo install obsidian-`, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-keyword" }, "export"), `
+`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, null, `brew install rust
+cargo install obsidian-export
 `)), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "Once installed you can runt he command to export from ", /* @__PURE__ */ import_react11.default.createElement(_components.code, null, "garden"), " in to your ", /* @__PURE__ */ import_react11.default.createElement(_components.code, null, "app/routes"), " directory."), `
-`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, { className: "hljs language-arduino" }, "obsidian-", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-keyword" }, "export"), ` garden/ app/routes/g
+`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, null, `obsidian-export garden/ app/routes/g
 `)), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "Now you can navigate to any of your markdown compiled pages via http://localhost:3000/g/some-page. However! You may notice that your links to other markdown pages (typically backlinks) are broken. By default the compiled links contain the ", /* @__PURE__ */ import_react11.default.createElement(_components.code, null, ".md"), " extension. We'll need to strip those. Otherwise things should be working fairly well. The only other snag I hit was markdown files containing html using ", /* @__PURE__ */ import_react11.default.createElement(_components.code, null, "class"), " instead of ", /* @__PURE__ */ import_react11.default.createElement(_components.code, null, "className"), " because you know\u2026\xA0MDX. There's a fix for that too!"), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.h2, { id: "user-content-configuring-remix" }, /* @__PURE__ */ import_react11.default.createElement(_components.a, { href: "#configuring-remix" }, "Configuring Remix")), `
@@ -1190,40 +1215,40 @@ cargo install obsidian-`, /* @__PURE__ */ import_react11.default.createElement(_
 `, /* @__PURE__ */ import_react11.default.createElement(_components.li, null, /* @__PURE__ */ import_react11.default.createElement(_components.strong, null, "rehypeSanitize"), " \u2013\xA0I plan on using other plugins in Obsidian and possible rehype/remark and think it's helpful to sanitize any generated html."), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.li, null, /* @__PURE__ */ import_react11.default.createElement(_components.strong, null, "rehypeRewrite"), " \u2013\xA0For striping the ", /* @__PURE__ */ import_react11.default.createElement(_components.code, null, ".md"), " extension."), `
 `), `
-`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, { className: "hljs language-csharp" }, "npm ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-keyword" }, "add"), ` rehype-rewrite rehype-react rehype-sanitize
+`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, null, `npm add rehype-rewrite rehype-react rehype-sanitize
 `)), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "And my ", /* @__PURE__ */ import_react11.default.createElement(_components.code, null, "remix.config.js"), " file looks like this:"), `
-`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, { className: "hljs language-javascript" }, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-keyword" }, "const"), " ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-title class_" }, "React"), " = ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-built_in" }, "require"), "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "'react'"), `)
+`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, null, `const React = require('react')
 
-`, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-comment" }, `/**
- * `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-doctag" }, "@type"), " {", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-type" }, "import('@remix-run/dev/config').AppConfig"), `}
- */`), `
-`, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-variable language_" }, "module"), ".", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-property" }, "exports"), ` = {
-  `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-attr" }, "appDirectory"), ": ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "'app'"), `,
-  `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-attr" }, "assetsBuildDirectory"), ": ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "'public/build'"), `,
-  `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-attr" }, "publicPath"), ": ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "'/build/'"), `,
-  `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-attr" }, "serverBuildDirectory"), ": ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "'api/_build'"), `,
-  `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-attr" }, "ignoredRouteFiles"), ": [", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "'.*'"), `],
-  `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-attr" }, "mdx"), ": ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-keyword" }, "async"), ` (filename) => {
-    `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-keyword" }, "const"), " [rehypeRewrite, rehypeReact, rehypeSanitize] = ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-keyword" }, "await"), " ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-title class_" }, "Promise"), ".", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-title function_" }, "all"), `([
-      `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-title function_" }, "import"), "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "'rehype-rewrite'"), ").", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-title function_" }, "then"), "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-function" }, "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-params" }, "mod"), ") =>"), " mod.", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-property" }, "default"), `),
-      `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-title function_" }, "import"), "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "'rehype-react'"), ").", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-title function_" }, "then"), "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-function" }, "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-params" }, "mod"), ") =>"), " mod.", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-property" }, "default"), `),
-      `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-title function_" }, "import"), "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "'rehype-sanitize'"), ").", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-title function_" }, "then"), "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-function" }, "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-params" }, "mod"), ") =>"), " mod.", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-property" }, "default"), `),
+/**
+ * @type {import('@remix-run/dev/config').AppConfig}
+ */
+module.exports = {
+  appDirectory: 'app',
+  assetsBuildDirectory: 'public/build',
+  publicPath: '/build/',
+  serverBuildDirectory: 'api/_build',
+  ignoredRouteFiles: ['.*'],
+  mdx: async (filename) => {
+    const [rehypeRewrite, rehypeReact, rehypeSanitize] = await Promise.all([
+      import('rehype-rewrite').then((mod) => mod.default),
+      import('rehype-react').then((mod) => mod.default),
+      import('rehype-sanitize').then((mod) => mod.default),
     ])
 
-    `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-keyword" }, "return"), ` {
-      `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-attr" }, "rehypePlugins"), `: [
+    return {
+      rehypePlugins: [
         [
           rehypeRewrite,
           {
-            `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-attr" }, "rewrite"), ": ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-function" }, "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-params" }, "node"), ") =>"), ` {
-              `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-keyword" }, "if"), " (node && node.", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-property" }, "tagName"), " === ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "'a'"), `) {
-                node.`, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-property" }, "properties"), ".", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-property" }, "href"), " = node.", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-property" }, "properties"), ".", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-property" }, "href"), ".", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-title function_" }, "replace"), "(", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "'.md'"), ", ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-string" }, "''"), `)
+            rewrite: (node) => {
+              if (node && node.tagName === 'a') {
+                node.properties.href = node.properties.href.replace('.md', '')
               }
             },
           },
         ],
-        [rehypeReact, { `, /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-attr" }, "createElement"), ": ", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-title class_" }, "React"), ".", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-property" }, "createElement"), ` }],
+        [rehypeReact, { createElement: React.createElement }],
         rehypeSanitize,
       ],
     }
@@ -1232,9 +1257,9 @@ cargo install obsidian-`, /* @__PURE__ */ import_react11.default.createElement(_
 `)), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.h2, { id: "user-content-workflow" }, /* @__PURE__ */ import_react11.default.createElement(_components.a, { href: "#workflow" }, "Workflow")), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "Right now I'm opting for a more manual workflow instead of incorporating watching and exporting on change. Doesn't seem necessary at this point and Obsidian is constantly saving which may make live reload problematic. Anyway as I'm authoring or whenever I feel the need I'll run the export command while remix dev is running in a separate process."), `
-`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, { className: "hljs language-arduino" }, `npm run dev
+`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, null, `npm run dev
 `)), `
-`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, { className: "hljs language-arduino" }, "obsidian-", /* @__PURE__ */ import_react11.default.createElement(_components.span, { className: "hljs-keyword" }, "export"), ` garden/ app/routes/g
+`, /* @__PURE__ */ import_react11.default.createElement(_components.pre, null, /* @__PURE__ */ import_react11.default.createElement(_components.code, null, `obsidian-export garden/ app/routes/g
 `)), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.p, null, "The exporitng should cause remix to live reload or you can manually refresh as needed."), `
 `, /* @__PURE__ */ import_react11.default.createElement(_components.h2, { id: "user-content-long-term" }, /* @__PURE__ */ import_react11.default.createElement(_components.a, { href: "#long-term" }, "Long-term")), `
@@ -1459,17 +1484,16 @@ function MDXContent7(props = {}) {
     p: "p",
     a: "a",
     pre: "pre",
-    code: "code",
-    span: "span"
+    code: "code"
   }, props.components), { wrapper: MDXLayout } = _components, _content = /* @__PURE__ */ import_react17.default.createElement(import_react17.default.Fragment, null, /* @__PURE__ */ import_react17.default.createElement(_components.p, null, "I'm fairly certain this has been attempted, and I've seen it, but am having a difficult time tracking anything down."), `
 `, /* @__PURE__ */ import_react17.default.createElement(_components.p, null, "tl;dr given CSS as an input, output components \u2013 initially React."), `
 `, /* @__PURE__ */ import_react17.default.createElement(_components.p, null, "Bonus points if it can be driven by ", /* @__PURE__ */ import_react17.default.createElement(_components.a, { href: "https://chan.dev/posts/avo-a-bem-dialect-using-data-attributes/" }, "AVO \u{1F951} \u2014\xA0A BEM Dialect Using Data Attributes (chan.dev)"), "."), `
-`, /* @__PURE__ */ import_react17.default.createElement(_components.pre, null, /* @__PURE__ */ import_react17.default.createElement(_components.code, { className: "hljs language-css" }, /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-selector-attr" }, "[data-avatar]"), ` {
-  `, /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-attribute" }, "color"), ": ", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-string" }, "'red'"), `;
+`, /* @__PURE__ */ import_react17.default.createElement(_components.pre, null, /* @__PURE__ */ import_react17.default.createElement(_components.code, null, `[data-avatar] {
+  color: 'red';
 }
 `)), `
-`, /* @__PURE__ */ import_react17.default.createElement(_components.pre, null, /* @__PURE__ */ import_react17.default.createElement(_components.code, { className: "hljs language-javascript" }, /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-keyword" }, "const"), " ", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-title function_" }, "Avatar"), " = (", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-params" }, "{ ", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-keyword" }, "as"), ": Element, children, ...props }"), `) => {
-  `, /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-keyword" }, "return"), " children ? ", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "xml" }, /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-tag" }, "<", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-name" }, "Element"), " {", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-attr" }, "...props"), "}>"), "{children}", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-tag" }, "</", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-name" }, "Element"), ">")), " : ", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "xml" }, /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-tag" }, "<", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-name" }, "Element"), " {", /* @__PURE__ */ import_react17.default.createElement(_components.span, { className: "hljs-attr" }, "...props"), "} />")), `
+`, /* @__PURE__ */ import_react17.default.createElement(_components.pre, null, /* @__PURE__ */ import_react17.default.createElement(_components.code, null, `const Avatar = ({ as: Element, children, ...props }) => {
+  return children ? <Element {...props}>{children}</Element> : <Element {...props} />
 }
 `)), `
 `, /* @__PURE__ */ import_react17.default.createElement(_components.p, null, `Potential parsers:
@@ -1779,10 +1803,10 @@ function Index2() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "3d516604", entry: { module: "/build/entry.client-SLHU7GK5.js", imports: ["/build/_shared/chunk-SU7KL2ZR.js", "/build/_shared/chunk-OW3SUBS2.js", "/build/_shared/chunk-VAVTCYMY.js", "/build/_shared/chunk-DRUUK3AG.js", "/build/_shared/chunk-LDWVSYYX.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-QGM2K3GA.js", imports: ["/build/_shared/chunk-JME7RMRI.js", "/build/_shared/chunk-RYJZNZZC.js", "/build/_shared/chunk-CXCVOVJ7.js", "/build/_shared/chunk-QU4RUJSN.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g": { id: "routes/g", parentId: "root", path: "g", index: void 0, caseSensitive: void 0, module: "/build/routes/g-ESUBJ7UK.js", imports: ["/build/_shared/chunk-2M7FPKZN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/css-to-component": { id: "routes/g/css-to-component", parentId: "routes/g", path: "css-to-component", index: void 0, caseSensitive: void 0, module: "/build/routes/g/css-to-component-RXWABDRL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-notes": { id: "routes/g/digital-garden-notes", parentId: "routes/g", path: "digital-garden-notes", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-notes-CMTJIAN7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-with-obsidian-and-remix": { id: "routes/g/digital-garden-with-obsidian-and-remix", parentId: "routes/g", path: "digital-garden-with-obsidian-and-remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-with-obsidian-and-remix-IRKGISKH.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/drk-wtf-todos": { id: "routes/g/drk-wtf-todos", parentId: "routes/g", path: "drk-wtf-todos", index: void 0, caseSensitive: void 0, module: "/build/routes/g/drk-wtf-todos-4OKD4S27.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/index": { id: "routes/g/index", parentId: "routes/g", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/g/index-TQE3EGNW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/josh-comeau": { id: "routes/g/josh-comeau", parentId: "routes/g", path: "josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/josh-comeau-S4CDAJ3E.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/other-note": { id: "routes/g/other-note", parentId: "routes/g", path: "other-note", index: void 0, caseSensitive: void 0, module: "/build/routes/g/other-note-IQVJEMI6.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/bencodezen": { id: "routes/g/people/bencodezen", parentId: "routes/g", path: "people/bencodezen", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/bencodezen-HW7QODRX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/josh-comeau": { id: "routes/g/people/josh-comeau", parentId: "routes/g", path: "people/josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/josh-comeau-D3SKICNL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/wwwjim": { id: "routes/g/people/wwwjim", parentId: "routes/g", path: "people/wwwjim", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/wwwjim-UEZ3X4MA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/projects/work-at-diy": { id: "routes/g/projects/work-at-diy", parentId: "routes/g", path: "projects/work-at-diy", index: void 0, caseSensitive: void 0, module: "/build/routes/g/projects/work-at-diy-HNNDATBT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/the-fox-team": { id: "routes/g/the-fox-team", parentId: "routes/g", path: "the-fox-team", index: void 0, caseSensitive: void 0, module: "/build/routes/g/the-fox-team-7JXUNEYE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/mdx": { id: "routes/g/tools/mdx", parentId: "routes/g", path: "tools/mdx", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/mdx-MYP6CF7M.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian": { id: "routes/g/tools/obsidian", parentId: "routes/g", path: "tools/obsidian", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-CBZQ7LWA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian-export": { id: "routes/g/tools/obsidian-export", parentId: "routes/g", path: "tools/obsidian-export", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-export-AO47O55E.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/remix": { id: "routes/g/tools/remix", parentId: "routes/g", path: "tools/remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/remix-D7S7AWCF.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/vercel": { id: "routes/g/tools/vercel", parentId: "routes/g", path: "tools/vercel", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/vercel-4OZNHZ7T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-UQFVKZH4.js", imports: ["/build/_shared/chunk-4BOPEPWG.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/studio/*": { id: "routes/studio/*", parentId: "root", path: "studio/*", index: void 0, caseSensitive: void 0, module: "/build/routes/studio/*-L3SM4XHD.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til": { id: "routes/til", parentId: "root", path: "til", index: void 0, caseSensitive: void 0, module: "/build/routes/til-LIYP4NFR.js", imports: ["/build/_shared/chunk-2M7FPKZN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/$slug.$id": { id: "routes/til/$slug.$id", parentId: "routes/til", path: ":slug/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/til/$slug.$id-A7FUWGF7.js", imports: ["/build/_shared/chunk-4BOPEPWG.js", "/build/_shared/chunk-JME7RMRI.js", "/build/_shared/chunk-RYJZNZZC.js", "/build/_shared/chunk-CXCVOVJ7.js", "/build/_shared/chunk-QU4RUJSN.js", "/build/_shared/chunk-AUYLHJJM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/index": { id: "routes/til/index", parentId: "routes/til", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/til/index-6NAZX5DL.js", imports: ["/build/_shared/chunk-AUYLHJJM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til[.]rss": { id: "routes/til[.]rss", parentId: "root", path: "til.rss", index: void 0, caseSensitive: void 0, module: "/build/routes/til[.]rss-RNDKDS7J.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-3D516604.js" };
+var assets_manifest_default = { version: "11270b3a", entry: { module: "/build/entry.client-IMSMVNVB.js", imports: ["/build/_shared/chunk-SU7KL2ZR.js", "/build/_shared/chunk-5MNA3WQF.js", "/build/_shared/chunk-VAVTCYMY.js", "/build/_shared/chunk-DRUUK3AG.js", "/build/_shared/chunk-LDWVSYYX.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-X6DOWYY2.js", imports: ["/build/_shared/chunk-NNJFXNFU.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/raindrop-new": { id: "routes/api/raindrop-new", parentId: "root", path: "api/raindrop-new", index: void 0, caseSensitive: void 0, module: "/build/routes/api/raindrop-new-RWLRFMAZ.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g": { id: "routes/g", parentId: "root", path: "g", index: void 0, caseSensitive: void 0, module: "/build/routes/g-RISXKLWQ.js", imports: ["/build/_shared/chunk-2M7FPKZN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/css-to-component": { id: "routes/g/css-to-component", parentId: "routes/g", path: "css-to-component", index: void 0, caseSensitive: void 0, module: "/build/routes/g/css-to-component-QHOJ6QAZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-notes": { id: "routes/g/digital-garden-notes", parentId: "routes/g", path: "digital-garden-notes", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-notes-CMTJIAN7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-with-obsidian-and-remix": { id: "routes/g/digital-garden-with-obsidian-and-remix", parentId: "routes/g", path: "digital-garden-with-obsidian-and-remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-with-obsidian-and-remix-LPISPU5T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/drk-wtf-todos": { id: "routes/g/drk-wtf-todos", parentId: "routes/g", path: "drk-wtf-todos", index: void 0, caseSensitive: void 0, module: "/build/routes/g/drk-wtf-todos-4OKD4S27.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/index": { id: "routes/g/index", parentId: "routes/g", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/g/index-TAQKVSYX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/josh-comeau": { id: "routes/g/josh-comeau", parentId: "routes/g", path: "josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/josh-comeau-S4CDAJ3E.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/other-note": { id: "routes/g/other-note", parentId: "routes/g", path: "other-note", index: void 0, caseSensitive: void 0, module: "/build/routes/g/other-note-IQVJEMI6.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/bencodezen": { id: "routes/g/people/bencodezen", parentId: "routes/g", path: "people/bencodezen", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/bencodezen-HW7QODRX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/josh-comeau": { id: "routes/g/people/josh-comeau", parentId: "routes/g", path: "people/josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/josh-comeau-D3SKICNL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/wwwjim": { id: "routes/g/people/wwwjim", parentId: "routes/g", path: "people/wwwjim", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/wwwjim-UEZ3X4MA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/projects/work-at-diy": { id: "routes/g/projects/work-at-diy", parentId: "routes/g", path: "projects/work-at-diy", index: void 0, caseSensitive: void 0, module: "/build/routes/g/projects/work-at-diy-HNNDATBT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/the-fox-team": { id: "routes/g/the-fox-team", parentId: "routes/g", path: "the-fox-team", index: void 0, caseSensitive: void 0, module: "/build/routes/g/the-fox-team-7JXUNEYE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/mdx": { id: "routes/g/tools/mdx", parentId: "routes/g", path: "tools/mdx", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/mdx-MYP6CF7M.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian": { id: "routes/g/tools/obsidian", parentId: "routes/g", path: "tools/obsidian", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-CBZQ7LWA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian-export": { id: "routes/g/tools/obsidian-export", parentId: "routes/g", path: "tools/obsidian-export", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-export-AO47O55E.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/remix": { id: "routes/g/tools/remix", parentId: "routes/g", path: "tools/remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/remix-D7S7AWCF.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/vercel": { id: "routes/g/tools/vercel", parentId: "routes/g", path: "tools/vercel", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/vercel-4OZNHZ7T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-ATGM7NN4.js", imports: ["/build/_shared/chunk-PSAUHJ3F.js", "/build/_shared/chunk-ZDDQV7JV.js", "/build/_shared/chunk-EHPD4F7T.js", "/build/_shared/chunk-D2IB3N7Z.js", "/build/_shared/chunk-LPF65VLB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/studio/*": { id: "routes/studio/*", parentId: "root", path: "studio/*", index: void 0, caseSensitive: void 0, module: "/build/routes/studio/*-DAWPVHC4.js", imports: ["/build/_shared/chunk-ZDDQV7JV.js", "/build/_shared/chunk-EHPD4F7T.js", "/build/_shared/chunk-D2IB3N7Z.js", "/build/_shared/chunk-LPF65VLB.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til": { id: "routes/til", parentId: "root", path: "til", index: void 0, caseSensitive: void 0, module: "/build/routes/til-OR2NOQFG.js", imports: ["/build/_shared/chunk-2M7FPKZN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/$slug.$id": { id: "routes/til/$slug.$id", parentId: "routes/til", path: ":slug/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/til/$slug.$id-S4TWLQP6.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-PSAUHJ3F.js", "/build/_shared/chunk-ZDDQV7JV.js", "/build/_shared/chunk-EHPD4F7T.js", "/build/_shared/chunk-D2IB3N7Z.js", "/build/_shared/chunk-LPF65VLB.js", "/build/_shared/chunk-NNJFXNFU.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/index": { id: "routes/til/index", parentId: "routes/til", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/til/index-VF4Y44PC.js", imports: ["/build/_shared/chunk-AUYLHJJM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til[.]rss": { id: "routes/til[.]rss", parentId: "root", path: "til.rss", index: void 0, caseSensitive: void 0, module: "/build/routes/til[.]rss-RNDKDS7J.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-11270B3A.js" };
 
 // server-entry-module:@remix-run/dev/server-build
-var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !0, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
+var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !0, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
   root: {
     id: "root",
     parentId: void 0,
@@ -1790,6 +1814,14 @@ var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, u
     index: void 0,
     caseSensitive: void 0,
     module: root_exports
+  },
+  "routes/api/raindrop-new": {
+    id: "routes/api/raindrop-new",
+    parentId: "root",
+    path: "api/raindrop-new",
+    index: void 0,
+    caseSensitive: void 0,
+    module: raindrop_new_exports
   },
   "routes/til[.]rss": {
     id: "routes/til[.]rss",

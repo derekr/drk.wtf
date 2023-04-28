@@ -1,9 +1,9 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
-import { json } from '@remix-run/node'
-import type { MetaFunction } from '@remix-run/node'
+import { json } from '@remix-run/server-runtime'
+import type { MetaFunction } from '@remix-run/server-runtime'
 import { useLoaderData, useLocation } from '@remix-run/react'
 
-import { projectDetails } from '~/sanity/config'
+import { projectDetails } from '~/sanity/project-details'
 
 import tailwindStyles from '~/styles/tailwind.css'
 import globalStyles from '~/styles/global.css'

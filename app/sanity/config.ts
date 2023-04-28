@@ -1,17 +1,11 @@
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { codeInput } from '@sanity/code-input'
+import { projectDetails } from './project-details'
+export { projectDetails } from './project-details'
 // import { visionTool } from '@sanity/vision'
 
 import { schemaTypes } from './schema'
-
-export const projectDetails = () => ({
-  projectId:
-    typeof document === 'undefined' ? process.env.SANITY_PROJECT_ID : window?.ENV?.projectId,
-  dataset: typeof document === 'undefined' ? process.env.SANITY_DATASET : window?.ENV?.dataset,
-  apiVersion:
-    typeof document === 'undefined' ? process.env.SANITY_API_VERSION : window?.ENV?.apiVersion,
-})
 
 export const config = defineConfig({
   ...projectDetails(),
