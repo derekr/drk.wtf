@@ -2,6 +2,7 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { codeInput } from '@sanity/code-input'
 import { projectDetails } from './project-details'
+export { projectDetails } from './project-details'
 // import { visionTool } from '@sanity/vision'
 
 import { schemaTypes } from './schema'
