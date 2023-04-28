@@ -3,7 +3,7 @@ import { json } from '@remix-run/server-runtime'
 import type { MetaFunction } from '@remix-run/server-runtime'
 import { useLoaderData, useLocation } from '@remix-run/react'
 
-import { projectDetails } from '~/sanity/config'
+import { projectDetails } from '~/sanity/project-details'
 
 import tailwindStyles from '~/styles/tailwind.css'
 import globalStyles from '~/styles/global.css'

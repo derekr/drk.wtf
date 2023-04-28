@@ -67,6 +67,156 @@ __export(root_exports, {
 });
 var import_react2 = require("@remix-run/react"), import_server_runtime = require("@remix-run/server-runtime"), import_react3 = require("@remix-run/react");
 
+// app/sanity/project-details.ts
+var projectDetails = () => {
+  var _a, _b, _c;
+  return {
+    projectId: typeof document > "u" ? process.env.SANITY_PROJECT_ID : (_a = window == null ? void 0 : window.ENV) == null ? void 0 : _a.projectId,
+    dataset: typeof document > "u" ? process.env.SANITY_DATASET : (_b = window == null ? void 0 : window.ENV) == null ? void 0 : _b.dataset,
+    apiVersion: typeof document > "u" ? process.env.SANITY_API_VERSION : (_c = window == null ? void 0 : window.ENV) == null ? void 0 : _c.apiVersion
+  };
+};
+
+// app/styles/tailwind.css
+var tailwind_default = "/build/_assets/tailwind-ZYBGIOS5.css";
+
+// app/styles/global.css
+var global_default = "/build/_assets/global-UZ4QWBRH.css";
+
+// app/root.tsx
+var import_jsx_dev_runtime2 = require("react/jsx-dev-runtime"), meta = () => ({ title: "Welcome to the drkweb | drk.wtf" });
+function links() {
+  return [
+    { rel: "stylesheet", href: tailwind_default },
+    { rel: "stylesheet", href: global_default }
+  ];
+}
+async function loader() {
+  return (0, import_server_runtime.json)({ ENV: projectDetails() });
+}
+function App() {
+  let data = (0, import_react3.useLoaderData)(), { pathname } = (0, import_react3.useLocation)(), isStudioRoute = pathname.startsWith("/studio");
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { charSet: "utf-8" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 33,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { name: "viewport", content: "width=device-width,initial-scale=1" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 34,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Meta, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 35,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Links, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 36,
+        columnNumber: 9
+      }, this),
+      isStudioRoute && typeof document > "u" ? "__STYLES__" : null
+    ] }, void 0, !0, {
+      fileName: "app/root.tsx",
+      lineNumber: 32,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { className: "p-3", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Outlet, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 40,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.ScrollRestoration, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 41,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+        "script",
+        {
+          dangerouslySetInnerHTML: {
+            __html: `window.ENV = ${JSON.stringify(data.ENV)}`
+          }
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/root.tsx",
+          lineNumber: 42,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Scripts, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 47,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.LiveReload, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 48,
+        columnNumber: 52
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/root.tsx",
+      lineNumber: 39,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/root.tsx",
+    lineNumber: 31,
+    columnNumber: 5
+  }, this);
+}
+
+// app/routes/api/raindrop-new.ts
+var raindrop_new_exports = {};
+__export(raindrop_new_exports, {
+  action: () => action,
+  config: () => config
+});
+var config = { runtime: "edge" };
+async function action({ request }) {
+  let headers17 = request.headers, payload = await request.json();
+  if (headers17.get("token") !== process.env.RAINDROP_TEST_TOKEN)
+    throw new Error("Invalid token");
+  return fetch("https://api.raindrop.io/rest/v1/raindrop", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.RAINDROP_TEST_TOKEN}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ pleaseParse: {}, link: payload.link })
+  });
+}
+
+// app/routes/til[.]rss.tsx
+var til_rss_exports = {};
+__export(til_rss_exports, {
+  loader: () => loader2
+});
+
+// app/sanity/queries/all-til-posts.ts
+var import_groq = __toESM(require("groq")), all_til_posts_default = import_groq.default`
+*[
+  _type == "post" && "til" in categories[]->title
+]{
+  _id, 
+  title,
+  body, 
+  slug, 
+  piblishedAt,
+  author->
+}
+`;
+
+// app/sanity/client.ts
+var import_client = __toESM(require("@sanity/client"));
+
 // app/sanity/config.ts
 var import_sanity8 = require("sanity"), import_desk = require("sanity/desk"), import_code_input = require("@sanity/code-input");
 
@@ -399,15 +549,15 @@ var schemaTypes = [
 ];
 
 // app/sanity/config.ts
-var projectDetails = () => {
+var projectDetails2 = () => {
   var _a, _b, _c;
   return {
     projectId: typeof document > "u" ? process.env.SANITY_PROJECT_ID : (_a = window == null ? void 0 : window.ENV) == null ? void 0 : _a.projectId,
     dataset: typeof document > "u" ? process.env.SANITY_DATASET : (_b = window == null ? void 0 : window.ENV) == null ? void 0 : _b.dataset,
     apiVersion: typeof document > "u" ? process.env.SANITY_API_VERSION : (_c = window == null ? void 0 : window.ENV) == null ? void 0 : _c.apiVersion
   };
-}, config = (0, import_sanity8.defineConfig)({
-  ...projectDetails(),
+}, config2 = (0, import_sanity8.defineConfig)({
+  ...projectDetails2(),
   plugins: [
     (0, import_desk.deskTool)(),
     (0, import_code_input.codeInput)()
@@ -418,147 +568,9 @@ var projectDetails = () => {
   }
 });
 
-// app/styles/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-ZYBGIOS5.css";
-
-// app/styles/global.css
-var global_default = "/build/_assets/global-UZ4QWBRH.css";
-
-// app/root.tsx
-var import_jsx_dev_runtime2 = require("react/jsx-dev-runtime"), meta = () => ({ title: "Welcome to the drkweb | drk.wtf" });
-function links() {
-  return [
-    { rel: "stylesheet", href: tailwind_default },
-    { rel: "stylesheet", href: global_default }
-  ];
-}
-async function loader() {
-  return (0, import_server_runtime.json)({ ENV: projectDetails() });
-}
-function App() {
-  let data = (0, import_react3.useLoaderData)(), { pathname } = (0, import_react3.useLocation)(), isStudioRoute = pathname.startsWith("/studio");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { charSet: "utf-8" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 33,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { name: "viewport", content: "width=device-width,initial-scale=1" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 34,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Meta, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 35,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 36,
-        columnNumber: 9
-      }, this),
-      isStudioRoute && typeof document > "u" ? "__STYLES__" : null
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 32,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { className: "p-3", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Outlet, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 40,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.ScrollRestoration, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 41,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-        "script",
-        {
-          dangerouslySetInnerHTML: {
-            __html: `window.ENV = ${JSON.stringify(data.ENV)}`
-          }
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/root.tsx",
-          lineNumber: 42,
-          columnNumber: 9
-        },
-        this
-      ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Scripts, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 47,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.LiveReload, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 48,
-        columnNumber: 52
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 39,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/root.tsx",
-    lineNumber: 31,
-    columnNumber: 5
-  }, this);
-}
-
-// app/routes/api/raindrop-new.ts
-var raindrop_new_exports = {};
-__export(raindrop_new_exports, {
-  action: () => action,
-  config: () => config2
-});
-var config2 = { runtime: "edge" };
-async function action({ request }) {
-  let headers17 = request.headers, payload = await request.json();
-  if (headers17.get("token") !== process.env.RAINDROP_TEST_TOKEN)
-    throw new Error("Invalid token");
-  return fetch("https://api.raindrop.io/rest/v1/raindrop", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.RAINDROP_TEST_TOKEN}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ pleaseParse: {}, link: payload.link })
-  });
-}
-
-// app/routes/til[.]rss.tsx
-var til_rss_exports = {};
-__export(til_rss_exports, {
-  loader: () => loader2
-});
-
-// app/sanity/queries/all-til-posts.ts
-var import_groq = __toESM(require("groq")), all_til_posts_default = import_groq.default`
-*[
-  _type == "post" && "til" in categories[]->title
-]{
-  _id, 
-  title,
-  body, 
-  slug, 
-  piblishedAt,
-  author->
-}
-`;
-
 // app/sanity/client.ts
-var import_client = __toESM(require("@sanity/client"));
 var client = new import_client.default({
-  ...projectDetails(),
+  ...projectDetails2(),
   useCdn: !0
 });
 
@@ -636,7 +648,7 @@ var studio_default = "/build/_assets/studio-7UYMGTOZ.css";
 // app/routes/studio/*.tsx
 var import_jsx_dev_runtime3 = require("react/jsx-dev-runtime"), links2 = () => [{ rel: "stylesheet", href: studio_default }];
 function StudioPage() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(import_remix_utils.ClientOnly, { children: () => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(import_sanity9.Studio, { config }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(import_remix_utils.ClientOnly, { children: () => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(import_sanity9.Studio, { config: config2 }, void 0, !1, {
     fileName: "app/routes/studio/*.tsx",
     lineNumber: 14,
     columnNumber: 29
@@ -666,7 +678,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), SanityImage = fu
     "img",
     {
       className: "w-full h-auto not-prose",
-      src: (0, import_image_url.default)(projectDetails()).image(value).width(isInline ? 100 : 800).fit("max").auto("format").url(),
+      src: (0, import_image_url.default)(projectDetails2()).image(value).width(isInline ? 100 : 800).fit("max").auto("format").url(),
       alt: value.alt || "",
       loading: "lazy",
       style: {
@@ -1798,7 +1810,7 @@ function Index2() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "1f6f3d92", entry: { module: "/build/entry.client-IMSMVNVB.js", imports: ["/build/_shared/chunk-SU7KL2ZR.js", "/build/_shared/chunk-5MNA3WQF.js", "/build/_shared/chunk-VAVTCYMY.js", "/build/_shared/chunk-DRUUK3AG.js", "/build/_shared/chunk-LDWVSYYX.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-2LKPSYLP.js", imports: ["/build/_shared/chunk-NIL5CA4A.js", "/build/_shared/chunk-HJTN6MAF.js", "/build/_shared/chunk-4TEFS6VR.js", "/build/_shared/chunk-TIYKRCUE.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/raindrop-new": { id: "routes/api/raindrop-new", parentId: "root", path: "api/raindrop-new", index: void 0, caseSensitive: void 0, module: "/build/routes/api/raindrop-new-RWLRFMAZ.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g": { id: "routes/g", parentId: "root", path: "g", index: void 0, caseSensitive: void 0, module: "/build/routes/g-RISXKLWQ.js", imports: ["/build/_shared/chunk-2M7FPKZN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/css-to-component": { id: "routes/g/css-to-component", parentId: "routes/g", path: "css-to-component", index: void 0, caseSensitive: void 0, module: "/build/routes/g/css-to-component-QHOJ6QAZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-notes": { id: "routes/g/digital-garden-notes", parentId: "routes/g", path: "digital-garden-notes", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-notes-CMTJIAN7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-with-obsidian-and-remix": { id: "routes/g/digital-garden-with-obsidian-and-remix", parentId: "routes/g", path: "digital-garden-with-obsidian-and-remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-with-obsidian-and-remix-LPISPU5T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/drk-wtf-todos": { id: "routes/g/drk-wtf-todos", parentId: "routes/g", path: "drk-wtf-todos", index: void 0, caseSensitive: void 0, module: "/build/routes/g/drk-wtf-todos-4OKD4S27.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/index": { id: "routes/g/index", parentId: "routes/g", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/g/index-TAQKVSYX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/josh-comeau": { id: "routes/g/josh-comeau", parentId: "routes/g", path: "josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/josh-comeau-S4CDAJ3E.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/other-note": { id: "routes/g/other-note", parentId: "routes/g", path: "other-note", index: void 0, caseSensitive: void 0, module: "/build/routes/g/other-note-IQVJEMI6.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/bencodezen": { id: "routes/g/people/bencodezen", parentId: "routes/g", path: "people/bencodezen", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/bencodezen-HW7QODRX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/josh-comeau": { id: "routes/g/people/josh-comeau", parentId: "routes/g", path: "people/josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/josh-comeau-D3SKICNL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/wwwjim": { id: "routes/g/people/wwwjim", parentId: "routes/g", path: "people/wwwjim", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/wwwjim-UEZ3X4MA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/projects/work-at-diy": { id: "routes/g/projects/work-at-diy", parentId: "routes/g", path: "projects/work-at-diy", index: void 0, caseSensitive: void 0, module: "/build/routes/g/projects/work-at-diy-HNNDATBT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/the-fox-team": { id: "routes/g/the-fox-team", parentId: "routes/g", path: "the-fox-team", index: void 0, caseSensitive: void 0, module: "/build/routes/g/the-fox-team-7JXUNEYE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/mdx": { id: "routes/g/tools/mdx", parentId: "routes/g", path: "tools/mdx", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/mdx-MYP6CF7M.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian": { id: "routes/g/tools/obsidian", parentId: "routes/g", path: "tools/obsidian", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-CBZQ7LWA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian-export": { id: "routes/g/tools/obsidian-export", parentId: "routes/g", path: "tools/obsidian-export", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-export-AO47O55E.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/remix": { id: "routes/g/tools/remix", parentId: "routes/g", path: "tools/remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/remix-D7S7AWCF.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/vercel": { id: "routes/g/tools/vercel", parentId: "routes/g", path: "tools/vercel", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/vercel-4OZNHZ7T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-UA75NUPE.js", imports: ["/build/_shared/chunk-VZUNT7YM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/studio/*": { id: "routes/studio/*", parentId: "root", path: "studio/*", index: void 0, caseSensitive: void 0, module: "/build/routes/studio/*-BBS6G7FF.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til": { id: "routes/til", parentId: "root", path: "til", index: void 0, caseSensitive: void 0, module: "/build/routes/til-OR2NOQFG.js", imports: ["/build/_shared/chunk-2M7FPKZN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/$slug.$id": { id: "routes/til/$slug.$id", parentId: "routes/til", path: ":slug/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/til/$slug.$id-DIQXP5TC.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-VZUNT7YM.js", "/build/_shared/chunk-NIL5CA4A.js", "/build/_shared/chunk-HJTN6MAF.js", "/build/_shared/chunk-4TEFS6VR.js", "/build/_shared/chunk-TIYKRCUE.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/index": { id: "routes/til/index", parentId: "routes/til", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/til/index-VF4Y44PC.js", imports: ["/build/_shared/chunk-AUYLHJJM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til[.]rss": { id: "routes/til[.]rss", parentId: "root", path: "til.rss", index: void 0, caseSensitive: void 0, module: "/build/routes/til[.]rss-RNDKDS7J.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-1F6F3D92.js" };
+var assets_manifest_default = { version: "2c22f6ff", entry: { module: "/build/entry.client-IMSMVNVB.js", imports: ["/build/_shared/chunk-SU7KL2ZR.js", "/build/_shared/chunk-5MNA3WQF.js", "/build/_shared/chunk-VAVTCYMY.js", "/build/_shared/chunk-DRUUK3AG.js", "/build/_shared/chunk-LDWVSYYX.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-AFFAK5MG.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/raindrop-new": { id: "routes/api/raindrop-new", parentId: "root", path: "api/raindrop-new", index: void 0, caseSensitive: void 0, module: "/build/routes/api/raindrop-new-RWLRFMAZ.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g": { id: "routes/g", parentId: "root", path: "g", index: void 0, caseSensitive: void 0, module: "/build/routes/g-RISXKLWQ.js", imports: ["/build/_shared/chunk-2M7FPKZN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/css-to-component": { id: "routes/g/css-to-component", parentId: "routes/g", path: "css-to-component", index: void 0, caseSensitive: void 0, module: "/build/routes/g/css-to-component-QHOJ6QAZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-notes": { id: "routes/g/digital-garden-notes", parentId: "routes/g", path: "digital-garden-notes", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-notes-CMTJIAN7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/digital-garden-with-obsidian-and-remix": { id: "routes/g/digital-garden-with-obsidian-and-remix", parentId: "routes/g", path: "digital-garden-with-obsidian-and-remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/digital-garden-with-obsidian-and-remix-LPISPU5T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/drk-wtf-todos": { id: "routes/g/drk-wtf-todos", parentId: "routes/g", path: "drk-wtf-todos", index: void 0, caseSensitive: void 0, module: "/build/routes/g/drk-wtf-todos-4OKD4S27.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/index": { id: "routes/g/index", parentId: "routes/g", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/g/index-TAQKVSYX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/josh-comeau": { id: "routes/g/josh-comeau", parentId: "routes/g", path: "josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/josh-comeau-S4CDAJ3E.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/other-note": { id: "routes/g/other-note", parentId: "routes/g", path: "other-note", index: void 0, caseSensitive: void 0, module: "/build/routes/g/other-note-IQVJEMI6.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/bencodezen": { id: "routes/g/people/bencodezen", parentId: "routes/g", path: "people/bencodezen", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/bencodezen-HW7QODRX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/josh-comeau": { id: "routes/g/people/josh-comeau", parentId: "routes/g", path: "people/josh-comeau", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/josh-comeau-D3SKICNL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/people/wwwjim": { id: "routes/g/people/wwwjim", parentId: "routes/g", path: "people/wwwjim", index: void 0, caseSensitive: void 0, module: "/build/routes/g/people/wwwjim-UEZ3X4MA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/projects/work-at-diy": { id: "routes/g/projects/work-at-diy", parentId: "routes/g", path: "projects/work-at-diy", index: void 0, caseSensitive: void 0, module: "/build/routes/g/projects/work-at-diy-HNNDATBT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/the-fox-team": { id: "routes/g/the-fox-team", parentId: "routes/g", path: "the-fox-team", index: void 0, caseSensitive: void 0, module: "/build/routes/g/the-fox-team-7JXUNEYE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/mdx": { id: "routes/g/tools/mdx", parentId: "routes/g", path: "tools/mdx", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/mdx-MYP6CF7M.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian": { id: "routes/g/tools/obsidian", parentId: "routes/g", path: "tools/obsidian", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-CBZQ7LWA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/obsidian-export": { id: "routes/g/tools/obsidian-export", parentId: "routes/g", path: "tools/obsidian-export", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/obsidian-export-AO47O55E.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/remix": { id: "routes/g/tools/remix", parentId: "routes/g", path: "tools/remix", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/remix-D7S7AWCF.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/g/tools/vercel": { id: "routes/g/tools/vercel", parentId: "routes/g", path: "tools/vercel", index: void 0, caseSensitive: void 0, module: "/build/routes/g/tools/vercel-4OZNHZ7T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-OZPARCKQ.js", imports: ["/build/_shared/chunk-WH5HSYFC.js", "/build/_shared/chunk-42XOH3JS.js", "/build/_shared/chunk-EHPD4F7T.js", "/build/_shared/chunk-D2IB3N7Z.js", "/build/_shared/chunk-LPF65VLB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/studio/*": { id: "routes/studio/*", parentId: "root", path: "studio/*", index: void 0, caseSensitive: void 0, module: "/build/routes/studio/*-ALTZ5U5T.js", imports: ["/build/_shared/chunk-42XOH3JS.js", "/build/_shared/chunk-EHPD4F7T.js", "/build/_shared/chunk-D2IB3N7Z.js", "/build/_shared/chunk-LPF65VLB.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til": { id: "routes/til", parentId: "root", path: "til", index: void 0, caseSensitive: void 0, module: "/build/routes/til-OR2NOQFG.js", imports: ["/build/_shared/chunk-2M7FPKZN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/$slug.$id": { id: "routes/til/$slug.$id", parentId: "routes/til", path: ":slug/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/til/$slug.$id-TSMEDOFP.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-WH5HSYFC.js", "/build/_shared/chunk-42XOH3JS.js", "/build/_shared/chunk-EHPD4F7T.js", "/build/_shared/chunk-D2IB3N7Z.js", "/build/_shared/chunk-LPF65VLB.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til/index": { id: "routes/til/index", parentId: "routes/til", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/til/index-VF4Y44PC.js", imports: ["/build/_shared/chunk-AUYLHJJM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/til[.]rss": { id: "routes/til[.]rss", parentId: "root", path: "til.rss", index: void 0, caseSensitive: void 0, module: "/build/routes/til[.]rss-RNDKDS7J.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-2C22F6FF.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !0, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
