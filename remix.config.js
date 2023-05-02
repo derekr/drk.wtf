@@ -4,16 +4,18 @@ const React = require('react')
  * @type {import('@remix-run/dev').AppConfig}
  */
 module.exports = {
-  // appDirectory: 'app',
-  // assetsBuildDirectory: 'public/build',
-  // publicPath: '/build/',
-  // serverBuildDirectory: 'api/_build',
-  future: {
-    unstable_tailwind: true,
-  },
-  serverBuildTarget: 'vercel',
-  server: process.env.NODE_ENV === "development" ? undefined : "./server.js",
+  tailwind: true,
+  serverBuildPath: 'api/index.js',
+  server: process.env.NODE_ENV === 'development' ? undefined : './server.js',
+  serverDependenciesToBundle: 'all',
   ignoredRouteFiles: ['**/.*'],
+  serverModuleFormat: 'cjs',
+  future: {
+    v2_errorBoundary: true,
+    v2_normalizeFormMethod: true,
+    v2_meta: true,
+    v2_routeConvention: true,
+  },
   mdx: async (filename) => {
     const [
       rehypeRewrite,

@@ -4,6 +4,11 @@
       "source": "/blog/work-at-diy",
       "destination": "/g/projects/work-at-diy",
       "permanent": true
+    },
+    {
+      "source": "/g/*",
+      "destination": "https://publish.obsidian.md/drk",
+      "permanent": true
     }
   ]
 }

@@ -1,6 +1,5 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import { json } from '@remix-run/server-runtime'
-import type { MetaFunction } from '@remix-run/server-runtime'
 import { useLoaderData, useLocation } from '@remix-run/react'
 
 import { projectDetails } from '~/sanity/project-details'
@@ -8,8 +7,8 @@ import { projectDetails } from '~/sanity/project-details'
 import tailwindStyles from '~/styles/tailwind.css'
 import globalStyles from '~/styles/global.css'
 
-export const meta: MetaFunction = () => {
-  return { title: 'Welcome to the drkweb | drk.wtf' }
+export function meta() {
+  return [{ title: 'Welcome to the drkweb | drk.wtf' }]
 }
 
 export function links() {
