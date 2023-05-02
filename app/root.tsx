@@ -1,5 +1,5 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
-import { json } from '@remix-run/server-runtime'
+import { json } from '@remix-run/node'
 import { useLoaderData, useLocation } from '@remix-run/react'
 
 import { projectDetails } from '~/sanity/project-details'
