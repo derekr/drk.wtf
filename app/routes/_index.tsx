@@ -4,6 +4,8 @@ import { SanityContent } from '~/components/sanity-content'
 import homePageQuery from '~/sanity/queries/home-page'
 import { fork } from 'radash'
 
+export const config = { runtime: 'edge' }
+
 export const loader = async () => {
   return {
     ...(await client.fetch(homePageQuery)),
