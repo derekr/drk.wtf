@@ -4,7 +4,9 @@
       "source": "/blog/work-at-diy",
       "destination": "/g/projects/work-at-diy",
       "permanent": true
-    },
+    }
+  ],
+  "rewrites": [
     {
       "source": "/g/:path*",
       "destination": "https://publish.obsidian.md/drk/:path"
