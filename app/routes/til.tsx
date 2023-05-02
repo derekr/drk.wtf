@@ -1,8 +1,6 @@
 import { Link, Outlet, useLocation } from '@remix-run/react'
 import codeSyntaxStyles from 'highlight.js/styles/night-owl.css'
 
-export const config = { runtime: 'edge' }
-
 export function links() {
   return [{ rel: 'stylesheet', href: codeSyntaxStyles }]
 }
