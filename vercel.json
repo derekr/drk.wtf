@@ -6,7 +6,7 @@
       "permanent": true
     },
     {
-      "source": "/g/:splat",
+      "source": "/g/*",
       "destination": "https://publish.obsidian.md/drk/:splat",
       "permanent": true
     }
