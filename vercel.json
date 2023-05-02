@@ -6,8 +6,8 @@
       "permanent": true
     },
     {
-      "source": "/g/*",
-      "destination": "https://publish.obsidian.md/drk",
+      "source": "/g/:splat",
+      "destination": "https://publish.obsidian.md/drk/:splat",
       "permanent": true
     }
   ]
