@@ -41,7 +41,7 @@
     "rehype-rewrite": "^3.0.6",
     "rehype-sanitize": "^5.0.1",
     "rehype-slug": "^5.1.0",
-    "remix-utils": "^6.1.0",
+    "remix-utils": "^6.3.0",
     "sanity": "dev-preview",
     "shiki": "^0.14.1",
     "styled-components": "^5.3.10",

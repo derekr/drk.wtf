@@ -36,7 +36,7 @@ specifiers:
   rehype-rewrite: ^3.0.6
   rehype-sanitize: ^5.0.1
   rehype-slug: ^5.1.0
-  remix-utils: ^6.1.0
+  remix-utils: ^6.3.0
   sanity: dev-preview
   shiki: ^0.14.1
   styled-components: ^5.3.10
@@ -75,7 +75,7 @@ dependencies:
   rehype-rewrite: 3.0.6
   rehype-sanitize: 5.0.1
   rehype-slug: 5.1.0
-  remix-utils: 6.1.0_mgdagqledogl7rrcm67uasxcwy
+  remix-utils: 6.3.0_mgdagqledogl7rrcm67uasxcwy
   sanity: 3.0.0-rc.3_2kfxa425mb3muerdge4v7tmizu
   shiki: 0.14.1
   styled-components: 5.3.10_7i5myeigehqah43i5u7wbekgba
@@ -8812,8 +8812,8 @@ packages:
       unified: 10.1.2
     dev: true
 
-  /remix-utils/6.1.0_mgdagqledogl7rrcm67uasxcwy:
-    resolution: {integrity: sha512-OEuoSEBjtkxiscaTdabq/F9jnyOfygeLMpvF0b6RTH07RWUyQjiSX4aKenk4jhEnxUTqUmK9KC2GUvZo/HjPCA==}
+  /remix-utils/6.3.0_mgdagqledogl7rrcm67uasxcwy:
+    resolution: {integrity: sha512-ivtBYxsToXYFFzvkVPJiw21a5bbzucJslK2H3McJDjkaGvivSGULdyUmSWwmDhzuAXdUxNOV/MBoWtBnNLCIOg==}
     engines: {node: '>=14'}
     peerDependencies:
       '@remix-run/react': ^1.10.0
