@@ -4,7 +4,7 @@ const React = require('react')
  * @type {import('@remix-run/dev').AppConfig}
  */
 module.exports = {
-  tailwind: true,
+  // tailwind: true,
   serverBuildPath: 'api/index.js',
   server: process.env.NODE_ENV === 'development' ? undefined : './server.js',
   ignoredRouteFiles: ['**/.*'],
@@ -13,5 +13,6 @@ module.exports = {
     v2_normalizeFormMethod: true,
     v2_meta: true,
     v2_routeConvention: true,
+    unstable_tailwind: true,
   },
 }
