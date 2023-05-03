@@ -24,6 +24,7 @@ specifiers:
   groq: ^3.9.1
   highlight.js: ^11.7.0
   htm: ^3.1.1
+  isbot: ^3.6.10
   prettier: ^2.8.8
   prettier-plugin-groq: ^0.2.5
   radash: ^10.8.1
@@ -65,6 +66,7 @@ dependencies:
   groq: 3.9.1
   highlight.js: 11.7.0
   htm: 3.1.1
+  isbot: 3.6.10
   radash: 10.8.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -6730,6 +6732,11 @@ packages:
 
   /isarray/1.0.0:
     resolution: {integrity: sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==}
+
+  /isbot/3.6.10:
+    resolution: {integrity: sha512-+I+2998oyP4oW9+OTQD8TS1r9P6wv10yejukj+Ksj3+UR5pUhsZN3f8W7ysq0p1qxpOVNbl5mCuv0bCaF8y5iQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /isexe/2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
