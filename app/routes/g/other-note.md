@@ -1,7 +1,0 @@
-[digital-garden-notes](digital-garden-notes.md)
-
-- RSS Feed on specific posts so you can subscribe to updates?
-
-[other-note](other-note.md)
-
-\#digital-garden
