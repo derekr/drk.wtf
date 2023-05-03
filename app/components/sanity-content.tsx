@@ -16,7 +16,7 @@ const components = {
       const href = value?.href ? value.href.replace('https://drk.wtf', '') : ''
       const target = href.startsWith('http') ? '_blank' : undefined
 
-      if (!target) {
+      if (!target && !href.startsWith('/g')) {
         return (
           <Link to={href} rel={value?.rel}>
             {children}
