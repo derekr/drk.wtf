@@ -10,6 +10,10 @@
     {
       "source": "/g/:path*",
       "destination": "https://publish.obsidian.md/drk/:path"
+    },
+    {
+      "source": "/.well-known/avatar",
+      "destination": "/avatar.jpg"
     }
   ]
 }
