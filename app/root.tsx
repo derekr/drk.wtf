@@ -1,3 +1,4 @@
+import { LinksFunction, LoaderFunctionArgs } from "@remix-run/cloudflare";
 import {
   Links,
   Meta,
@@ -9,17 +10,24 @@ import {
 } from "@remix-run/react";
 import { Suspense, lazy } from "react";
 
+import stylesheet from "~/tailwind.css?url";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: stylesheet },
+];
+
 const LiveVisualEditing = lazy(
   () => import("~/components/live-visual-editing")
 );
 
-export function loader() {
+export function loader({ context }: LoaderFunctionArgs) {
   return json({
     ENV: {
-      SANITY_STUDIO_PROJECT_ID: process.env.SANITY_STUDIO_PROJECT_ID,
-      SANITY_STUDIO_DATASET: process.env.SANITY_STUDIO_DATASET,
-      SANITY_STUDIO_URL: process.env.SANITY_STUDIO_URL,
-      SANITY_STUDIO_STEGA_ENABLED: process.env.SANITY_STUDIO_STEGA_ENABLED,
+      SANITY_STUDIO_PROJECT_ID: context.cloudflare.env.SANITY_STUDIO_PROJECT_ID,
+      SANITY_STUDIO_DATASET: context.cloudflare.env.SANITY_STUDIO_DATASET,
+      SANITY_STUDIO_URL: context.cloudflare.env.SANITY_STUDIO_URL,
+      SANITY_STUDIO_STEGA_ENABLED:
+        context.cloudflare.env.SANITY_STUDIO_STEGA_ENABLED,
     },
   });
 }
@@ -35,7 +43,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="p-3">
         {children}
         <ScrollRestoration />
         <script
