@@ -74,14 +74,14 @@ const ExperienceItem = ({
   </article>
 );
 
-export const loader = async ({ context }: LoaderFunctionArgs) => {
+export async function loader({ context }: LoaderFunctionArgs) {
   const db = drizzle(context.cloudflare.env.DB);
   const result = await db.select().from(countries).all();
   console.log({ result });
   const initial = await loadQuery<SanityDocument[]>(HOME_PAGE_QUERY);
 
   return { initial, query: HOME_PAGE_QUERY, params: {} };
-};
+}
 
 export default function Index() {
   const { initial, query, params } = useLoaderData<typeof loader>();
