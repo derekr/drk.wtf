@@ -7,6 +7,10 @@ import { useQuery } from "~/sanity/loader";
 import { loadQuery } from "~/sanity/loader.server";
 import { HOME_PAGE_QUERY } from "~/sanity/queries";
 
+import { drizzle } from "drizzle-orm/d1";
+import { LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { countries } from "~/db/schema.server";
+
 /**
  * Split an array into two array based on
  * a true/false condition function
@@ -70,7 +74,10 @@ const ExperienceItem = ({
   </article>
 );
 
-export const loader = async () => {
+export const loader = async ({ context }: LoaderFunctionArgs) => {
+  const db = drizzle(context.cloudflare.env.DB);
+  const result = await db.select().from(countries).all();
+  console.log({ result });
   const initial = await loadQuery<SanityDocument[]>(HOME_PAGE_QUERY);
 
   return { initial, query: HOME_PAGE_QUERY, params: {} };
@@ -164,7 +171,7 @@ export default function Index() {
           </a>
         </div>
       </div>
-      <footer>© Derek Reynolds {new Date().getFullYear()}</footer>
+      <footer>© Derek Reynolds {new Date().getFullYear()} 👋</footer>
     </>
   );
 }

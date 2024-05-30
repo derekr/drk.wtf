@@ -12,7 +12,8 @@
     "typecheck": "tsc",
     "typegen": "wrangler types",
     "preview": "npm run build && wrangler pages dev",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "drizzle:update": "drizzle-kit generate"
   },
   "dependencies": {
     "@portabletext/react": "^3.1.0",
@@ -24,6 +25,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/overlays": "^2.3.52",
     "@sanity/react-loader": "^1.10.0",
+    "drizzle-orm": "^0.30.10",
     "groq": "^3.44.0",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
@@ -37,6 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
     "autoprefixer": "^10.4.19",
+    "drizzle-kit": "^0.21.4",
     "eslint": "^8.38.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.28.1",
