@@ -19,6 +19,7 @@ pages_build_output_dir = "./build/client"
 SANITY_STUDIO_PROJECT_ID = "pfnv96lh"
 SANITY_STUDIO_DATASET = "main"
 SANITY_STUDIO_URL = "http://localhost:3333"
+NODE_VERSION = "22.2.0"
 
 # Do not set to true in production environments
 # This will load a larger version of Sanity Client
