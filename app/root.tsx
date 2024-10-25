@@ -13,6 +13,7 @@ import { Suspense, lazy } from "react";
 import stylesheet from "~/tailwind.css?url";
 
 export const links: LinksFunction = () => [
+  // TODO: preload the styles
   { rel: "stylesheet", href: stylesheet },
 ];
 
