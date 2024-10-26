@@ -1,7 +1,7 @@
 // ./app/sanity/loader.server.ts
 
-import { queryStore } from "~/sanity/loader";
-import { client } from "~/sanity/client";
+import { client } from '~/sanity/client';
+import { queryStore } from '~/sanity/loader';
 
 export const { loadQuery } = queryStore;
 

@@ -2,10 +2,10 @@
 // by running `wrangler types`
 
 interface Env {
-	SANITY_STUDIO_PROJECT_ID: "pfnv96lh";
-	SANITY_STUDIO_DATASET: "main";
-	SANITY_STUDIO_URL: "http://localhost:3333";
-	NODE_VERSION: "22.2.0";
-	SANITY_STUDIO_STEGA_ENABLED: "false";
+	SANITY_STUDIO_PROJECT_ID: 'pfnv96lh';
+	SANITY_STUDIO_DATASET: 'main';
+	SANITY_STUDIO_URL: 'http://localhost:3333';
+	NODE_VERSION: '22.2.0';
+	SANITY_STUDIO_STEGA_ENABLED: 'false';
 	DB: D1Database;
 }

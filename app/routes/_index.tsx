@@ -1,4 +1,4 @@
-import { PortableTextBlock } from "@portabletext/react";
+import type { PortableTextBlock } from "@portabletext/react";
 import { useLoaderData } from "@remix-run/react";
 import type { SanityDocument } from "@sanity/client";
 import { SanityContent } from "~/components/sanity-content";
@@ -7,8 +7,8 @@ import { useQuery } from "~/sanity/loader";
 import { loadQuery } from "~/sanity/loader.server";
 import { HOME_PAGE_QUERY } from "~/sanity/queries";
 
+import type { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { drizzle } from "drizzle-orm/d1";
-import { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { countries } from "~/db/schema.server";
 
 /**
@@ -25,6 +25,7 @@ function fork<T>(
       const [a, b] = acc;
       if (condition(item)) {
         return [[...a, item], b];
+        // biome-ignore lint/style/noUselessElse: <explanation>
       } else {
         return [a, [...b, item]];
       }
@@ -86,7 +87,6 @@ export async function loader({ context }: LoaderFunctionArgs) {
 export default function Index() {
   const { initial, query, params } = useLoaderData<typeof loader>();
   const { data, loading } = useQuery<typeof initial.data>(query, params, {
-    // @ts-expect-error not sure why this overload isn't matching. i think it's a bug in the sanity stuff
     initial,
   });
 
